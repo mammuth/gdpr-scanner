@@ -3,33 +3,40 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"os"
+	"strings"
 )
 
 func main() {
 	// Command line arguments
-	var paramInputUrl string
-	flag.StringVar(&paramInputUrl, "url", "", "Single URL to crawl")
+	var paramInputDomain string
+	flag.StringVar(&paramInputDomain, "domain", "", "Single domain to crawl")
 
-	var paramUrlListPath string
-	flag.StringVar(&paramUrlListPath, "list", "", "Filepath to url list")
+	var paramDomainList string
+	flag.StringVar(&paramDomainList, "list", "", "Filepath to domain list. Should contain one domain (without schema) per line")
 
 	var paramThreads int
 	flag.IntVar(&paramThreads, "threads", 2, "Number of crawler threads")
 
 	flag.Parse()
 
-	if paramInputUrl == "" && paramUrlListPath == "" {
+	if paramInputDomain == "" && paramDomainList == "" {
 		fmt.Println("Please either specify the url or list parameter")
 		os.Exit(2)
 	}
 
 	// Get urls to crawl
 	var urls []string
-	if paramInputUrl != "" {
-		urls = []string{paramInputUrl}
+	if paramInputDomain != "" {
+		urls = []string{paramInputDomain}
 	} else {
-		urls = loadUrlList(paramUrlListPath)
+		content, err := ioutil.ReadFile(paramDomainList)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(2)
+		}
+		urls = strings.Split(string(content), "\n")
 	}
 
 	runCrawler(urls, paramThreads)

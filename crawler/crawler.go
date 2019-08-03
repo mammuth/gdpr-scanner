@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"net/url"
 	"strings"
+	"time"
 
 	"crawler/storage"
 	"crawler/utils"
@@ -13,7 +15,7 @@ import (
 
 // Reports whether the link should be followed or not. Interesting links are: privacy policy, imprint, agbs, contact,
 func isInterestingLink(link *colly.HTMLElement) bool {
-	interestingWords := []string{"privacy policy", "privacy statement", "privacy", "datenschutz", "datenschutzerklärung"}
+	interestingWords := []string{"privacy", "datenschutz"}
 	for _, word := range interestingWords {
 		if strings.Contains(strings.ToLower(link.Text), word) {
 			return true
@@ -35,13 +37,21 @@ func isExternalLink(link *colly.HTMLElement) bool {
 	return hrefUrl.Host != link.Request.URL.Host
 }
 
-func runCrawler(urlsToCrawl []string, threads int) {
+func sanitizeUrlToCrawl(inputUrl string) string {
+	if !strings.HasPrefix(inputUrl, "http") {
+		return "http://" + inputUrl
+	}
+	return inputUrl
+}
+
+func runCrawler(domains []string, threads int) {
 	// Instantiate default collector
 	c := colly.NewCollector(
 		// MaxDepth is 1, so only the links on the scraped page are visited
 		colly.MaxDepth(1),
 		colly.Async(true),
 		colly.IgnoreRobotsTxt(),
+		//colly.AllowedDomains(domains...),
 	)
 
 	// Limit the maximum parallelism to eg. 2
@@ -50,6 +60,21 @@ func runCrawler(urlsToCrawl []string, threads int) {
 	c.Limit(
 		&colly.LimitRule{DomainGlob: "*", Parallelism: threads},
 	)
+
+	c.WithTransport(&http.Transport{
+		//Proxy: http.ProxyFromEnvironment,
+		//DialContext: (&net.Dialer{
+		//	Timeout:   30 * time.Second,
+		//	KeepAlive: 30 * time.Second,
+		//	DualStack: true,
+		//}).DialContext,
+		//MaxIdleConns:          100,
+		//DisableKeepAlives: true,
+		//IdleConnTimeout:       90 * time.Second,
+		IdleConnTimeout: 3 * time.Second,
+		//TLSHandshakeTimeout:   10 * time.Second,
+		//ExpectContinueTimeout: 1 * time.Second,
+	})
 
 	c.OnRequest(func(r *colly.Request) {
 		fmt.Println("visiting", r.URL)
@@ -71,6 +96,7 @@ func runCrawler(urlsToCrawl []string, threads int) {
 
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
 		// Check whether we should follow the found href
+		//if isInterestingLink(e) && !isExternalLink(e) {
 		if isInterestingLink(e) && !isExternalLink(e) {
 			// Visit link found on page on a new thread
 			fullUrl, err := utils.LinkToAbsoluteUrl(e)
@@ -82,9 +108,8 @@ func runCrawler(urlsToCrawl []string, threads int) {
 		}
 	})
 
-	for _, url := range urlsToCrawl {
-		// ToDo: Add http schema to URL in case it's missing
-		c.Visit(url)
+	for _, url := range domains {
+		c.Visit(sanitizeUrlToCrawl(url))
 	}
 
 	c.Wait()

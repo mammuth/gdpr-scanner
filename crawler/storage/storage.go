@@ -14,7 +14,7 @@ import (
 //}
 
 var (
-	outputPath = "../output"
+	outputPath = "output"
 )
 
 func pathToFolderName(path string) string {
