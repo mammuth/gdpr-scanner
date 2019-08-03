@@ -2,8 +2,9 @@ package utils
 
 import (
 	"fmt"
-	"github.com/gocolly/colly"
 	"net/url"
+
+	"github.com/gocolly/colly"
 )
 
 func LinkToAbsoluteUrl(link *colly.HTMLElement) (absoluteUrl string, err error) {
