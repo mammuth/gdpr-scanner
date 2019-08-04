@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crawler/crawl"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -17,7 +18,7 @@ func main() {
 	flag.StringVar(&paramDomainList, "list", "", "Filepath to domain list. Should contain one domain (without schema) per line")
 
 	var paramThreads int
-	flag.IntVar(&paramThreads, "threads", 2, "Number of crawler threads")
+	flag.IntVar(&paramThreads, "threads", 2, "Number of crawl threads")
 
 	flag.Parse()
 
@@ -39,5 +40,6 @@ func main() {
 		urls = strings.Split(string(content), "\n")
 	}
 
-	runCrawler(urls, paramThreads)
+	crawler := crawl.Crawler{}
+	crawler.RunCrawler(urls, paramThreads)
 }
