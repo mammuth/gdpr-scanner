@@ -6,11 +6,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gocolly/colly"
+
 	"crawler/page"
+
 	"crawler/storage"
 	"crawler/utils"
-
-	"github.com/gocolly/colly"
 )
 
 // Reports whether the link should be followed or not. Interesting links are: privacy policy, imprint, agbs, contact,
@@ -99,10 +100,6 @@ func (crawler Crawler) RunCrawler(domains []string, threads int) {
 		crawlerStorage.StorePageVisit(pageUrl, r.Body, pageType)
 	})
 
-	c.OnError(func(r *colly.Response, e error) {
-		fmt.Println("error visiting", r.Request.URL, e)
-	})
-
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
 		// Check whether we should follow the found href
 		if !isExternalLink(e) {
@@ -120,6 +117,10 @@ func (crawler Crawler) RunCrawler(domains []string, threads int) {
 				c.Request("GET", fullUrl, nil, ctx, nil)
 			}
 		}
+	})
+
+	c.OnError(func(r *colly.Response, e error) {
+		fmt.Println("error visiting", r.Request.URL, e)
 	})
 
 	for _, url := range domains {

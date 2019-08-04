@@ -1,11 +1,12 @@
 package storage
 
 import (
-	"crawler/page"
 	"encoding/json"
 	"io/ioutil"
 	"net/url"
 	"path/filepath"
+
+	"crawler/page"
 )
 
 type crawlerMetaData struct {

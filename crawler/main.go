@@ -1,12 +1,17 @@
 package main
 
+// ToDo: Identify terms, imprint and contact page
+// ToDo: Proper Logging
+// ToDo: Improve error handling
+
 import (
-	"crawler/crawl"
 	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
+
+	"crawler/crawl"
 )
 
 func main() {

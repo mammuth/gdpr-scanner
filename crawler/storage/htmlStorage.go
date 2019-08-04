@@ -1,9 +1,10 @@
 package storage
 
 import (
-	"crawler/page"
 	"os"
 	"path/filepath"
+
+	"crawler/page"
 )
 
 func (storage *Storage) storePageHtml(domain string, body []byte, pageType page.Type) {
