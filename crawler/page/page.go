@@ -1,5 +1,11 @@
 package page
 
+import (
+	"strings"
+
+	"github.com/gocolly/colly"
+)
+
 type Type int
 
 const (
@@ -19,12 +25,54 @@ func (t Type) StringIdentifier() string {
 	return [...]string{"unknown", "index", "privacy", "terms", "contact", "imprint"}[t]
 }
 
-// Converts string or int values to Type
+// TypeFromInterface converts string or int values to Type
 func TypeFromInterface(i interface{}) Type {
-	integer := i.(int)
-	integer, ok := i.(int)
+	// ToDo: Bug: Index page / int 1 returns UnknownPage
+	t, ok := i.(Type)
 	if !ok {
 		return UnknownPage
 	}
-	return Type(integer)
+	return t
+	//integer, ok := i.(int)
+	//if !ok {
+	//	return UnknownPage
+	//}
+	//return Type(integer)
+}
+
+// GetEstimatedPageTypeOfLink returns the estimated type of the link, based on url and text
+func GetEstimatedPageTypeOfLink(link *colly.HTMLElement) Type {
+	// ToDo: Refactor to avoid those nasty loops. Maybe use a map[string][Type]?
+	privacyWords := []string{"privacy", "datenschutz"}
+	imprintWords := []string{"imprint", "impressum"}
+	contactWords := []string{"contact", "kontakt"}
+	termsWords := []string{"agb", "terms and conditions"}
+
+	linkText := strings.ToLower(link.Text)
+	//urlPath := strings.ToLower(link.Request.URL.Path)
+	for _, word := range privacyWords {
+		if strings.Contains(linkText, word) {
+			return PrivacyPage
+		}
+	}
+
+	for _, word := range imprintWords {
+		if strings.Contains(linkText, word) {
+			return ImprintPage
+		}
+	}
+
+	for _, word := range termsWords {
+		if strings.Contains(linkText, word) {
+			return TermsPage
+		}
+	}
+
+	for _, word := range contactWords {
+		if strings.Contains(linkText, word) {
+			return ContactPage
+		}
+	}
+
+	return UnknownPage
 }
