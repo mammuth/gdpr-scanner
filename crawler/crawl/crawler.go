@@ -14,30 +14,6 @@ import (
 	"crawler/utils"
 )
 
-// Reports whether the link should be followed or not. Interesting links are: privacy policy, imprint, agbs, contact,
-func isPrivacyPolicy(link *colly.HTMLElement) bool {
-	interestingWords := []string{"privacy", "datenschutz"}
-	for _, word := range interestingWords {
-		if strings.Contains(strings.ToLower(link.Text), word) {
-			return true
-		}
-	}
-	return false
-}
-
-func isExternalLink(link *colly.HTMLElement) bool {
-	hrefUrl, err := url.Parse(link.Attr("href"))
-	if err != nil {
-		fmt.Println(err)
-		return true
-	}
-	// Relative urls are definitely no external urls
-	if !hrefUrl.IsAbs() {
-		return false
-	}
-	return hrefUrl.Host != link.Request.URL.Host
-}
-
 func sanitizeUrlToCrawl(inputUrl string) string {
 	if !strings.HasPrefix(inputUrl, "http") {
 		return "http://" + inputUrl
@@ -96,24 +72,24 @@ func (crawler Crawler) RunCrawler(domains []string, threads int) {
 			println(err)
 			return
 		}
-		pageType := page.TypeFromInterface(r.Ctx.GetAny("pageType"))
+		ctxPageType := r.Ctx.GetAny("pageType")
+		pageType := page.TypeFromInterface(ctxPageType)
 		crawlerStorage.StorePageVisit(pageUrl, r.Body, pageType)
 	})
 
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
 		// Check whether we should follow the found href
-		if !isExternalLink(e) {
-			if isPrivacyPolicy(e) {
-				// ToDo: Store url and location to privacy policy. Can we use request context?
-				// Visit link found on page on a new thread
+		if !utils.IsExternalLink(e) {
+			if pageType := page.GetEstimatedPageTypeOfLink(e); pageType != page.UnknownPage {
 				fullUrl, err := utils.LinkToAbsoluteUrl(e)
 				if err != nil {
 					return
 				}
+				// Visit link found on page on a new thread
 				//e.Request.Visit(sanitizedUrl)  // ToDo: Doesn't seem to work
 				//c.Visit(fullUrl)
 				ctx := colly.NewContext()
-				ctx.Put("pageType", page.PrivacyPage)
+				ctx.Put("pageType", pageType)
 				c.Request("GET", fullUrl, nil, ctx, nil)
 			}
 		}

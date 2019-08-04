@@ -21,3 +21,16 @@ func LinkToAbsoluteUrl(link *colly.HTMLElement) (absoluteUrl string, err error) 
 		return requestUrl.ResolveReference(hrefUrl).String(), nil
 	}
 }
+
+func IsExternalLink(link *colly.HTMLElement) bool {
+	hrefUrl, err := url.Parse(link.Attr("href"))
+	if err != nil {
+		fmt.Println(err)
+		return true
+	}
+	// Relative urls are definitely no external urls
+	if !hrefUrl.IsAbs() {
+		return false
+	}
+	return hrefUrl.Host != link.Request.URL.Host
+}
