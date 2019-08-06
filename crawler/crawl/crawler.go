@@ -62,6 +62,7 @@ func (crawler Crawler) RunCrawler(domains []string, threads int) {
 	//})
 
 	c.OnRequest(func(r *colly.Request) {
+		r.Headers.Set("Accept-Language", "de;q=1, en;q=0.9")
 		fmt.Println("visiting", r.URL)
 	})
 
@@ -89,7 +90,7 @@ func (crawler Crawler) RunCrawler(domains []string, threads int) {
 				//e.Request.Visit(sanitizedUrl)  // ToDo: Doesn't seem to work
 				//c.Visit(fullUrl)
 				ctx := colly.NewContext()
-				ctx.Put("pageType", pageType)
+				ctx.Put("pageType", int(pageType))
 				c.Request("GET", fullUrl, nil, ctx, nil)
 			}
 		}
@@ -101,7 +102,7 @@ func (crawler Crawler) RunCrawler(domains []string, threads int) {
 
 	for _, url := range domains {
 		ctx := colly.NewContext()
-		ctx.Put("pageType", page.IndexPage)
+		ctx.Put("pageType", int(page.IndexPage))
 		c.Request("GET", sanitizeUrlToCrawl(url), nil, ctx, nil)
 	}
 
