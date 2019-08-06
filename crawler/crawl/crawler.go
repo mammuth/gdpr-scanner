@@ -80,15 +80,17 @@ func (crawler Crawler) RunCrawler(domains []string, threads int) {
 
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
 		// Check whether we should follow the found href
-		if !utils.IsExternalLink(e) {
-			if pageType := page.GetEstimatedPageTypeOfLink(e); pageType != page.UnknownPage {
+		if !utils.IsExternalLink(e) && utils.IsMeaningfulLink(e) {
+			linkText := utils.CleanLinkText(e.Text)
+			linkHref := e.Attr("href")
+			pageType := page.GetEstimatedPageTypeOfLink(linkText, linkHref)
+			if pageType != page.UnknownPage {
 				fullUrl, err := utils.LinkToAbsoluteUrl(e)
 				if err != nil {
 					return
 				}
 				// Visit link found on page on a new thread
-				//e.Request.Visit(sanitizedUrl)  // ToDo: Doesn't seem to work
-				//c.Visit(fullUrl)
+				//e.Request.Visit(sanitizedUrl)  // Doesn't seem to work
 				ctx := colly.NewContext()
 				ctx.Put("pageType", int(pageType))
 				c.Request("GET", fullUrl, nil, ctx, nil)

@@ -2,8 +2,6 @@ package page
 
 import (
 	"strings"
-
-	"github.com/gocolly/colly"
 )
 
 // Type defines some well-known page types like index page, contact page or privacy policy
@@ -36,38 +34,32 @@ func TypeFromInterface(i interface{}) Type {
 }
 
 // GetEstimatedPageTypeOfLink returns the estimated type of the link, based on url and text
-func GetEstimatedPageTypeOfLink(link *colly.HTMLElement) Type {
-	// ToDo: Refactor to avoid those nasty loops. Maybe use a map[string][Type]?
-	privacyWords := []string{"privacy", "datenschutz"}
-	imprintWords := []string{"imprint", "impressum"}
-	contactWords := []string{"contact", "kontakt"}
-	termsWords := []string{"agb", "terms and conditions"}
+func GetEstimatedPageTypeOfLink(linkText, linkTarget string) Type {
+	wordToTypeMap := map[string]Type{
+		"privacy":     PrivacyPage,
+		"datenschutz": PrivacyPage,
 
-	linkText := strings.ToLower(link.Text)
-	//urlPath := strings.ToLower(link.Request.URL.Path)
-	for _, word := range privacyWords {
-		if strings.Contains(linkText, word) {
-			return PrivacyPage
+		"contact": ContactPage,
+		"kontakt": ContactPage,
+
+		"imprint":   ImprintPage,
+		"impressum": ImprintPage,
+
+		//"terms and conditions": TermsPage,
+		//"terms &amp; conditions": TermsPage,
+		//"agb": TermsPage,
+	}
+
+	// Identify page by
+	var estimatedPageType = UnknownPage
+	for searchTerm, pageType := range wordToTypeMap {
+		if strings.Contains(strings.ToLower(linkText), searchTerm) {
+			estimatedPageType = pageType
+			break
 		}
 	}
 
-	for _, word := range imprintWords {
-		if strings.Contains(linkText, word) {
-			return ImprintPage
-		}
-	}
+	// ToDo: check linkTarget and return if it comes to the same estimation as linkText
 
-	for _, word := range termsWords {
-		if strings.Contains(linkText, word) {
-			return TermsPage
-		}
-	}
-
-	for _, word := range contactWords {
-		if strings.Contains(linkText, word) {
-			return ContactPage
-		}
-	}
-
-	return UnknownPage
+	return estimatedPageType
 }
