@@ -13,6 +13,8 @@
 
 .idea/
 
+build/
+
 # Crawler storage output
 output/
 urlLists/
