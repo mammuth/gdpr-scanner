@@ -31,19 +31,19 @@ func main() {
 		os.Exit(2)
 	}
 
-	// Get urls to crawl
-	var urls []string
+	// Get domains to crawl
+	var domains []string
 	if paramInputDomain != "" {
-		urls = []string{paramInputDomain}
+		domains = []string{paramInputDomain}
 	} else {
 		content, err := ioutil.ReadFile(paramDomainList)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(2)
 		}
-		urls = strings.Split(string(content), "\n")
+		domains = strings.Split(string(content), "\n")
 	}
 
-	crawler := crawl.Crawler{}
-	crawler.RunCrawler(urls, paramThreads)
+	crawler := crawl.New(domains, paramThreads)
+	crawler.Run()
 }

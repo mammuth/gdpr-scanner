@@ -14,13 +14,32 @@ import (
 )
 
 type Crawler struct {
-	storage *storage.Storage
+	Domains      []string
+	CrawlThreads int
+	Storage      *storage.Storage
 }
 
-func (c Crawler) RunCrawler(domains []string, threads int) {
-	// ToDo: Add New function for modification?
+func New(domains []string, crawlThreads int) *Crawler {
+	// ToDo: Improve ugly default parameters (variadic functions?)
 
-	crawlerStorage := storage.New()
+	c := &Crawler{Domains: domains}
+
+	if domains == nil {
+		panic("You need to specify domains")
+	}
+	c.Domains = domains
+
+	if crawlThreads == 0 {
+		crawlThreads = 4
+	}
+	c.CrawlThreads = crawlThreads
+
+	c.Storage = storage.New()
+
+	return c
+}
+
+func (c Crawler) Run() {
 
 	// Instantiate default collector
 	collector := colly.NewCollector(
@@ -37,7 +56,7 @@ func (c Crawler) RunCrawler(domains []string, threads int) {
 	// This is necessary if the goroutines are dynamically
 	// created to control the limit of simultaneous requests.
 	collector.Limit(
-		&colly.LimitRule{DomainGlob: "*", Parallelism: threads},
+		&colly.LimitRule{DomainGlob: "*", Parallelism: c.CrawlThreads},
 	)
 
 	//collector.WithTransport(&http.Transport{
@@ -71,7 +90,7 @@ func (c Crawler) RunCrawler(domains []string, threads int) {
 		ctxOriginalDomain := r.Ctx.Get("originalDomain")
 		pageType := page.TypeFromInterface(ctxPageType)
 
-		crawlerStorage.StorePageVisit(ctxOriginalDomain, pageUrl, r.Body, pageType)
+		c.Storage.StorePageVisit(ctxOriginalDomain, pageUrl, r.Body, pageType)
 	})
 
 	collector.OnHTML("a[href]", func(e *colly.HTMLElement) {
@@ -100,7 +119,7 @@ func (c Crawler) RunCrawler(domains []string, threads int) {
 		fmt.Println("error visiting", r.Request.URL, e)
 	})
 
-	for _, domain := range domains {
+	for _, domain := range c.Domains {
 		ctx := colly.NewContext()
 		ctx.Put("originalDomain", string(domain))
 		ctx.Put("pageType", int(page.IndexPage))
@@ -108,11 +127,11 @@ func (c Crawler) RunCrawler(domains []string, threads int) {
 	}
 
 	collector.Wait()
-	crawlerStorage.Wait()
+	c.Storage.Wait()
 	//c.TearDown()  // ToDo: Doesn't work currently
 }
 
 func (c *Crawler) TearDown() {
 	// ToDo: Call this method on on ctrl-C interrupt signal
-	c.storage.TearDown()
+	c.Storage.TearDown()
 }
