@@ -6,6 +6,7 @@ import (
 	"github.com/gocolly/colly"
 )
 
+// Type defines some well-known page types like index page, contact page or privacy policy
 type Type int
 
 const (
@@ -25,19 +26,13 @@ func (t Type) StringIdentifier() string {
 	return [...]string{"unknown", "index", "privacy", "terms", "contact", "imprint"}[t]
 }
 
-// TypeFromInterface converts string or int values to Type
+// TypeFromInterface converts int values to Type
 func TypeFromInterface(i interface{}) Type {
-	// ToDo: Bug: Index page / int 1 returns UnknownPage
-	t, ok := i.(Type)
+	integer, ok := i.(int)
 	if !ok {
 		return UnknownPage
 	}
-	return t
-	//integer, ok := i.(int)
-	//if !ok {
-	//	return UnknownPage
-	//}
-	//return Type(integer)
+	return Type(integer)
 }
 
 // GetEstimatedPageTypeOfLink returns the estimated type of the link, based on url and text
