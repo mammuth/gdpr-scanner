@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/url"
-	"path/filepath"
 
 	"crawler/page"
 )
@@ -13,25 +12,12 @@ type crawlerMetaData struct {
 	CrawledPages []crawledPage `json:"crawledPages"`
 }
 
-var metaDataFilePath = filepath.Join(outputPath, filepath.Base("crawler.json"))
-
-//var (
-//	crawlerMetaDataInstance *crawlerMetaData
-//	once sync.Once
-//)
-//func getCrawlerMetaDataSingleton() *crawlerMetaData {
-//	once.Do(func() {
-//		crawlerMetaDataInstance = &crawlerMetaData{}
-//	})
-//	return crawlerMetaDataInstance
-//}
-
 type crawledPage struct {
-	CrawledDomain      string `json:"crawledDomain"`
+	OriginalDomain     string `json:"originalDomain"`
 	ActualDomain       string `json:"actualDomain"` // In case the crawled domain redirect"
-	HtmlFilePath       string `json:"htmlFilePath"`
 	PageTypeIdentifier string `json:"pageType"`
 	Url                string `json:"url"`
+	HtmlFilePath       string `json:"htmlFilePath"`
 }
 
 // Reads the current meta data json file and returns it as a struct
@@ -48,24 +34,26 @@ type crawledPage struct {
 //	return tmpData
 //}
 
-func (storage Storage) writeCrawlerMetaDataToFile() {
-	jsonData, err := json.MarshalIndent(storage.metaData, "", "  ")
+func (s *Storage) writeCrawlerMetaDataToFile() {
+	jsonData, err := json.MarshalIndent(s.metaData, "", "  ")
 	if err != nil {
 		panic(err)
 	}
-	err = ioutil.WriteFile(metaDataFilePath, jsonData, 0644)
+	err = ioutil.WriteFile(s.metaDataFile, jsonData, 0644)
 	if err != nil {
 		panic(err)
 	}
 }
 
-func (storage *Storage) updateCrawlerMetaData(domain string, url *url.URL, pageType page.Type) {
+func (s *Storage) updateCrawlerMetaData(domain string, url *url.URL, pageType page.Type) {
 	newPage := crawledPage{
-		CrawledDomain:      domain,
+		OriginalDomain:     domain,
 		ActualDomain:       url.Hostname(),
-		HtmlFilePath:       getHtmlFilePathForPage(domain, pageType),
+		HtmlFilePath:       s.getHtmlFilePathForPage(domain, pageType),
 		PageTypeIdentifier: pageType.StringIdentifier(),
 		Url:                url.String(),
 	}
-	storage.metaData.CrawledPages = append(storage.metaData.CrawledPages, newPage)
+	s.lock.Lock()
+	s.metaData.CrawledPages = append(s.metaData.CrawledPages, newPage)
+	s.lock.Unlock()
 }

@@ -7,8 +7,8 @@ import (
 	"crawler/page"
 )
 
-func (storage *Storage) storePageHtml(domain string, body []byte, pageType page.Type) {
-	filePath := getHtmlFilePathForPage(domain, pageType)
+func (s *Storage) storePageHtml(domain string, body []byte, pageType page.Type) {
+	filePath := s.getHtmlFilePathForPage(domain, pageType)
 
 	// Create directory structure if it does not exist
 	err := os.MkdirAll(filepath.Dir(filePath), os.ModePerm)

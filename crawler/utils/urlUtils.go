@@ -62,3 +62,10 @@ func IsMeaningfulLink(link *colly.HTMLElement) bool {
 	}
 	return true
 }
+
+func SanitizeUrlToCrawl(inputUrl string) string {
+	if !strings.HasPrefix(inputUrl, "http") {
+		return "http://" + inputUrl
+	}
+	return inputUrl
+}

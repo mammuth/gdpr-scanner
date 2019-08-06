@@ -3,7 +3,6 @@ package crawl
 import (
 	"fmt"
 	"net/url"
-	"strings"
 	"time"
 
 	"github.com/gocolly/colly"
@@ -14,22 +13,17 @@ import (
 	"crawler/utils"
 )
 
-func sanitizeUrlToCrawl(inputUrl string) string {
-	if !strings.HasPrefix(inputUrl, "http") {
-		return "http://" + inputUrl
-	}
-	return inputUrl
-}
-
 type Crawler struct {
 	storage *storage.Storage
 }
 
-func (crawler Crawler) RunCrawler(domains []string, threads int) {
-	crawlerStorage := storage.Storage{}
+func (c Crawler) RunCrawler(domains []string, threads int) {
+	// ToDo: Add New function for modification?
+
+	crawlerStorage := storage.New()
 
 	// Instantiate default collector
-	c := colly.NewCollector(
+	collector := colly.NewCollector(
 		// MaxDepth is 1, so only the links on the scraped page are visited
 		colly.MaxDepth(1),
 		colly.Async(true),
@@ -37,16 +31,16 @@ func (crawler Crawler) RunCrawler(domains []string, threads int) {
 		//colly.AllowedDomains(domains...),
 	)
 
-	c.SetRequestTimeout(3 * time.Second)
+	collector.SetRequestTimeout(3 * time.Second)
 
 	// Limit the maximum parallelism to eg. 2
 	// This is necessary if the goroutines are dynamically
 	// created to control the limit of simultaneous requests.
-	c.Limit(
+	collector.Limit(
 		&colly.LimitRule{DomainGlob: "*", Parallelism: threads},
 	)
 
-	//c.WithTransport(&http.Transport{
+	//collector.WithTransport(&http.Transport{
 	//	//Proxy: http.ProxyFromEnvironment,
 	//	//DialContext: (&net.Dialer{
 	//	//	Timeout:   30 * time.Second,
@@ -61,12 +55,12 @@ func (crawler Crawler) RunCrawler(domains []string, threads int) {
 	//	//ExpectContinueTimeout: 1 * time.Second,
 	//})
 
-	c.OnRequest(func(r *colly.Request) {
+	collector.OnRequest(func(r *colly.Request) {
 		r.Headers.Set("Accept-Language", "de;q=1, en;q=0.9")
 		fmt.Println("visiting", r.URL)
 	})
 
-	c.OnResponse(func(r *colly.Response) {
+	collector.OnResponse(func(r *colly.Response) {
 		// Store the result
 		pageUrl, err := url.Parse(r.Request.URL.String())
 		if err != nil {
@@ -74,11 +68,13 @@ func (crawler Crawler) RunCrawler(domains []string, threads int) {
 			return
 		}
 		ctxPageType := r.Ctx.GetAny("pageType")
+		ctxOriginalDomain := r.Ctx.Get("originalDomain")
 		pageType := page.TypeFromInterface(ctxPageType)
-		crawlerStorage.StorePageVisit(pageUrl, r.Body, pageType)
+
+		crawlerStorage.StorePageVisit(ctxOriginalDomain, pageUrl, r.Body, pageType)
 	})
 
-	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
+	collector.OnHTML("a[href]", func(e *colly.HTMLElement) {
 		// Check whether we should follow the found href
 		if !utils.IsExternalLink(e) && utils.IsMeaningfulLink(e) {
 			linkText := utils.CleanLinkText(e.Text)
@@ -91,28 +87,32 @@ func (crawler Crawler) RunCrawler(domains []string, threads int) {
 				}
 				// Visit link found on page on a new thread
 				//e.Request.Visit(sanitizedUrl)  // Doesn't seem to work
+				origCtx := e.Request.Ctx
 				ctx := colly.NewContext()
+				ctx.Put("originalDomain", string(origCtx.Get("originalDomain")))
 				ctx.Put("pageType", int(pageType))
-				c.Request("GET", fullUrl, nil, ctx, nil)
+				collector.Request("GET", fullUrl, nil, ctx, nil)
 			}
 		}
 	})
 
-	c.OnError(func(r *colly.Response, e error) {
+	collector.OnError(func(r *colly.Response, e error) {
 		fmt.Println("error visiting", r.Request.URL, e)
 	})
 
-	for _, url := range domains {
+	for _, domain := range domains {
 		ctx := colly.NewContext()
+		ctx.Put("originalDomain", string(domain))
 		ctx.Put("pageType", int(page.IndexPage))
-		c.Request("GET", sanitizeUrlToCrawl(url), nil, ctx, nil)
+		collector.Request("GET", utils.SanitizeUrlToCrawl(domain), nil, ctx, nil)
 	}
 
-	c.Wait()
-	crawlerStorage.NotifyCrawlingFinished()
+	collector.Wait()
+	crawlerStorage.Wait()
+	//c.TearDown()  // ToDo: Doesn't work currently
 }
 
-func (crawler Crawler) TearDown() {
+func (c *Crawler) TearDown() {
 	// ToDo: Call this method on on ctrl-C interrupt signal
-	crawler.storage.NotifyCrawlingFinished()
+	c.storage.TearDown()
 }

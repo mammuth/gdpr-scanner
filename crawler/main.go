@@ -1,6 +1,5 @@
 package main
 
-// ToDo: Identify terms, imprint and contact page
 // ToDo: Proper Logging
 // ToDo: Improve error handling
 
