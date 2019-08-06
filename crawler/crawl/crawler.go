@@ -50,7 +50,7 @@ func (c Crawler) Run() {
 		//colly.AllowedDomains(domains...),
 	)
 
-	collector.SetRequestTimeout(3 * time.Second)
+	collector.SetRequestTimeout(5 * time.Second)
 
 	// Limit the maximum parallelism to eg. 2
 	// This is necessary if the goroutines are dynamically
