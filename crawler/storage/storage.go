@@ -1,11 +1,12 @@
 package storage
 
 import (
-	"fmt"
 	"net/url"
 	"os"
 	"path/filepath"
 	"sync"
+
+	"go.uber.org/zap"
 
 	"crawler/page"
 )
@@ -15,11 +16,12 @@ type Storage struct {
 	metaData     crawlerMetaData
 	outputPath   string
 	metaDataFile string
+	logger       *zap.SugaredLogger
 	wg           *sync.WaitGroup
 	lock         *sync.RWMutex
 }
 
-func New() *Storage {
+func New(logger *zap.Logger) *Storage {
 	// ToDo Allow adding options?
 	s := &Storage{}
 	s.wg = &sync.WaitGroup{}
@@ -40,7 +42,9 @@ func (s *Storage) Wait() {
 func (s *Storage) StorePageVisit(originalDomain string, url *url.URL, body []byte, pageType page.Type) {
 
 	if originalDomain == "" {
-		fmt.Println("Storage domain is not specified")
+		s.logger.Errorw("Storage domain is not specified",
+			"url", url,
+		)
 		return
 	}
 
@@ -74,4 +78,16 @@ func (s *Storage) getHtmlFilePathForPage(domain string, pageType page.Type) stri
 // TearDown can be used to do storage tidy-up tasks after the crawling is done
 func (s *Storage) TearDown() {
 	s.writeCrawlerMetaDataToFile()
+}
+
+func (s *Storage) GetNumberOfCrawledDomains() int {
+	domains := map[string]bool{}
+	for _, p := range s.metaData.CrawledPages {
+		domains[p.OriginalDomain] = true
+	}
+	return len(domains)
+}
+
+func (s *Storage) GetNumberOfCrawledPages() int {
+	return len(s.metaData.CrawledPages)
 }

@@ -37,11 +37,15 @@ type crawledPage struct {
 func (s *Storage) writeCrawlerMetaDataToFile() {
 	jsonData, err := json.MarshalIndent(s.metaData, "", "  ")
 	if err != nil {
-		panic(err)
+		s.logger.Errorw("Error serializing crawler meta data to json",
+			"error", err,
+		)
 	}
 	err = ioutil.WriteFile(s.metaDataFile, jsonData, 0644)
 	if err != nil {
-		panic(err)
+		s.logger.Errorw("Unable to write meta data json file",
+			"error", err,
+		)
 	}
 }
 

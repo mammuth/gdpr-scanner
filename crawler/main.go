@@ -1,6 +1,5 @@
 package main
 
-// ToDo: Proper Logging
 // ToDo: Improve error handling
 
 import (
@@ -24,6 +23,9 @@ func main() {
 	var paramThreads int
 	flag.IntVar(&paramThreads, "threads", 2, "Number of crawl threads")
 
+	var paramVerbose bool
+	flag.BoolVar(&paramVerbose, "verbose", false, "Enable verbose log output")
+
 	flag.Parse()
 
 	if paramInputDomain == "" && paramDomainList == "" {
@@ -44,6 +46,6 @@ func main() {
 		domains = strings.Split(string(content), "\n")
 	}
 
-	crawler := crawl.New(domains, paramThreads)
+	crawler := crawl.New(domains, paramThreads, paramVerbose)
 	crawler.Run()
 }

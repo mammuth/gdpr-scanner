@@ -19,12 +19,18 @@ func (s *Storage) storePageHtml(domain string, body []byte, pageType page.Type) 
 	// Write html file
 	f, err := os.Create(filePath)
 	if err != nil {
-		panic(err)
+		s.logger.Errorw("Unable to create HTML file",
+			"error", err,
+			"domain", domain,
+		)
 	}
 	defer f.Close()
 
 	_, err = f.Write(body)
 	if err != nil {
-		panic(err)
+		s.logger.Errorw("Unable to write HTML to file",
+			"error", err,
+			"domain", domain,
+		)
 	}
 }

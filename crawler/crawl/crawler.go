@@ -1,11 +1,11 @@
 package crawl
 
 import (
-	"fmt"
 	"net/url"
 	"time"
 
 	"github.com/gocolly/colly"
+	"go.uber.org/zap"
 
 	"crawler/page"
 
@@ -14,12 +14,14 @@ import (
 )
 
 type Crawler struct {
-	Domains      []string
-	CrawlThreads int
-	Storage      *storage.Storage
+	Domains         []string
+	CrawlThreads    int
+	Storage         *storage.Storage
+	unsugaredLogger *zap.Logger
+	logger          *zap.SugaredLogger
 }
 
-func New(domains []string, crawlThreads int) *Crawler {
+func New(domains []string, crawlThreads int, verbose bool) *Crawler {
 	// ToDo: Improve ugly default parameters (variadic functions?)
 
 	c := &Crawler{Domains: domains}
@@ -34,7 +36,24 @@ func New(domains []string, crawlThreads int) *Crawler {
 	}
 	c.CrawlThreads = crawlThreads
 
-	c.Storage = storage.New()
+	//c.unsugaredLogger, _ = zap.NewProduction()
+	if verbose == true {
+		c.unsugaredLogger, _ = zap.NewDevelopment()
+	} else {
+		loggerConfig := zap.Config{
+			Level:            zap.NewAtomicLevelAt(zap.InfoLevel),
+			Development:      false,
+			Encoding:         "console",
+			EncoderConfig:    zap.NewDevelopmentEncoderConfig(),
+			OutputPaths:      []string{"stderr"},
+			ErrorOutputPaths: []string{"stderr"},
+		}
+		c.unsugaredLogger, _ = loggerConfig.Build()
+	}
+	defer c.unsugaredLogger.Sync() // flushes buffer, if any
+	c.logger = c.unsugaredLogger.Sugar()
+
+	c.Storage = storage.New(c.logger)
 
 	return c
 }
@@ -76,14 +95,21 @@ func (c Crawler) Run() {
 
 	collector.OnRequest(func(r *colly.Request) {
 		r.Headers.Set("Accept-Language", "de;q=1, en;q=0.9")
-		fmt.Println("visiting", r.URL)
+		c.logger.Debugw("Visiting url",
+			"url", r.URL,
+		)
 	})
 
 	collector.OnResponse(func(r *colly.Response) {
 		// Store the result
 		pageUrl, err := url.Parse(r.Request.URL.String())
 		if err != nil {
-			println(err)
+			c.logger.Warnw("Error parsing response",
+				"url", r.Request.URL,
+				"statusCode", r.StatusCode,
+				"headers", r.Headers,
+				"body", r.Body,
+			)
 			return
 		}
 		ctxPageType := r.Ctx.GetAny("pageType")
@@ -116,8 +142,19 @@ func (c Crawler) Run() {
 	})
 
 	collector.OnError(func(r *colly.Response, e error) {
-		fmt.Println("error visiting", r.Request.URL, e)
+		c.logger.Warnw("Error visiting url",
+			"url", r.Request.URL,
+			"error", e,
+			"statusCode", r.StatusCode,
+			"headers", r.Headers,
+		)
 	})
+
+	startTime := time.Now()
+	c.logger.Infow("Crawler started",
+		"time", startTime.String(),
+		"rawTime", startTime,
+	)
 
 	for _, domain := range c.Domains {
 		ctx := colly.NewContext()
@@ -129,6 +166,14 @@ func (c Crawler) Run() {
 	collector.Wait()
 	c.Storage.Wait()
 	//c.TearDown()  // ToDo: Doesn't work currently
+
+	elapsedTime := time.Since(startTime)
+	c.logger.Infow("Crawler finished",
+		"duration", elapsedTime.String(),
+		"crawledDomains", c.Storage.GetNumberOfCrawledDomains(),
+		"crawledPages", c.Storage.GetNumberOfCrawledPages(),
+		"rawDuration", elapsedTime,
+	)
 }
 
 func (c *Crawler) TearDown() {
