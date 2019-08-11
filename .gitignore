@@ -13,7 +13,7 @@
 
 .idea/
 
-build/
+dist/
 
 # Crawler storage output
 output/
