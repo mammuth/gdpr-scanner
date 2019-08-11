@@ -33,8 +33,9 @@ func TypeFromInterface(i interface{}) Type {
 	return Type(integer)
 }
 
-// GetEstimatedPageTypeOfLink returns the estimated type of the link, based on url and text
+// GetEstimatedPageTypesOfLink returns the estimated type of the link, based on url and text
 func GetEstimatedPageTypeOfLink(linkText, linkTarget string) Type {
+	// ToDo: Return []Type and store the page for both types
 	wordToTypeMap := map[string]Type{
 		"privacy":     PrivacyPage,
 		"datenschutz": PrivacyPage,
@@ -53,25 +54,24 @@ func GetEstimatedPageTypeOfLink(linkText, linkTarget string) Type {
 		"contact": ContactPage,
 		"kontakt": ContactPage,
 
-		"imprint":   ImprintPage,
-		"impressum": ImprintPage,
+		//"imprint":   ImprintPage,
+		//"impressum": ImprintPage,
 
 		//"terms and conditions": TermsPage,
 		//"terms &amp; conditions": TermsPage,
 		//"agb": TermsPage,
 	}
 
-	// Identify page by
-	var estimatedPageType = UnknownPage
+	var possibleTypes []Type
+
 	for searchTerm, pageType := range wordToTypeMap {
 		//if strings.ToLower(linkText) == searchTerm {
 		if strings.Contains(strings.ToLower(linkText), searchTerm) {
-			estimatedPageType = pageType
-			break
+			possibleTypes = append(possibleTypes, pageType)
 		}
 	}
-
-	// ToDo: check linkTarget and return if it comes to the same estimation as linkText
-
-	return estimatedPageType
+	if len(possibleTypes) > 0 {
+		return possibleTypes[0]
+	}
+	return UnknownPage
 }

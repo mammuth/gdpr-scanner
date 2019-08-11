@@ -12,7 +12,6 @@ import (
 )
 
 type Storage struct {
-	// ToDo: Lock for metaData
 	metaData     crawlerMetaData
 	outputPath   string
 	metaDataFile string
@@ -21,7 +20,7 @@ type Storage struct {
 	lock         *sync.RWMutex
 }
 
-func New(logger *zap.Logger) *Storage {
+func New(logger *zap.SugaredLogger) *Storage {
 	// ToDo Allow adding options?
 	s := &Storage{}
 	s.wg = &sync.WaitGroup{}
