@@ -1,6 +1,7 @@
 package storage
 
 import (
+	"fmt"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -39,7 +40,8 @@ func (s *Storage) Wait() {
 func (s *Storage) StorePageVisit(originalDomain string, url *url.URL, body []byte, pageType page.Type) {
 
 	if originalDomain == "" {
-		panic("Storage domain is not specified")
+		fmt.Println("Storage domain is not specified")
+		return
 	}
 
 	s.wg.Add(1)
@@ -57,7 +59,7 @@ func (s *Storage) storePageVisit(originalDomain string, url *url.URL, body []byt
 
 	s.storePageHtml(originalDomain, body, pageType)
 
-	s.updateCrawlerMetaData(url.Hostname(), url, pageType)
+	s.updateCrawlerMetaData(originalDomain, url, pageType)
 	s.writeCrawlerMetaDataToFile()
 	// Update storage every 100 crawled pages (trade off between unneeded
 	//if len(s.metaData.CrawledPages) % 100 == 0 {
