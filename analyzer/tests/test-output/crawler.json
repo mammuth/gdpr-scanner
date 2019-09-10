@@ -1,6 +1,20 @@
 {
   "crawledPages": [
     {
+      "originalDomain": "goldmarie-friends.de",
+      "actualDomain": "www.goldmarie-friends.de",
+      "pageType": "index",
+      "url": "https://www.goldmarie-friends.de/de/",
+      "htmlFilePath": "goldmarie-friends.de/index/index.html"
+    },
+    {
+      "originalDomain": "goldmarie-friends.de",
+      "actualDomain": "www.goldmarie-friends.de",
+      "pageType": "contact",
+      "url": "https://www.goldmarie-friends.de/de/kontakt/",
+      "htmlFilePath": "goldmarie-friends.de/contact/index.html"
+    },
+    {
       "originalDomain": "100-beste-plakate.de",
       "actualDomain": "100-beste-plakate.de",
       "pageType": "index",

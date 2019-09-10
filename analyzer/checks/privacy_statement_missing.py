@@ -13,5 +13,4 @@ class PrivacyStatementMissingCheck(MetricCheck):
     def check(self) -> CheckResult:
         logger.debug(f'{self.domain} crawled page_types: {list(self.page_types.items())}')
         passed = 'privacy' in self.page_types
-
-        return CheckResult(passed=passed, identifier=self.IDENTIFIER, severity=self.SEVERITY)
+        return self._get_check_result(passed)
