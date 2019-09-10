@@ -1,0 +1,2 @@
+class InvalidMetricCheckException(BaseException):
+    pass
