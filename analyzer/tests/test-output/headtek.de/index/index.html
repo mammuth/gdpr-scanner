@@ -1,0 +1,1204 @@
+<!DOCTYPE html> <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="de"> <head> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106611691-1"></script> <script>
+						var gaDisable = 'ga-disable-UA-106611691-1';
+
+			if (document.cookie.indexOf(gaDisable + '=true') > -1) {
+				window[gaDisable] = true;
+			}
+
+			function gaOptOut() {
+				document.cookie = gaDisable + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+				window[gaDisable] = true;
+				console.log('Disabled Google-Analytics Tracking');
+			}
+
+			function gaOptout() {
+				gaOptOut();
+			}
+
+			function checkGaOptOutAnchor() {
+				if (location.hash.substr(1) === 'gaOptOut') {
+					gaOptOut();
+				}
+			}
+
+			checkGaOptOutAnchor();
+			window.addEventListener('hashchange', checkGaOptOutAnchor);
+			
+			window.dataLayer = window.dataLayer || [];
+			
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			
+
+			gtag('js', new Date());
+
+						gtag('config', 'UA-106611691-1', { 'anonymize_ip': true });
+			
+						gtag('config', 'AW-977607356');
+					</script> <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="language" content="de" /> <meta property="og:url" content="https://headtek.de/de/" /> <meta property="og:title" content="HEADTEK – finest headphones and more" /> <meta name="page-type" content="Online Shop" /> <meta name="twitter_url" content="https://twitter.com/headtek_de" /> <title>Headtek - HEADTEK</title> <meta name="keywords" content="E10, E11, E11C, E11BT, soundmagic, bester, sieger, preis, westone, etymotic, Final, Fender, RME, Beyerdynamic,  Blackbird, kopfhörer, in-ear, kaufen, shop, over-ear, on-ear, ,review, reviews, test, tests, kopfhörertest, beratung, service" /> <meta name="description" content="Kopfhörer und Zubehör der Marken SoundMAGIC, Etymotic, Westone, Fender, Beyerdynamic, RME, Final uvm. Günstig, schnell und zuverlässig kaufen in unserem Online-Shop." /> <script>
+							var Hyphenopoly = {
+								require: {
+									"de": "FORCEHYPHENOPOLY"
+								},
+								paths: {
+									patterndir: "https://headtek.de/JSEngine/build/vendor/hyphenopoly/patterns/",
+									maindir: "https://headtek.de/JSEngine/build/vendor/hyphenopoly/"
+								},
+								setup: {
+									timeout: 1000,
+									classnames: {
+										"title": {},
+										"product-url": {},
+										"hyphenate": {},
+									}
+								}
+							};
+							
+							/**
+ * @license Hyphenopoly_Loader 2.6.1 - client side hyphenation
+ * ©2019  Mathias Nater, Zürich (mathiasnater at gmail dot com)
+ * https://github.com/mnater/Hyphenopoly
+ *
+ * Released under the MIT license
+ * http://mnater.github.io/Hyphenopoly/LICENSE
+ */
+!function(){"use strict";const e=document,t=Hyphenopoly;function n(){return Object.create(null)}function s(e,t){Object.keys(e).forEach(t)}t.cacheFeatureTests&&sessionStorage.getItem("Hyphenopoly_Loader")?t.clientFeat=JSON.parse(sessionStorage.getItem("Hyphenopoly_Loader")):t.clientFeat={langs:n(),polyfill:!1,wasm:null},t.dfltPaths=Object.create({maindir:"../Hyphenopoly/",patterndir:"../Hyphenopoly/patterns/"}),t.paths&&t.paths.patterndir&&(t.dfltPaths.patterndir=t.paths.patterndir),t.paths&&t.paths.maindir&&(t.dfltPaths.maindir=t.paths.maindir),t.setup?(t.setup.selectors=t.setup.selectors||{".hyphenate":{}},t.setup.classnames&&(s(t.setup.classnames,function(e){t.setup.selectors["."+e]=t.setup.classnames[e]}),t.setup.classnames=null,delete t.setup.classnames),t.setup.timeout=t.setup.timeout||1e3,t.setup.hide=t.setup.hide||"all"):t.setup={hide:"all",selectors:{".hyphenate":{}},timeout:1e3},t.lcRequire=n(),s(t.require,function(e){t.lcRequire[e.toLowerCase()]=t.require[e]}),t.fallbacks&&(t.lcFallbacks=n(),s(t.fallbacks,function(e){t.lcFallbacks[e.toLowerCase()]=t.fallbacks[e].toLowerCase()})),t.toggle=function(n){if("on"===n){const t=e.getElementById("H9Y_Styles");t&&t.parentNode.removeChild(t)}else{const n=" {visibility: hidden !important}\n",a=e.createElement("style");switch(a.id="H9Y_Styles",t.setup.hide){case"all":a.innerHTML="html"+n;break;case"element":s(t.setup.selectors,function(e){a.innerHTML+=e+n});break;case"text":s(t.setup.selectors,function(e){a.innerHTML+=e+" {color: transparent !important}\n"});break;default:a.innerHTML=""}e.getElementsByTagName("head")[0].appendChild(a)}},function(){const e=n(),a=[],o=[];function i(t,n,s){e[t]={cancellable:s,default:n,register:[]}}function l(n,s,a){e[n]?e[n].register.push(s):a?o.push({handler:s,name:n}):t.events.dispatch("error",{msg:'unknown Event "'+n+'" discarded'})}i("timeout",function(e){t.toggle("on"),window.console.info("Hyphenopolys 'FOUHC'-prevention timed out after %dms",e.delay)},!1),i("error",function(e){window.console.error(e.msg)},!0),i("contentLoaded",function(e){a.push({data:e,name:"contentLoaded"})},!1),i("engineLoaded",function(e){a.push({data:e,name:"engineLoaded"})},!1),i("hpbLoaded",function(e){a.push({data:e,name:"hpbLoaded"})},!1),t.handleEvent&&s(t.handleEvent,function(e){l(e,t.handleEvent[e],!0)}),t.events=n(),t.events.deferred=a,t.events.tempRegister=o,t.events.dispatch=function(t,s){s=s||n();let a=!1;e[t].register.forEach(function(n){s.preventDefault=function(){e[t].cancellable&&(a=!0)},n(s)}),!a&&e[t].default&&e[t].default(s)},t.events.define=i,t.events.addListener=l}();const a=function(){const s=n();return function(n,a){if(!s[a]){const o=e.createElement("script");s[a]=!0,o.src=n+a,"hyphenEngine.asm.js"===a&&o.addEventListener("load",function(){t.events.dispatch("engineLoaded",{msg:"asm"})}),e.head.appendChild(o)}}}(),o=n();function i(e,n,s,a){var i,l,r,c;t.clientFeat.wasm?(i=e,l=n,c=a,o[r=s]||(o[r]=!0,window.fetch(i+l).then(function(e){e.ok&&(t.binaries[r]="hyphenEngine"===r?e.arrayBuffer().then(function(e){return new WebAssembly.Module(e)}):e.arrayBuffer(),t.events.dispatch(c[0],{msg:c[1]}))}))):function(e,n,s,a){if(!o[s]){o[s]=!0;const i=new XMLHttpRequest;i.onload=function(){t.binaries[s]=i.response,t.events.dispatch(a[0],{msg:a[1]})},i.open("GET",e+n),i.responseType="arraybuffer",i.send()}}(e,n,s,a)}!function(){const o=function(){let n=null;const s=["visibility:hidden;","-moz-hyphens:auto;","-webkit-hyphens:auto;","-ms-hyphens:auto;","hyphens:auto;","width:48px;","font-size:12px;","line-height:12px;","border:none;","padding:0;","word-wrap:normal"].join("");return{append:function(e){return n?(e.appendChild(n),n):null},clear:function(){n&&n.parentNode.removeChild(n)},create:function(a){if(t.clientFeat.langs[a])return;n=n||e.createElement("body");const o=e.createElement("div");o.lang=a,o.id=a,o.style.cssText=s,o.appendChild(e.createTextNode(t.lcRequire[a])),n.appendChild(o)}}}();function l(e){let s=e+".hpb";t.lcFallbacks&&t.lcFallbacks[e]&&(s=t.lcFallbacks[e]+".hpb"),t.binaries=t.binaries||n(),null===t.clientFeat.wasm&&(t.clientFeat.wasm=function(){if("object"==typeof WebAssembly&&"function"==typeof WebAssembly.instantiate){const e=new WebAssembly.Module(Uint8Array.from([0,97,115,109,1,0,0,0,1,6,1,96,1,127,1,127,3,2,1,0,5,3,1,0,1,7,8,1,4,116,101,115,116,0,0,10,16,1,14,0,32,0,65,1,54,2,0,32,0,40,2,0,11]));if(WebAssembly.Module.prototype.isPrototypeOf(e)){const t=new WebAssembly.Instance(e);return WebAssembly.Instance.prototype.isPrototypeOf(t)&&0!==t.exports.test(4)}}return!1}()),a(t.dfltPaths.maindir,"Hyphenopoly.js"),t.clientFeat.wasm?i(t.dfltPaths.maindir,"hyphenEngine.wasm","hyphenEngine",["engineLoaded","wasm"]):a(t.dfltPaths.maindir,"hyphenEngine.asm.js"),i(t.dfltPaths.patterndir,s,e,["hpbLoaded",e]),function(e){const s={de:55,hu:207,"nb-no":92,nl:41}[e]||32;if(t.specMems=t.specMems||n(),t.clientFeat.wasm)t.specMems[e]=new WebAssembly.Memory({initial:s,maximum:256});else{Math.log2=Math.log2||function(e){return Math.log(e)*Math.LOG2E};const n=65536*(2<<Math.floor(Math.log2(s)));t.specMems[e]=new ArrayBuffer(n)}}(e),function(e){t.hyphenators=t.hyphenators||n(),t.hyphenators[e]||(window.Promise?t.hyphenators[e]=new Promise(function(n,s){t.events.addListener("engineReady",function(s){s.msg===e&&n(t.createHyphenator(s.msg))},!0),t.events.addListener("error",function(t){t.key!==e&&"hyphenEngine"!==t.key||s(t.msg)},!0)}):t.hyphenators[e]={then:function(){t.events.dispatch("error",{msg:"Promises not supported in this engine. Use a polyfill (e.g. https://github.com/taylorhakes/promise-polyfill)!"})}})}(e)}s(t.lcRequire,function(e){"FORCEHYPHENOPOLY"===t.lcRequire[e]?(t.clientFeat.polyfill=!0,t.clientFeat.langs[e]="H9Y",l(e)):t.clientFeat.langs[e]&&"H9Y"===t.clientFeat.langs[e]?l(e):o.create(e)}),null!==o.append(e.documentElement)&&(s(t.lcRequire,function(n){if("FORCEHYPHENOPOLY"!==t.lcRequire[n]){const a=e.getElementById(n);("auto"===(s=a).style.hyphens||"auto"===s.style.webkitHyphens||"auto"===s.style.msHyphens||"auto"===s.style["-moz-hyphens"])&&a.offsetHeight>12?t.clientFeat.langs[n]="CSS":(t.clientFeat.polyfill=!0,t.clientFeat.langs[n]="H9Y",l(n))}var s}),o.clear())}(),t.clientFeat.polyfill?("all"===t.setup.hide&&t.toggle("off"),"none"!==t.setup.hide&&(t.setup.timeOutHandler=window.setTimeout(function(){t.toggle("on"),t.events.dispatch("timeout",{delay:t.setup.timeout})},t.setup.timeout)),e.addEventListener("DOMContentLoaded",function(){t.setup.hide.match(/^(element|text)$/)&&t.toggle("off"),t.events.dispatch("contentLoaded",{msg:["contentLoaded"]})},{once:!0,passive:!0})):window.Hyphenopoly=null,t.cacheFeatureTests&&sessionStorage.setItem("Hyphenopoly_Loader",JSON.stringify(t.clientFeat))}();
+						</script> <base href="https://headtek.de/" /> <link rel="shortcut icon" href="https://headtek.de/images/logos/favicon.ico" type="image/x-icon" /> <link rel="apple-touch-icon" href="https://headtek.de/images/logos/favicon.png" /> <link id="main-css" type="text/css" rel="stylesheet" href="templates/Honeygrid/main.min.css?bust=1567817003" /> <meta name="robots" content="index,follow" /> <link rel="canonical" href="https://headtek.de/de/" /> <meta property="og:url" content="https://headtek.de/de/"> </head> <body class="page-index page-index-type-gm_boosted_category" data-gambio-namespace="https://headtek.de/templates/Honeygrid/assets/javascript/engine" data-jse-namespace="https://headtek.de/JSEngine/build" data-gambio-controller="initialize" data-gambio-widget="input_number responsive_image_loader transitions header image_maps modal history dropdown core_workarounds anchor" data-input_number-separator="," > <div id="outer-wrapper" > <header id="header" class="navbar"> <div id="topbar-container"> <div class="navbar-topbar"> <nav data-gambio-widget="menu link_crypter" data-menu-switch-element-position="false" data-menu-events='{"desktop": ["click"], "mobile": ["click"]}' data-menu-ignore-class="dropdown-menu"> <ul class="nav navbar-nav navbar-right"> <li class="dropdown navbar-topbar-item first"> <a title="Anmeldung" href="/de/#" class="dropdown-toggle" data-toggle-hover="dropdown"><span class="fa fa-user-o"></span>&nbsp;Kundenlogin</a> <ul class="dropdown-menu dropdown-menu-login arrow-top"> <li class="arrow"></li> <li class="dropdown-header hidden-xs">Kundenlogin</li> <li> <form action="https://headtek.de/de/login.php?action=process" method="post" class="form-horizontal"> <input type="hidden" name="return_url" value="https://headtek.de/de/"> <input type="hidden" name="return_url_hash" value="f64705c34903ff4815596188fd4d6f7e0750e49466a9fa673d87cd2c76e82284"> <div class="form-group"> <input autocomplete="username" type="email" id="box-login-dropdown-login-username" class="form-control" placeholder="E-Mail" name="email_address" /> </div> <div class="form-group"> <input autocomplete="current-password" type="password" id="box-login-dropdown-login-password" class="form-control" placeholder="Passwort" name="password" /> </div> <div class="dropdown-footer row"> <input type="submit" class="btn btn-primary btn-block" value="Anmelden" /> <ul> <li> <a title="Konto erstellen" href="https://headtek.de/de/shop.php?do=CreateRegistree">
+												Konto erstellen
+											</a> </li> <li> <a title="Passwort vergessen?" href="https://headtek.de/de/password_double_opt.php">
+												Passwort vergessen?
+											</a> </li> </ul> </div> </form> </li> </ul> </li> <li class="navbar-topbar-item"> <a href="https://headtek.de/de/wish_list.php" title="Merkzettel anzeigen"><span class="fa fa-heart-o"></span>&nbsp;Merkzettel</a> </li> </ul> </nav> </div> </div> <div class="inside"> <div class="row"> <div class="navbar-search collapse"> <p class="navbar-search-header dropdown-header">Suche</p> <form action="de/advanced_search_result.php" method="get" data-gambio-widget="live_search"> <div class="navbar-search-input-group input-group"> <div class="navbar-search-input-group-btn input-group-btn custom-dropdown" data-dropdown-trigger-change="false" data-dropdown-trigger-no-change="false"> <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="dropdown-name">Alle</span> <span class="caret"></span> </button> <ul class="dropdown-menu"> <li><a href="#" data-rel="0">Alle</a></li> <li><a href="#" data-rel="15">Hersteller</a></li> <li><a href="#" data-rel="21">Kopfhörer</a></li> <li><a href="#" data-rel="6">Zubehör</a></li> <li><a href="#" data-rel="36">Wandler und Verstärker</a></li> <li><a href="#" data-rel="42">Angebote</a></li> </ul> <select name="categories_id"> <option value="0">Alle</option> <option value="15">Hersteller</option> <option value="21">Kopfhörer</option> <option value="6">Zubehör</option> <option value="36">Wandler und Verstärker</option> <option value="42">Angebote</option> </select> </div> <input type="text" name="keywords" placeholder="Suche..." class="form-control search-input" autocomplete="off" /> <button type="submit" class="gm-search form-control-feedback"></button> </div> <input type="hidden" value="1" name="inc_subcat" /> <div class="navbar-search-footer visible-xs-block"> <button class="btn btn-primary btn-block" type="submit">
+								Suche...
+							</button> <a href="advanced_search.php" class="btn btn-default btn-block" title="Erweiterte Suche">
+								Erweiterte Suche
+							</a> </div> <div class="search-result-container"></div> </form> </div> <div class="navbar-header" data-gambio-widget="mobile_menu"> <div id="navbar-brand" class="navbar-brand"> <a href="https://headtek.de/de/" title="Headtek"> <img class="img-responsive" src="https://headtek.de/images/logos/headtek_logofinest_blue_214h_logo.png" alt="Headtek-Logo"> </a> </div> <button type="button" class="navbar-toggle" data-mobile_menu-target="#categories .navbar-collapse" data-mobile_menu-body-class="categories-open" data-mobile_menu-toggle-content-visibility> <i class="gm-menu"></i> </button> <button type="button" class="navbar-toggle cart-icon" data-mobile_menu-location="shopping_cart.php"> <i class="gm-cart-basket"></i> <span class="cart-products-count hidden">
+				0
+			</span> </button> <button type="button" class="navbar-toggle" data-mobile_menu-target=".navbar-search" data-mobile_menu-body-class="search-open" data-mobile_menu-toggle-content-visibility> <i class="gm-search"></i> </button> </div> <nav id="cart-container" class="navbar-cart" data-gambio-widget="menu cart_dropdown" data-menu-switch-element-position="false"> <ul class="cart-container-inner"> <li> <a href="https://headtek.de/de/shopping_cart.php" class="dropdown-toggle"> <i class="gm-cart-basket"></i> <span class="cart">
+									Warenkorb<br /> <span class="products">
+										0,00 EUR
+									</span> </span> <span class="cart-products-count hidden"> </span> </a> <ul class="dropdown-menu arrow-top cart-dropdown cart-empty"> <li class="arrow"></li> <li class="cart-dropdown-inside"> <div class="cart-empty">
+							Sie haben noch keine Artikel in Ihrem Warenkorb.
+						</div> </li> </ul> </li> </ul> </nav> </div> </div> <div class="row cookie-bar top" style="background-color: #9c9c9c; opacity: 1" data-gambio-widget="cookie_bar"> <span class="col-sm-9 col-md-10 content"> <div style="text-align: justify;">
+	Diese Webseite nutzt Cookies, um ihre Nutzung zu vereinfachen. Mit der weiteren Nutzung der Website erkl&auml;ren Sie sich mit der Verwendung von Cookies grunds&auml;tzlich einverstanden. Weitere Informationen zum Datenschutz und dazu, wie die Einstellungen zu Cookies von Ihnen ge&auml;ndert werden k&ouml;nnen, finden Sie in unserer Datenschutzerkl&auml;rung.
+</div> </span> <span class="col-sm-3 col-md-2 close-button"> <a href="https://headtek.de/de/info/privatsphaere-und-datenschutz.html" style="background-color: #0b5083; color: #ffffff; margin-right: 15px;" class="btn btn-default btn-sm close-button">
+															Mehr erfahren
+													</a> <span class="fa-stack"> <i class="fa fa-circle fa-inverse fa-stack-2x"></i> <i class="fa fa-close fa-stack-1x"></i> </span> </span> </div> <noscript> <div class="alert alert-danger noscript-notice">
+								JavaScript ist in Ihrem Browser deaktiviert. Aktivieren Sie JavaScript, um alle Funktionen des Shops nutzen und alle Inhalte sehen zu können.
+							</div> </noscript> <div id="categories"> <div class="navbar-collapse collapse"> <nav class="navbar-default navbar-categories" data-gambio-widget="menu"> <ul class="level-1 nav navbar-nav"> <li class="dropdown level-1-child" data-id="15"> <a class="dropdown-toggle" href="https://headtek.de/de/hersteller/" title="Hersteller">
+												
+													Hersteller
+												
+																							</a> <ul data-level="2" class="level-2 dropdown-menu dropdown-menu-child"> <li class="enter-category hidden-sm hidden-md hidden-lg hide-more"> <a class="dropdown-toggle" href="https://headtek.de/de/hersteller/" title="Hersteller">
+																		
+																			Hersteller anzeigen
+																		
+																	</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/64-audio/" title="64 Audio">
+																			64 Audio
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/astrotec/" title="Astrotec">
+																			Astrotec
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/beyerdynamic/" title="Beyerdynamic">
+																			Beyerdynamic
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/blackbird/" title="Blackbird">
+																			Blackbird
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/campfire-audio/" title="Campfire Audio">
+																			Campfire Audio
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/etymotic-research/" title="Etymotic Research">
+																			Etymotic Research
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/fender/" title="Fender">
+																			Fender
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/final/" title="Final">
+																			Final
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/oriveti/" title="Oriveti">
+																			Oriveti
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/rme/" title="RME">
+																			RME
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/soundmagic/" title="SoundMAGIC">
+																			SoundMAGIC
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/westone/" title="Westone">
+																			Westone
+																		</a> </li> <li class="enter-category hidden-more hidden-xs"> <a class="dropdown-toggle col-xs-6" href="https://headtek.de/de/hersteller/" title="Hersteller">Hersteller anzeigen</a> <span class="close-menu-container col-xs-6"> <span class="close-flyout"> <i class="fa fa-close"></i> </span> </span> </li> </ul> </li> <li class="dropdown level-1-child" data-id="21"> <a class="dropdown-toggle" href="https://headtek.de/de/kopfhoerer/" title="Kopfhörer">
+												
+													Kopfhörer
+												
+																							</a> <ul data-level="2" class="level-2 dropdown-menu dropdown-menu-child"> <li class="enter-category hidden-sm hidden-md hidden-lg hide-more"> <a class="dropdown-toggle" href="https://headtek.de/de/kopfhoerer/" title="Kopfhörer">
+																		
+																			Kopfhörer anzeigen
+																		
+																	</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/in-ear-kopfhoerer/" title="In-Ear Kopfhörer">
+																			In-Ear Kopfhörer
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/in-ear-monitore/" title="In-Ear Monitore">
+																			In-Ear Monitore
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/ohraufliegende-kopfhoerer/" title="Ohraufliegende Kopfhörer">
+																			Ohraufliegende Kopfhörer
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/ohrumschliessende-kopfhoerer/" title="Ohrumschließende Kopfhörer">
+																			Ohrumschließende Kopfhörer
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/drahtlos-kopfhoerer/" title="Drahtlos-Kopfhörer">
+																			Drahtlos-Kopfhörer
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/kopfhoerer-mit-digitalanschluss/" title="Kopfhörer mit Digitalanschluss">
+																			Kopfhörer mit Digitalanschluss
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/sport-kopfhoerer/" title="Sport-Kopfhörer">
+																			Sport-Kopfhörer
+																		</a> </li> <li class="dropdown level-2-child"> <a href="https://headtek.de/de/kopfhoerer/preisreduzierte-artikel/" title="Preisreduzierte Artikel">
+																			Preisreduzierte Artikel
+																		</a> <ul data-level="3" class="level-3 dropdown-menu dropdown-menu-child"> <li class="enter-category"> <a href="https://headtek.de/de/kopfhoerer/preisreduzierte-artikel/" title="Preisreduzierte Artikel" class="dropdown-toggle">
+																						Preisreduzierte Artikel anzeigen
+																					</a> </li> <li class="level-3-child"> <a href="https://headtek.de/de/kopfhoerer/preisreduzierte-artikel/ware-mit-verpackungsschaeden/" title="Ware mit Verpackungsschäden">
+																								Ware mit Verpackungsschäden
+																							</a> </li> <li class="level-3-child"> <a href="https://headtek.de/de/kopfhoerer/preisreduzierte-artikel/generalueberholte-ware/" title="Generalüberholte Ware">
+																								Generalüberholte Ware
+																							</a> </li> </ul> </li> <li class="enter-category hidden-more hidden-xs"> <a class="dropdown-toggle col-xs-6" href="https://headtek.de/de/kopfhoerer/" title="Kopfhörer">Kopfhörer anzeigen</a> <span class="close-menu-container col-xs-6"> <span class="close-flyout"> <i class="fa fa-close"></i> </span> </span> </li> </ul> </li> <li class="dropdown level-1-child" data-id="6"> <a class="dropdown-toggle" href="https://headtek.de/de/zubehoer/" title="Zubehör">
+												
+													Zubehör
+												
+																							</a> <ul data-level="2" class="level-2 dropdown-menu dropdown-menu-child"> <li class="enter-category hidden-sm hidden-md hidden-lg hide-more"> <a class="dropdown-toggle" href="https://headtek.de/de/zubehoer/" title="Zubehör">
+																		
+																			Zubehör anzeigen
+																		
+																	</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/zubehoer/aufbewahrung-transport/" title="Aufbewahrung & Transport">
+																			Aufbewahrung & Transport
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/zubehoer/adapter/" title="Adapter">
+																			Adapter
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/zubehoer/gehoerschutz/" title="Gehörschutz">
+																			Gehörschutz
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/zubehoer/kabel/" title="Kabel">
+																			Kabel
+																		</a> </li> <li class="dropdown level-2-child"> <a href="https://headtek.de/de/zubehoer/ohrpolster-ohrpassstuecke/" title="Ohrpolster & Ohrpassstücke">
+																			Ohrpolster & Ohrpassstücke
+																		</a> <ul data-level="3" class="level-3 dropdown-menu dropdown-menu-child"> <li class="enter-category"> <a href="https://headtek.de/de/zubehoer/ohrpolster-ohrpassstuecke/" title="Ohrpolster & Ohrpassstücke" class="dropdown-toggle">
+																						Ohrpolster & Ohrpassstücke anzeigen
+																					</a> </li> <li class="level-3-child"> <a href="https://headtek.de/de/zubehoer/ohrpolster-ohrpassstuecke/in-ear-silikon/" title="In-Ear Silikon">
+																								In-Ear Silikon
+																							</a> </li> <li class="level-3-child"> <a href="https://headtek.de/de/zubehoer/ohrpolster-ohrpassstuecke/in-ear-schaumstoff/" title="In-Ear Schaumstoff">
+																								In-Ear Schaumstoff
+																							</a> </li> <li class="level-3-child"> <a href="https://headtek.de/de/zubehoer/ohrpolster-ohrpassstuecke/ohrumschliessend-ohraufliegend/" title="Bügelkopfhörer">
+																								Bügelkopfhörer
+																							</a> </li> </ul> </li> <li class="level-2-child"> <a href="https://headtek.de/de/zubehoer/sonstige/" title="Sonstige">
+																			Sonstige
+																		</a> </li> <li class="enter-category hidden-more hidden-xs"> <a class="dropdown-toggle col-xs-6" href="https://headtek.de/de/zubehoer/" title="Zubehör">Zubehör anzeigen</a> <span class="close-menu-container col-xs-6"> <span class="close-flyout"> <i class="fa fa-close"></i> </span> </span> </li> </ul> </li> <li class="level-1-child" data-id="36"> <a class="dropdown-toggle" href="https://headtek.de/de/wandler-und-verstaerker/" title="Wandler und Verstärker">
+												
+													Wandler und Verstärker
+												
+																							</a> </li> <li class="level-1-child" data-id="42"> <a class="dropdown-toggle" href="https://headtek.de/de/angebote/" title="Angebote">
+												
+													Angebote
+												
+																							</a> </li> <li class="custom custom-entries hidden-xs"> <a data-id="top_custom-0" href="https://headtek.de/_blog/" target="_blank" title="Blog">
+									Blog
+							</a> </li> <li class="dropdown custom topmenu-content visible-xs" data-id="top_custom-0"> <a class="dropdown-toggle" href="https://headtek.de/_blog/" target="_blank" title="Blog">
+								Blog
+							</a> </li> <li class="dropdown dropdown-more" style="display: none"> <a class="dropdown-toggle" href="#" title="">
+										Weitere
+									</a> <ul class="level-2 dropdown-menu ignore-menu"></ul> </li> </ul> </nav> </div> </div> </header> <div id="stage" data-gambio-widget="slider_flyover"> <div id="slider" data-gambio-widget="slider_responsive" data-slider_responsive-source="#json-serialized-slider" data-slider_responsive-effect="fade" data-slider_responsive-speed="600"> <div class="swiper-container" data-gambio-widget="swiper" data-swiper-disable-translucence-fix="true" data-swiper-breakpoints='[{"breakpoint": 100, "usePreviewBullets": true, "slidesPerView": 1}]' data-swiper-slider-options='{"effect": "fade", "speed": 600, "nextButton": ".js-teaser-slider-next", "prevButton": ".js-teaser-slider-prev", "autoplay": }'> <div class="swiper-wrapper"> </div> <div class="swiper-pagination"></div> </div> <script type="application/json" id="json-serialized-slider">{
+    "id": 1,
+    "name": "Startseite",
+    "speed": 8,
+    "showOnStartPage": true,
+    "slides": [
+        {
+            "id": 20,
+            "languageId": 2,
+            "thumbnail": "slider_oriveti_s.jpg",
+            "title": "Oriveti",
+            "altText": "Oriveti Premium Hybrid IEM",
+            "url": "https://headtek.de/de/?view_mode=tiled&manufacturers_id=14&listing_sort=date_desc&filter_id=0&listing_count=20",
+            "urlTarget": "_self",
+            "images": [
+                {
+                    "id": 80,
+                    "languageId": 2,
+                    "breakpoint": "lg",
+                    "image": "slider_oriveti.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 79,
+                    "languageId": 2,
+                    "breakpoint": "md",
+                    "image": "slider_oriveti.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 77,
+                    "languageId": 2,
+                    "breakpoint": "xs",
+                    "image": "slider_oriveti.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 78,
+                    "languageId": 2,
+                    "breakpoint": "sm",
+                    "image": "slider_oriveti.jpg",
+                    "areas": []
+                }
+            ],
+            "sortOrder": 1
+        },
+        {
+            "id": 2,
+            "languageId": 1,
+            "thumbnail": "HP200 Vinyl.jpg",
+            "title": "SoundMAGIC HP200",
+            "altText": "SoundMAGIC HP200",
+            "url": "",
+            "urlTarget": "_blank",
+            "images": [
+                {
+                    "id": 8,
+                    "languageId": 1,
+                    "breakpoint": "lg",
+                    "image": "HP200 Vinyl.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 7,
+                    "languageId": 1,
+                    "breakpoint": "md",
+                    "image": "HP200 Vinyl.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 6,
+                    "languageId": 1,
+                    "breakpoint": "sm",
+                    "image": "HP200 Vinyl.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 5,
+                    "languageId": 1,
+                    "breakpoint": "xs",
+                    "image": "HP200 Vinyl.jpg",
+                    "areas": []
+                }
+            ],
+            "sortOrder": 1
+        },
+        {
+            "id": 19,
+            "languageId": 2,
+            "thumbnail": "slider_vento_v3_s.jpg",
+            "title": "Vento V3",
+            "altText": "SoundMAGIC Vento P55 V3",
+            "url": "https://headtek.de/de/soundmagic-vento-p55-v3-geschlossener-premium-on-ear-kopfhoerer.html",
+            "urlTarget": "_self",
+            "images": [
+                {
+                    "id": 73,
+                    "languageId": 2,
+                    "breakpoint": "xs",
+                    "image": "slider_vento_v3.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 74,
+                    "languageId": 2,
+                    "breakpoint": "sm",
+                    "image": "slider_vento_v3.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 75,
+                    "languageId": 2,
+                    "breakpoint": "md",
+                    "image": "slider_vento_v3.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 76,
+                    "languageId": 2,
+                    "breakpoint": "lg",
+                    "image": "slider_vento_v3.jpg",
+                    "areas": []
+                }
+            ],
+            "sortOrder": 2
+        },
+        {
+            "id": 25,
+            "languageId": 2,
+            "thumbnail": "slider_blog_solaris_s.jpg",
+            "title": "Solaris",
+            "altText": "Campfire Audio Solaris im Test",
+            "url": "https://headtek.de/_blog/2019/03/21/campfire-solaris/",
+            "urlTarget": "_blank",
+            "images": [
+                {
+                    "id": 97,
+                    "languageId": 2,
+                    "breakpoint": "xs",
+                    "image": "slider_blog_solaris.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 98,
+                    "languageId": 2,
+                    "breakpoint": "sm",
+                    "image": "slider_blog_solaris.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 99,
+                    "languageId": 2,
+                    "breakpoint": "md",
+                    "image": "slider_blog_solaris.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 100,
+                    "languageId": 2,
+                    "breakpoint": "lg",
+                    "image": "slider_blog_solaris.jpg",
+                    "areas": []
+                }
+            ],
+            "sortOrder": 3
+        },
+        {
+            "id": 24,
+            "languageId": 2,
+            "thumbnail": "slider_rme_adi2dac_s.jpg",
+            "title": "ADI-2 DAC",
+            "altText": "RME ADI-2 DAC",
+            "url": "https://headtek.de/de/?view_mode=tiled&manufacturers_id=10&listing_sort=date_desc&filter_id=0&listing_count=20",
+            "urlTarget": "_self",
+            "images": [
+                {
+                    "id": 93,
+                    "languageId": 2,
+                    "breakpoint": "xs",
+                    "image": "slider_rme_adi2dac.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 94,
+                    "languageId": 2,
+                    "breakpoint": "sm",
+                    "image": "slider_rme_adi2dac.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 95,
+                    "languageId": 2,
+                    "breakpoint": "md",
+                    "image": "slider_rme_adi2dac.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 96,
+                    "languageId": 2,
+                    "breakpoint": "lg",
+                    "image": "slider_rme_adi2dac.jpg",
+                    "areas": []
+                }
+            ],
+            "sortOrder": 4
+        },
+        {
+            "id": 22,
+            "languageId": 2,
+            "thumbnail": "slider_blog_soundmagic_s.jpg",
+            "title": "SoundMAGIC Produktvergleich",
+            "altText": "E11, E10, E50 und E80 im Vergleichstest: Welches ist der beste In-Ear von SoundMAGIC?",
+            "url": "https://headtek.de/_blog/2019/04/08/e11-e10-e50-und-e80-im-vergleichstest-welches-ist-der-beste-in-ear-von-soundmagic/",
+            "urlTarget": "_blank",
+            "images": [
+                {
+                    "id": 85,
+                    "languageId": 2,
+                    "breakpoint": "xs",
+                    "image": "slider_blog_soundmagic.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 86,
+                    "languageId": 2,
+                    "breakpoint": "sm",
+                    "image": "slider_blog_soundmagic.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 87,
+                    "languageId": 2,
+                    "breakpoint": "md",
+                    "image": "slider_blog_soundmagic.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 88,
+                    "languageId": 2,
+                    "breakpoint": "lg",
+                    "image": "slider_blog_soundmagic.jpg",
+                    "areas": []
+                }
+            ],
+            "sortOrder": 5
+        },
+        {
+            "id": 23,
+            "languageId": 2,
+            "thumbnail": "slider_er2_s.jpg",
+            "title": "ER2",
+            "altText": "Etymotic ER2 SE und XR",
+            "url": "https://headtek.de/de/advanced_search_result.php?categories_id=0&keywords=etymotic+er2+dynamischer+In-Ear&inc_subcat=1",
+            "urlTarget": "_self",
+            "images": [
+                {
+                    "id": 89,
+                    "languageId": 2,
+                    "breakpoint": "xs",
+                    "image": "slider_er2_0.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 90,
+                    "languageId": 2,
+                    "breakpoint": "sm",
+                    "image": "slider_er2_0.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 91,
+                    "languageId": 2,
+                    "breakpoint": "md",
+                    "image": "slider_er2_0.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 92,
+                    "languageId": 2,
+                    "breakpoint": "lg",
+                    "image": "slider_er2_0.jpg",
+                    "areas": []
+                }
+            ],
+            "sortOrder": 6
+        },
+        {
+            "id": 21,
+            "languageId": 2,
+            "thumbnail": "slider_e5000_s.jpg",
+            "title": "E5000",
+            "altText": "Final E5000",
+            "url": "https://headtek.de/de/final-e5000-hochaufloesender-premium-in-ear-kopfhoerer-mit-austauschbarem-kabel-silber.html",
+            "urlTarget": "_self",
+            "images": [
+                {
+                    "id": 84,
+                    "languageId": 2,
+                    "breakpoint": "lg",
+                    "image": "slider_e5000_0.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 81,
+                    "languageId": 2,
+                    "breakpoint": "xs",
+                    "image": "slider_e5000_0.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 82,
+                    "languageId": 2,
+                    "breakpoint": "sm",
+                    "image": "slider_e5000_0.jpg",
+                    "areas": []
+                },
+                {
+                    "id": 83,
+                    "languageId": 2,
+                    "breakpoint": "md",
+                    "image": "slider_e5000_0.jpg",
+                    "areas": []
+                }
+            ],
+            "sortOrder": 7
+        }
+    ]
+}</script> <script type="application/json" id="json-placeholder-slide">{"baseUrl":"https:\/\/headtek.de\/images\/slider_images\/","languageId":"2"}</script> <script>
+		// Render the correct placeholder image depending the viewport width.
+		(function() {
+			var slider = JSON.parse(document.getElementById('json-serialized-slider').innerHTML);
+			var placeholderSlide = JSON.parse(document.getElementById('json-placeholder-slide').innerHTML);
+			var breakpoint;
+			
+			if (window.innerWidth <= 768) {
+				breakpoint = 'xs'
+			} else if (window.innerWidth <= 992) {
+				breakpoint = 'sm';
+			} else if (window.innerWidth <= 1200) {
+				breakpoint = 'md';
+			} else {
+				breakpoint = 'lg';
+			}
+			
+			loop:
+			for (var index in slider.slides) {
+				var slide = slider.slides[index];
+				
+				if (slide.languageId !== +placeholderSlide.languageId) { // + converts value to int
+					continue;
+				}
+				
+				for (var imageIndex in slide.images) {
+					var slideImage = slide.images[imageIndex];
+					
+					if (slideImage.breakpoint === breakpoint && slideImage.image) {
+						var slide = document.createElement('div');
+						slide.className = 'swiper-slide';
+						
+						var image = document.createElement('img');
+						image.className = 'placeholder-image img-responsive center-block';
+						image.setAttribute('src', placeholderSlide.baseUrl + slideImage.image);
+						image.setAttribute('alt', 'Placeholder Image');
+						
+						slide.appendChild(image);
+						
+						document.querySelector('#slider .swiper-container .swiper-wrapper').appendChild(slide);
+						
+						break loop;
+					}
+				}
+			}
+		})();
+	</script> </div> </div> <div id="wrapper"> <div class="row"> <div id="main"> <div class="main-inside"> <div id="breadcrumb_navi" itemscope itemtype="http://schema.org/BreadcrumbList"> <span class="breadcrumbEntry" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"> <a href="https://headtek.de/" class="headerNavigation" itemprop="item"> <span itemprop="name">Startseite</span> </a> <meta itemprop="position" content="1"> </span> </div> <style>
+	 .specials_button {
+		 background-color: #0b5083;
+		-moz-border-radius: 0px;
+		-webkit-border-radius: 0px;
+		border-radius: 0px;
+		border: none;
+		display: block;
+		cursor: pointer;
+		color: #ffffff !important;
+		font-size: 16px;
+		padding: 10px 30px;
+		margin: 0 33% 40px;
+		text-align: center;
+		text-decoration: none;
+		 transition: 0.2s;
+	}
+	
+.specials_button:hover {
+		background-color:#0284d4;
+		text-decoration: none;
+	}
+	
+	@media (max-width: 768px){
+			.specials_button {
+				margin: 0 0 40px;
+		}	
+	}
+</style> <h2>Unsere Empfehlungen</h2> <div class="productlist productlist-viewmode productlist-viewmode-grid row" data-gambio-widget="product_hover"> <div class="product-container swiper-slide  has-gallery" data-index="new-products-468"> <form class="product-tile"> <figure class="image" id="new-products-468_img"> <span title="Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/Campfire_Audio_Solaris_MAIN2.jpg" alt="Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/campfire-audio-solaris-high-end-hybrid-in-ear-monitor-mit-4-treibern.html" title="Durch die Integration vieler individueller akustischer Technologien konnte ..." class="product-url hyphenate">
+								Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Durch die Integration vieler individueller akustischer Technologien konnte ...">
+									1.599,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											bestellt
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Solaris_MAIN2.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Solaris_MAIN2.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern" title="Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Solaris_MAIN.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Solaris_MAIN.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern" title="Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Solaris_MAIN3.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Solaris_MAIN3.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern" title="Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Solaris_BOX.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Solaris_BOX.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern" title="Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-443"> <form class="product-tile"> <figure class="image" id="new-products-443_img"> <span title="Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/UMPro_20_single_2.png" alt="Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/westone-um-pro-20-in-ear-monitor-mit-zwei-balanced-armature-treibern-und-austauschbarem-kabel-2017er-model.html" title="Der Westone UM Pro 20 ist mit zwei neuen und verbesserten Balanced-Armature ..." class="product-url hyphenate">
+								Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Der Westone UM Pro 20 ist mit zwei neuen und verbesserten Balanced-Armature ...">
+									319,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/UMPro_20_single_2.png" data-thumb-src="images/product_images/thumbnail_images/UMPro_20_single_2.png" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model" title="Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/UMPro_20_Pair.jpg" data-thumb-src="images/product_images/thumbnail_images/UMPro_20_Pair.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model" title="Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/UMPro_Components_1.jpg" data-thumb-src="images/product_images/thumbnail_images/UMPro_Components_1.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model" title="Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/All_Tips_7.jpg" data-thumb-src="images/product_images/thumbnail_images/All_Tips_7.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model" title="Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-449"> <form class="product-tile"> <figure class="image" id="new-products-449_img"> <span title="Beyerdynamic - T1 Black Special Edition, Audiophiler Tesla Hi-Fi-Kopfhörer, halboffen (2. Generation)" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/beyerdynamic_t1_SE.png" alt="Beyerdynamic - T1 Black Special Edition, Audiophiler Tesla Hi-Fi-Kopfhörer, halboffen (2. Generation)"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/beyerdynamic-t1-black-special-edition-audiophiler-tesla-hi-fi-kopfhoerer-halboffen-2-generation.html" title="Das Spitzenmodell T1 (2. Generation) von beyerdynamic präsentiert sich nun ..." class="product-url hyphenate">
+								Beyerdynamic - T1 Black Special Edition, Audiophiler Tesla Hi-Fi-Kopfhörer, halboffen (2. Generation)
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Das Spitzenmodell T1 (2. Generation) von beyerdynamic präsentiert sich nun ..."> <span class="productOldPrice">UVP 1.033,00 EUR</span><br /> 888,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/beyerdynamic_t1_SE.png" data-thumb-src="images/product_images/thumbnail_images/beyerdynamic_t1_SE.png" src="templates/Honeygrid/assets/images/loading.gif" alt="Beyerdynamic - T1 Black Special Edition, Audiophiler Tesla Hi-Fi-Kopfhörer, halboffen (2. Generation)" title="Beyerdynamic - T1 Black Special Edition, Audiophiler Tesla Hi-Fi-Kopfhörer, halboffen (2. Generation)" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/beyerdynamic_t1_SE_front.png" data-thumb-src="images/product_images/thumbnail_images/beyerdynamic_t1_SE_front.png" src="templates/Honeygrid/assets/images/loading.gif" alt="Beyerdynamic - T1 Black Special Edition, Audiophiler Tesla Hi-Fi-Kopfhörer, halboffen (2. Generation)" title="Beyerdynamic - T1 Black Special Edition, Audiophiler Tesla Hi-Fi-Kopfhörer, halboffen (2. Generation)" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/beyerdynamic_t1_SE_side.png" data-thumb-src="images/product_images/thumbnail_images/beyerdynamic_t1_SE_side.png" src="templates/Honeygrid/assets/images/loading.gif" alt="Beyerdynamic - T1 Black Special Edition, Audiophiler Tesla Hi-Fi-Kopfhörer, halboffen (2. Generation)" title="Beyerdynamic - T1 Black Special Edition, Audiophiler Tesla Hi-Fi-Kopfhörer, halboffen (2. Generation)" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-436"> <form class="product-tile"> <figure class="image" id="new-products-436_img"> <span title="Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/W60_Gold_Single_awards.jpg" alt="Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/westone-w60-in-ear-monitor-mit-sechs-balanced-armature-treibern-mikrofon-und-iphone-fernbedienung-schwarz.html" title="Die sechs Balanced-Armature Treiber des Westone W60 in perfekter Abstimung ..." class="product-url hyphenate">
+								Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Die sechs Balanced-Armature Treiber des Westone W60 in perfekter Abstimung ...">
+									Ihr Preis 998,90 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/W60_Gold_Single_awards.jpg" data-thumb-src="images/product_images/thumbnail_images/W60_Gold_Single_awards.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz" title="Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/W60_Gold_Pair.jpg" data-thumb-src="images/product_images/thumbnail_images/W60_Gold_Pair.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz" title="Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/W60_Faceplates.jpg" data-thumb-src="images/product_images/thumbnail_images/W60_Faceplates.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz" title="Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/All_Tips_4.jpg" data-thumb-src="images/product_images/thumbnail_images/All_Tips_4.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz" title="Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-467"> <form class="product-tile"> <figure class="image" id="new-products-467_img"> <span title="Campfire Audio Comet - Balanced-Armature In-Ear Kopfhörer mit Edelstahlgehäuse" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/Campfire_Audio_Comet_MAIN.jpg" alt="Campfire Audio Comet - Balanced-Armature In-Ear Kopfhörer mit Edelstahlgehäuse"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/campfire-audio-comet-balanced-armature-in-ear-kopfhoerer-mit-edelstahlgehaeuse.html" title="Campfire Audio präsentieren ihre Vision eines Einsteiger In-Ear Kopfhörers..." class="product-url hyphenate">
+								Campfire Audio Comet - Balanced-Armature In-Ear Kopfhörer mit Edelstahlgehäuse
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Campfire Audio präsentieren ihre Vision eines Einsteiger In-Ear Kopfhörers...">
+									209,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Comet_MAIN.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Comet_MAIN.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Comet - Balanced-Armature In-Ear Kopfhörer mit Edelstahlgehäuse" title="Campfire Audio Comet - Balanced-Armature In-Ear Kopfhörer mit Edelstahlgehäuse" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Comet_MAIN3.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Comet_MAIN3.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Comet - Balanced-Armature In-Ear Kopfhörer mit Edelstahlgehäuse" title="Campfire Audio Comet - Balanced-Armature In-Ear Kopfhörer mit Edelstahlgehäuse" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Comet_COMPLETE.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Comet_COMPLETE.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Comet - Balanced-Armature In-Ear Kopfhörer mit Edelstahlgehäuse" title="Campfire Audio Comet - Balanced-Armature In-Ear Kopfhörer mit Edelstahlgehäuse" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Comet_BOX.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Comet_BOX.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Comet - Balanced-Armature In-Ear Kopfhörer mit Edelstahlgehäuse" title="Campfire Audio Comet - Balanced-Armature In-Ear Kopfhörer mit Edelstahlgehäuse" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-513"> <form class="product-tile"> <figure class="image" id="new-products-513_img"> <span title="Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfhörer" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/ORIVETI_OH300_Main_web.jpg" alt="Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfhörer"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/oriveti-oh300-premium-2-1-hybrid-hi-fi-in-ear-kopfhoerer.html" title="Oriveti präsentieren mit dem OH300 einen audiophilen IEM für hohe Ansprü..." class="product-url hyphenate">
+								Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfhörer
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Oriveti präsentieren mit dem OH300 einen audiophilen IEM für hohe Ansprü...">
+									329,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ORIVETI_OH300_Main_web.jpg" data-thumb-src="images/product_images/thumbnail_images/ORIVETI_OH300_Main_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfhörer" title="Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfhörer" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ORIVETI_OH300_Case_web.jpg" data-thumb-src="images/product_images/thumbnail_images/ORIVETI_OH300_Case_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfhörer" title="Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfhörer" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ORIVETI_OH300_aufsaetze_web.jpg" data-thumb-src="images/product_images/thumbnail_images/ORIVETI_OH300_aufsaetze_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfhörer" title="Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfhörer" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ORIVETI_OH300_Box_web.jpg" data-thumb-src="images/product_images/thumbnail_images/ORIVETI_OH300_Box_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfhörer" title="Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfhörer" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-519"> <form class="product-tile"> <figure class="image" id="new-products-519_img"> <span title="Astrotec S80 - True Wireless HiFi In-Ear Kopfhörer mit Beryllium-Treiber und Bluetooth 5" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/Astrotec_S80_Main_web.jpg" alt="Astrotec S80 - True Wireless HiFi In-Ear Kopfhörer mit Beryllium-Treiber und Bluetooth 5"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/astrotec-s80-true-wireless-hifi-in-ear-kopfhoerer-mit-beryllium-treiber-und-bluetooth-5.html" title="Dank seines ultraleichten, dynamischen 4µm dünnen Beryllium-Treibers ..." class="product-url hyphenate">
+								Astrotec S80 - True Wireless HiFi In-Ear Kopfhörer mit Beryllium-Treiber und Bluetooth 5
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Dank seines ultraleichten, dynamischen 4µm dünnen Beryllium-Treibers ...">
+									89,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Astrotec_S80_Main_web.jpg" data-thumb-src="images/product_images/thumbnail_images/Astrotec_S80_Main_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Astrotec S80 - True Wireless HiFi In-Ear Kopfhörer mit Beryllium-Treiber und Bluetooth 5" title="Astrotec S80 - True Wireless HiFi In-Ear Kopfhörer mit Beryllium-Treiber und Bluetooth 5" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Astrotec_S80_In_and_Out_Case_web.jpg" data-thumb-src="images/product_images/thumbnail_images/Astrotec_S80_In_and_Out_Case_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Astrotec S80 - True Wireless HiFi In-Ear Kopfhörer mit Beryllium-Treiber und Bluetooth 5" title="Astrotec S80 - True Wireless HiFi In-Ear Kopfhörer mit Beryllium-Treiber und Bluetooth 5" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Astrotec_S80_Award_web.jpg" data-thumb-src="images/product_images/thumbnail_images/Astrotec_S80_Award_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Astrotec S80 - True Wireless HiFi In-Ear Kopfhörer mit Beryllium-Treiber und Bluetooth 5" title="Astrotec S80 - True Wireless HiFi In-Ear Kopfhörer mit Beryllium-Treiber und Bluetooth 5" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Astrotec_S80_Sport1_web.jpg" data-thumb-src="images/product_images/thumbnail_images/Astrotec_S80_Sport1_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Astrotec S80 - True Wireless HiFi In-Ear Kopfhörer mit Beryllium-Treiber und Bluetooth 5" title="Astrotec S80 - True Wireless HiFi In-Ear Kopfhörer mit Beryllium-Treiber und Bluetooth 5" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-517"> <form class="product-tile"> <figure class="image" id="new-products-517_img"> <span title="Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/Bluetooth_V2_with_Box_web.jpg" alt="Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/westone-bluetooth-kabel-v2-bluetooth-5-modul-mit-aptx-und-lademodul.html" title="Das neue Westone Bluetooth Kabel V2 ist mit aktueller Bluetooth v5.0 ..." class="product-url hyphenate">
+								Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Das neue Westone Bluetooth Kabel V2 ist mit aktueller Bluetooth v5.0 ...">
+									149,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Bluetooth_V2_with_Box_web.jpg" data-thumb-src="images/product_images/thumbnail_images/Bluetooth_V2_with_Box_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul" title="Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Bluetooth_V2_Main_web.jpg" data-thumb-src="images/product_images/thumbnail_images/Bluetooth_V2_Main_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul" title="Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Bluetooth_V2_MMCX_web.jpg" data-thumb-src="images/product_images/thumbnail_images/Bluetooth_V2_MMCX_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul" title="Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/78398_F_web.jpg" data-thumb-src="images/product_images/thumbnail_images/78398_F_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul" title="Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-465"> <form class="product-tile"> <figure class="image" id="new-products-465_img"> <span title="Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/Campfire_Audio_Andromeda_S_MAIN.jpg" alt="Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/campfire-audio-andromeda-s-special-edition-in-ear-monitor-mit-5-balanced-armature-treibern.html" title="Der Andromeda S Special Edition von Campfire Audio ist mit fünf Balanced-..." class="product-url hyphenate">
+								Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Der Andromeda S Special Edition von Campfire Audio ist mit fünf Balanced-...">
+									1.249,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											bestellt
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Andromeda_S_MAIN.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Andromeda_S_MAIN.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern" title="Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Andromeda_S_MAIN3.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Andromeda_S_MAIN3.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern" title="Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Andromeda_S_MAIN2.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Andromeda_S_MAIN2.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern" title="Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Campfire_Audio_Andromeda_S_BOX.jpg" data-thumb-src="images/product_images/thumbnail_images/Campfire_Audio_Andromeda_S_BOX.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern" title="Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-511"> <form class="product-tile"> <figure class="image" id="new-products-511_img"> <span title="SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/E11C_Black_Hero_1280.jpg" alt="SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/soundmagic-e11c-schwarz-premium-in-ear-kopfhoerer-mit-fernbedienung-und-mikrofon.html" title="Nach dem Erfolg des mehrfach preisgekrönten Testsiegers E10C hebt SoundMAGIC..." class="product-url hyphenate">
+								SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Nach dem Erfolg des mehrfach preisgekrönten Testsiegers E10C hebt SoundMAGIC...">
+									39,98 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/E11C_Black_Hero_1280.jpg" data-thumb-src="images/product_images/thumbnail_images/E11C_Black_Hero_1280.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon" title="SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/E11C_Black_Hero_Close_1280.jpg" data-thumb-src="images/product_images/thumbnail_images/E11C_Black_Hero_Close_1280.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon" title="SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/E11C_Black_Grey_CaseBlack_Tips_1280.jpg" data-thumb-src="images/product_images/thumbnail_images/E11C_Black_Grey_CaseBlack_Tips_1280.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon" title="SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/E11C_Black_Packaging.jpg" data-thumb-src="images/product_images/thumbnail_images/E11C_Black_Packaging.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon" title="SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-514"> <form class="product-tile"> <figure class="image" id="new-products-514_img"> <span title="Oriveti OH500 – Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfhörer" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/ORIVETI_OH500_Main_web.jpg" alt="Oriveti OH500 – Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfhörer"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/oriveti-oh500-premium-4-1-hybrid-hi-fi-in-ear-kopfhoerer.html" title="Oriveti präsentieren mit dem OH500 einen audiophilen High-End IEM für hö..." class="product-url hyphenate">
+								Oriveti OH500 – Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfhörer
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Oriveti präsentieren mit dem OH500 einen audiophilen High-End IEM für hö...">
+									529,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ORIVETI_OH500_Main_web.jpg" data-thumb-src="images/product_images/thumbnail_images/ORIVETI_OH500_Main_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Oriveti OH500 – Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfhörer" title="Oriveti OH500 – Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfhörer" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ORIVETI_OH500_Kabel_web.jpg" data-thumb-src="images/product_images/thumbnail_images/ORIVETI_OH500_Kabel_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Oriveti OH500 – Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfhörer" title="Oriveti OH500 – Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfhörer" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ORIVETI_OH500_Harz_web.jpg" data-thumb-src="images/product_images/thumbnail_images/ORIVETI_OH500_Harz_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Oriveti OH500 – Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfhörer" title="Oriveti OH500 – Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfhörer" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ORIVETI_OH500_open_Box_web.jpg" data-thumb-src="images/product_images/thumbnail_images/ORIVETI_OH500_open_Box_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Oriveti OH500 – Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfhörer" title="Oriveti OH500 – Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfhörer" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-232"> <form class="product-tile"> <figure class="image" id="new-products-232_img"> <span title="Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfhörer" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/ER3XR_Main_awards.jpg" alt="Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfhörer"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/etymotic-er3xr-extended-response-balanced-armature-high-fidelity-in-ear-kopfhoerer-schwarz.html" title="Renommierte Klangqualität mit sanfter Tiefbassanhebung. Im ER3XR Extended ..." class="product-url hyphenate">
+								Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfhörer
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Renommierte Klangqualität mit sanfter Tiefbassanhebung. Im ER3XR Extended ...">
+									229,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ER3XR_Main_awards.jpg" data-thumb-src="images/product_images/thumbnail_images/ER3XR_Main_awards.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfhörer" title="Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfhörer" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ER3XR_lifestyle_2.jpg" data-thumb-src="images/product_images/thumbnail_images/ER3XR_lifestyle_2.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfhörer" title="Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfhörer" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ER3XR_lifestyle_1.jpg" data-thumb-src="images/product_images/thumbnail_images/ER3XR_lifestyle_1.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfhörer" title="Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfhörer" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ER3_splitter_with_clip_1.jpg" data-thumb-src="images/product_images/thumbnail_images/ER3_splitter_with_clip_1.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfhörer" title="Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfhörer" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-230"> <form class="product-tile"> <figure class="image" id="new-products-230_img"> <span title="Etymotic ER4-XR Extended Response – geräuschisolierender In-Ear-Kopfhörer mit austauschbarem Kabel, Schwarz" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/ER4XRawards.jpg" alt="Etymotic ER4-XR Extended Response – geräuschisolierender In-Ear-Kopfhörer mit austauschbarem Kabel, Schwarz"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/etymotic-er4-xr-extended-response-geraeuschisolierender-in-ear-kopfhoerer-mit-austauschbarem-kabel-schwarz.html" title="Der Etymotic ER4-XR &quot;Extended Reference&quot; Balanced-Armature-In-Ear-Kopfhörer ..." class="product-url hyphenate">
+								Etymotic ER4-XR Extended Response – geräuschisolierender In-Ear-Kopfhörer mit austauschbarem Kabel, Schwarz
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Der Etymotic ER4-XR &quot;Extended Reference&quot; Balanced-Armature-In-Ear-Kopfhörer ...">
+									399,95 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ER4XRawards.jpg" data-thumb-src="images/product_images/thumbnail_images/ER4XRawards.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Etymotic ER4-XR Extended Response – geräuschisolierender In-Ear-Kopfhörer mit austauschbarem Kabel, Schwarz" title="Etymotic ER4-XR Extended Response – geräuschisolierender In-Ear-Kopfhörer mit austauschbarem Kabel, Schwarz" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ER4XR_Jack.jpg" data-thumb-src="images/product_images/thumbnail_images/ER4XR_Jack.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Etymotic ER4-XR Extended Response – geräuschisolierender In-Ear-Kopfhörer mit austauschbarem Kabel, Schwarz" title="Etymotic ER4-XR Extended Response – geräuschisolierender In-Ear-Kopfhörer mit austauschbarem Kabel, Schwarz" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ER4SRXR_Accessories_1.jpg" data-thumb-src="images/product_images/thumbnail_images/ER4SRXR_Accessories_1.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Etymotic ER4-XR Extended Response – geräuschisolierender In-Ear-Kopfhörer mit austauschbarem Kabel, Schwarz" title="Etymotic ER4-XR Extended Response – geräuschisolierender In-Ear-Kopfhörer mit austauschbarem Kabel, Schwarz" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/ER4XR_Box.jpg" data-thumb-src="images/product_images/thumbnail_images/ER4XR_Box.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Etymotic ER4-XR Extended Response – geräuschisolierender In-Ear-Kopfhörer mit austauschbarem Kabel, Schwarz" title="Etymotic ER4-XR Extended Response – geräuschisolierender In-Ear-Kopfhörer mit austauschbarem Kabel, Schwarz" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-515"> <form class="product-tile"> <figure class="image" id="new-products-515_img"> <span title="Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/B30_1655_wCable_web.jpg" alt="Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/westone-b30-in-ear-monitor-mit-3-balanced-armature-treibern.html" title="Der Westone B30 ist die Weiterentwicklung des W30 und bietet einen bewusst ..." class="product-url hyphenate">
+								Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Der Westone B30 ist die Weiterentwicklung des W30 und bietet einen bewusst ...">
+									469,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/B30_1655_wCable_web.jpg" data-thumb-src="images/product_images/thumbnail_images/B30_1655_wCable_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern" title="Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/B30_1655_web.jpg" data-thumb-src="images/product_images/thumbnail_images/B30_1655_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern" title="Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Westone_BluetoothCable_Full_Alt_1.jpg" data-thumb-src="images/product_images/thumbnail_images/Westone_BluetoothCable_Full_Alt_1.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern" title="Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/B30_Beauty2_web.jpg" data-thumb-src="images/product_images/thumbnail_images/B30_Beauty2_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern" title="Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-522"> <form class="product-tile"> <figure class="image" id="new-products-522_img"> <span title="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/fourte_noir_Main.jpg" alt="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/64-audio-tia-fourte-noir-limited-edition-universal-fit-4-treiber-hybrid-in-ear-monitor-mit-apex-und-tia.html" title="64 Audio's Flaggschiff tia Fourté wurde aus dem Wunsch geboren, das ..." class="product-url hyphenate">
+								64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="64 Audio's Flaggschiff tia Fourté wurde aus dem Wunsch geboren, das ...">
+									4.199,00 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/fourte_noir_Main.jpg" data-thumb-src="images/product_images/thumbnail_images/fourte_noir_Main.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia" title="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Noir_BLCK_HIRS_web.jpg" data-thumb-src="images/product_images/thumbnail_images/Noir_BLCK_HIRS_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia" title="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Noir_Explosion_web.jpg" data-thumb-src="images/product_images/thumbnail_images/Noir_Explosion_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia" title="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Noir_Hero_web.jpg" data-thumb-src="images/product_images/thumbnail_images/Noir_Hero_web.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia" title="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia" /> </li> </ul> </div> <div class="product-container swiper-slide  has-gallery" data-index="new-products-478"> <form class="product-tile"> <figure class="image" id="new-products-478_img"> <span title="Etymotic ER2XR (Extended Response) -  dynamischer In-Ear Kopfhörer mit hoher Geräuschunterdrückung" class="product-hover-main-image product-image"> <img src="images/product_images/info_images/Etymotic_ER2XR_.jpg" alt="Etymotic ER2XR (Extended Response) -  dynamischer In-Ear Kopfhörer mit hoher Geräuschunterdrückung"> </span> </figure> <div class="title-description hyphenate"> <div class="title"> <a href="https://headtek.de/de/etymotic-er2xr-extended-response-dynamischer-in-ear-kopfhoerer-mit-hoher-geraeuschunterdrueckung.html" title="Der ER2XR bietet eine beeindruckende Basswiedergabe, jedoch ohne auf die ..." class="product-url hyphenate">
+								Etymotic ER2XR (Extended Response) -  dynamischer In-Ear Kopfhörer mit hoher Geräuschunterdrückung
+							</a> </div> </div> <div class="price-tax"> <div class="price"> <span class="current-price-container" title="Der ER2XR bietet eine beeindruckende Basswiedergabe, jedoch ohne auf die ...">
+									179,95 EUR
+																			<br /> <span class="gm_products_vpe products-vpe">
+																							&nbsp;
+																					</span> </span> </div> <div class="additional-container"> </div> <div class="shipping hidden-grid"> <div class="shipping-info-short">
+									
+										
+									
+																													
+											sofort verfügbar, 1-3 Werktage
+										
+																	</div> </div> <div class="cart-error-msg alert alert-danger hidden" role="alert"></div> </div> </form> <ul class="gallery"> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Etymotic_ER2XR_.jpg" data-thumb-src="images/product_images/thumbnail_images/Etymotic_ER2XR_.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Etymotic ER2XR (Extended Response) -  dynamischer In-Ear Kopfhörer mit hoher Geräuschunterdrückung" title="Etymotic ER2XR (Extended Response) -  dynamischer In-Ear Kopfhörer mit hoher Geräuschunterdrückung" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Etymotic_ER2XR_Flat.jpg" data-thumb-src="images/product_images/thumbnail_images/Etymotic_ER2XR_Flat.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Etymotic ER2XR (Extended Response) -  dynamischer In-Ear Kopfhörer mit hoher Geräuschunterdrückung" title="Etymotic ER2XR (Extended Response) -  dynamischer In-Ear Kopfhörer mit hoher Geräuschunterdrückung" /> </li> <li class="thumbnails" > <span class="align-helper"></span> <img class="img-responsive spinner" data-src="images/product_images/info_images/Etymotic_ER2_Accessories.jpg" data-thumb-src="images/product_images/thumbnail_images/Etymotic_ER2_Accessories.jpg" src="templates/Honeygrid/assets/images/loading.gif" alt="Etymotic ER2XR (Extended Response) -  dynamischer In-Ear Kopfhörer mit hoher Geräuschunterdrückung" title="Etymotic ER2XR (Extended Response) -  dynamischer In-Ear Kopfhörer mit hoher Geräuschunterdrückung" /> </li> </ul> </div> <script type="text/mustache">
+				<template>
+										
+						{{#.}}
+							<div class="swiper-slide {{className}}">
+								<div class="swiper-slide-inside">
+									<img class="img-responsive" {{{srcattr}}} alt="{{title}}" title="{{title}}" data-magnifier-src="{{src}}" />
+								</div>
+							</div>
+						{{/.}}
+					
+									</template>
+			</script> </div> <script>
+		gtag('event', 'view_item_list', { items: [{"id":"CA0040","name":"Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern","list_name":"Top Products List","brand":"Campfire Audio"},{"id":"KWES0100","name":"Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model","list_name":"Top Products List","brand":"Westone"},{"id":"BEYE0010","name":"Beyerdynamic - T1 Black Special Edition, Audiophiler Tesla Hi-Fi-Kopfh\u00f6rer, halboffen (2. Generation)","list_name":"Top Products List","brand":"Beyerdynamic","price":746.22},{"id":"KWES0060","name":"Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz","list_name":"Top Products List","brand":"Westone","price":587.38},{"id":"CA0020","name":"Campfire Audio Comet - Balanced-Armature In-Ear Kopfh\u00f6rer mit Edelstahlgeh\u00e4use","list_name":"Top Products List","brand":"Campfire Audio"},{"id":"KORV0300","name":"Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfh\u00f6rer","list_name":"Top Products List","brand":"Oriveti"},{"id":"KSAR0080","name":"Astrotec S80 - True Wireless HiFi In-Ear Kopfh\u00f6rer mit Beryllium-Treiber und Bluetooth 5","list_name":"Top Products List","brand":"Astrotec"},{"id":"KWES0281","name":"Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul","list_name":"Top Products List","brand":"Westone"},{"id":"CA0011","name":"Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern","list_name":"Top Products List","brand":"Campfire Audio"},{"id":"KSDM1471","name":"SoundMAGIC E11C Black - Premium In-Ear Kopfh\u00f6rer mit Fernbedienung und Mikrofon","list_name":"Top Products List","brand":"SoundMAGIC"},{"id":"KORV0500","name":"Oriveti OH500 \u2013 Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfh\u00f6rer","list_name":"Top Products List","brand":"Oriveti"},{"id":"KETE0170","name":"Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfh\u00f6rer","list_name":"Top Products List","brand":"Etymotic"},{"id":"KETE0150","name":"Etymotic ER4-XR Extended Response \u2013 ger\u00e4uschisolierender In-Ear-Kopfh\u00f6rer mit austauschbarem Kabel, Schwarz","list_name":"Top Products List","brand":"Etymotic","price":293.2773},{"id":"KWES0031","name":"Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern","list_name":"Top Products List","brand":"Westone"},{"id":"K64U0041","name":"64 Audio tia Fourt\u00e9 Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia","list_name":"Top Products List","brand":"64 Audio"},{"id":"Kete0190","name":"Etymotic ER2XR (Extended Response) -  dynamischer In-Ear Kopfh\u00f6rer mit hoher Ger\u00e4uschunterdr\u00fcckung","list_name":"Top Products List","brand":"Etymotic"}] });
+	</script> <script data-json='[{"id":"CA0040","name":"Campfire Audio Solaris - High-End Hybrid In-Ear Monitor mit 4 Treibern","list_name":"Top Products List","brand":"Campfire Audio"},{"id":"KWES0100","name":"Westone UM Pro 20 - In-Ear-Monitor mit zwei Balanced-Armature Treibern und austauschbarem Kabel - 2017er Model","list_name":"Top Products List","brand":"Westone"},{"id":"BEYE0010","name":"Beyerdynamic - T1 Black Special Edition, Audiophiler Tesla Hi-Fi-Kopfh\u00f6rer, halboffen (2. Generation)","list_name":"Top Products List","brand":"Beyerdynamic","price":746.22},{"id":"KWES0060","name":"Westone W60 - In-Ear-Monitor mit sechs Balanced-Armature Treibern, Mikrofon und iPhone Fernbedienung, Schwarz","list_name":"Top Products List","brand":"Westone","price":587.38},{"id":"CA0020","name":"Campfire Audio Comet - Balanced-Armature In-Ear Kopfh\u00f6rer mit Edelstahlgeh\u00e4use","list_name":"Top Products List","brand":"Campfire Audio"},{"id":"KORV0300","name":"Oriveti OH300 - Premium 2+1 Hybrid Hi-Fi In-Ear Kopfh\u00f6rer","list_name":"Top Products List","brand":"Oriveti"},{"id":"KSAR0080","name":"Astrotec S80 - True Wireless HiFi In-Ear Kopfh\u00f6rer mit Beryllium-Treiber und Bluetooth 5","list_name":"Top Products List","brand":"Astrotec"},{"id":"KWES0281","name":"Westone Bluetooth Kabel V2 - Bluetooth 5 Modul mit aptX und Lademodul","list_name":"Top Products List","brand":"Westone"},{"id":"CA0011","name":"Campfire Audio Andromeda S - Special Edition In-Ear Monitor mit 5 Balanced-Armature Treibern","list_name":"Top Products List","brand":"Campfire Audio"},{"id":"KSDM1471","name":"SoundMAGIC E11C Black - Premium In-Ear Kopfh\u00f6rer mit Fernbedienung und Mikrofon","list_name":"Top Products List","brand":"SoundMAGIC"},{"id":"KORV0500","name":"Oriveti OH500 \u2013 Premium 4+1 Hybrid Hi-Fi In-Ear-Kopfh\u00f6rer","list_name":"Top Products List","brand":"Oriveti"},{"id":"KETE0170","name":"Etymotic ER3XR Extended Response - Balanced-Armature High Fidelity In-Ear-Kopfh\u00f6rer","list_name":"Top Products List","brand":"Etymotic"},{"id":"KETE0150","name":"Etymotic ER4-XR Extended Response \u2013 ger\u00e4uschisolierender In-Ear-Kopfh\u00f6rer mit austauschbarem Kabel, Schwarz","list_name":"Top Products List","brand":"Etymotic","price":293.2773},{"id":"KWES0031","name":"Westone B30 - In-Ear Monitor mit 3 Balanced-Armature Treibern","list_name":"Top Products List","brand":"Westone"},{"id":"K64U0041","name":"64 Audio tia Fourt\u00e9 Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia","list_name":"Top Products List","brand":"64 Audio"},{"id":"Kete0190","name":"Etymotic ER2XR (Extended Response) -  dynamischer In-Ear Kopfh\u00f6rer mit hoher Ger\u00e4uschunterdr\u00fcckung","list_name":"Top Products List","brand":"Etymotic"}]' data-section="new-products">
+		(function() {
+			const data = JSON.parse(document.currentScript.dataset.json);
+			const section = document.currentScript.dataset.section;
+
+			if (!data || !section) {
+				throw new Error('Missing or invalid arguments');
+			}
+
+			document.addEventListener('JSENGINE_INIT_FINISHED', function() {
+				const hooks = {
+					add: jse.libs.hooks.add,
+					key: jse.libs.hooks.keys.shop.product.listing.hover,
+					callback: function(data) {
+						return new Promise(handlePromise.bind(undefined, data));
+					},
+				};
+
+				function handlePromise(payload, resolve) {
+					if (!payload.container.data('index').includes(section)) {
+						resolve();
+						return;
+					}
+
+					const name = payload.container.find('.product-url').text().trim();
+					const impression = data.find(function(dataset) {
+						return 'name' in dataset && dataset.name === name;
+					});
+
+					if (!impression) {
+						resolve();
+						return;
+					}
+
+					gtag('event', 'select_content', {
+						content_type: 'product',
+						items: [impression],
+						event_callback: resolve,
+					});
+				}
+
+				hooks.add(hooks.key, hooks.callback);
+			});
+		})();
+	</script> <div class="content-page-index"> <style type="text/css">
+#content_container_info {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  margin: 0px -5px 64px!important   
+  }
+ 
+ .btn_info {
+   position: absolute;
+   right: 1.5vw;
+   bottom: 1.7vw;
+   -webkit-border-radius: 0.7vw;
+   -moz-border-radius: 0.7vw;
+   border-radius: 0.7vw;
+   color: #0b4f83;
+   font-size: 1.2vw;
+   background: #ffffff;
+   padding: 0.2vw 1.5vw;
+   border: none;
+   text-decoration: none;
+}
+
+.btn_info:hover {
+  background: #157cd8;
+  color: #ffffff;
+  text-decoration: none;
+}
+ 
+  .content_info {
+    color: #ffffff;
+    position: relative;
+    height: auto;
+    width: 20%;
+    flex: auto;
+    text-align: center;
+    padding: 0px;
+    margin: 5px;
+}
+
+@media (max-width: 990px){
+	.content_info {
+    width: 47%;
+    }
+}</style> <h2 style="display: block">Unser Versprechen</h2> <div id="content_container_info"> <div class="content_info"> <img alt="Headtek Rückgabe" height="auto" src="https://www.headtek.de/_content/active/images/Box_Wir_Lieben.jpg" width="100%" /> </div> <div class="content_info"> <img alt="Headtek Rückgabe" height="auto" src="https://www.headtek.de/_content/active/images/Box_Rueckgabe.jpg" width="100%" /> <a href="https://headtek.de/de/info/Widerrufsrecht-Rueckgaberichtlinien.html" target="_self" title="Widerrufsrecht & Rückgaberichtlinien" style="position: absolute; border: none; outline: none; left: 71%; top: 88%; width: 24%; height: 6%; z-index: 2;"></a> </div> <div class="content_info"> <img alt="Headtek Rückgabe" height="auto" src="https://www.headtek.de/_content/active/images/Box_Lieferung.jpg" width="100%" /> </div> <div class="content_info"> <img alt="Headtek Rückgabe" height="auto" src="https://www.headtek.de/_content/active/images/Box_Service.jpg" width="100%" /> </div> </div> </div> <div class="content-page-index"> <h2>Über Uns</h2> <style type="text/css">
+	.about_us_container {
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-flow: row wrap;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		width: 103%;
+		margin: 0 0px 20px -14px;
+	}
+	
+	.about_us_item {
+		flex: auto;
+		width: 50%;
+		min-width: 400px;
+		padding: 0px 14px;
+		text-align: justify;
+		text-justify: inter-word;
+	}
+	
+	@media (max-width: 990px) {
+		.about_us_item {
+			width: 100%;
+			min-width: unset;
+			padding: 0;
+		}
+		.about_us_container {
+			width: 100%;
+			margin: 0 0 20px 0;
+		}
+	}
+</style> <div class="about_us_container"> <a name="about_us" target="_self"></a> <div class="about_us_item"> <h5>WIR SIND HEADTEK</h5> <p>Im Januar 2017 entstand in unserem Team aus Musikern und Kopfh&ouml;rerenthusiasten die Idee eines spezialisierten Online-Shops f&uuml;r ausgew&auml;hlte Kopfh&ouml;rer-Marken mit dem Schwerpunkt auf In-Ear-Kopfh&ouml;rern. Nach Monaten flei&szlig;iger Planung, Arbeit und viel Kaffee ging im September 2017 HEADTEK.de online. Nicht Masse, sondern Klasse &ndash; und zwar f&uuml;r jeden Geldbeutel &ndash; lautet unsere Devise. </p><br/> <h5>ENTSCHEIDUNGSHELFER</h5> <p>Wir bei HEADTEK verstehen, dass man angesichts tausender auf dem Markt erh&auml;ltlicher Kopfh&ouml;rer und Marken schnell die &Uuml;bersicht und die Lust am Thema verlieren kann. Deshalb helfen wir.</p> <p> Unsere einfache Navigation, die treffsichere Suche sowie vollst&auml;ndige und hochwertige Produktinformationen mit aussagekr&auml;ftigen Bildern spiegeln die Qualit&auml;t unseres Portfolios wieder und sorgen f&uuml;r ein entspanntes und erfolgreiches Shopping-Erlebnis. Sie k&ouml;nnen sich in unserem Webshop umfassend &uuml;ber unser Sortiment informieren und Ihren perfekten Kopfh&ouml;rer, Zubeh&ouml;r und Ersatzteile schnell, einfach und, dank SSL-Verschl&uuml;sselung, sicher online kaufen. </p><br/> <h5>IHRE ZUFRIEDENHEIT IST UNSER ERFOLG</h5> <p>HEADTEK bietet Ihnen ausgew&auml;hlte und von professionellen Reviewern getestete Produkte zu hervorragenden Preisen sowie einen unkomplizierten, freundlichen und z&uuml;gigen Kundenservice. Wir &uuml;berpr&uuml;fen und aktualisieren unseren Webshop regelm&auml;&szlig;ig und k&uuml;mmern uns darum, dass er auch in Sachen Sicherheit und Datenschutz immer auf dem aktuellsten Stand bleibt. Bei Fragen zu Bestellungen, unseren Produkten oder unserem Service sind wir gerne telefonisch oder via E-Mail f&uuml;r Sie da. </p><br/> <p> Wir wollen das Beste, was Ihren Ohren passieren kann. </p> <p> Ihr HEADTEK-Team </p> </div> <div class="about_us_item"> <p></p> <br> <img alt="Headtek_Showroom" src="https://www.headtek.de/_images/Headtek_Store-1.jpg" style="padding: 0 0 0 0px" width="100%" /> <br> <br> <p style="text-align: right">HEADTEK Showroom in Berlin Pankow</p> </div> </div> </div> </div> </div> <aside id="left"> </aside> <aside id="right"> </aside> </div> </div> <footer id="footer"> <div class="footer-header"> <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> <style type="text/css">
+	
+/*	
+	
+	body {
+		background-color: #0b5083;
+		font-family: 'Roboto', sans-serif;
+		font-size: 13px
+	}	
+*/
+	
+.NL_footer {
+		position: relative;
+		height: auto;
+		min-height: 90px;
+		width: 1140px;
+    	margin: auto;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		padding: 20px 0;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		align-content:space-between;
+		flex-wrap: nowrap;
+}
+ @media (max-width: 1200px){
+		.NL_footer {
+		width: 940px;
+		}
+	}	
+ 
+	@media (max-width: 991px){
+		.NL_footer {
+        	width: 100%;
+			flex-direction: column;
+			justify-content: space-between;
+            font-size: 16px
+		}
+        .footer_item_container {
+        width: 100% !important;
+        justify-content: center
+        }
+	}	
+	
+.btnNL {
+	position: relative;
+	width: 150px;
+	height: 28px;
+  background: #0F3259;
+  border: none;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  color: #ffffff;
+  font-size: 11px;
+  padding: 5px 10px;
+  text-decoration: none;
+	    transition: 0.2s
+}
+
+.btnNL:hover {
+  background: #0284d4;
+  text-decoration: none;
+}
+
+.form-style {
+	height: 30px; 
+	margin: 0;
+	}
+
+		
+.footer_item_container {
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	color: #ffffff;
+	padding: 6px 0px;
+    width: 152px;
+	min-height: 40px;
+    transition: 0.4s
+	}
+	
+	
+.footer_item_container a:hover {
+text-shadow: 0px 0px 5px #fff;
+} 
+	
+</style> <div class="NL_footer"> <div class="footer_item_container" style="margin-right:auto"> <img src="https://www.headtek.de/_images/icons/Phone.svg" height="26px">&nbsp;<a href="tel:+493076767375" style="text-decoration: none; color: white;">+49 30 76 76 73 75
+		</div> <div class="footer_item_container" style="width: 190px; margin:auto"> <img src="https://www.headtek.de/_images/icons/eMail.svg" height="29px">&nbsp;<a href="mailto:shop@headtek.de" style="text-decoration: none; color: white;">SHOP@HEADTEK.DE</a> </div> <div class="footer_item_container" style="width: 275px; margin:auto"> <img src="https://www.headtek.de/_images/icons/Location.svg" height="35px" > &nbsp; <a href="https://goo.gl/maps/ppr1ejacRRJ2" target="_blank" style="text-decoration: none; text-transform: uppercase; color: white">Dietzgenstr. 56, 13156 Berlin</a> </div> <div class="NL_container" style="margin: none; display: flex; justify-content: flex-end; min-width: 300px; padding: 15px 0"> <form action="newsletter.php" class="form-style" method="post" style="height: 28px"> <div class="NL_btn_container" style="width: 50%; height: auto; float: left; margin-right:0px;"> <input class="btnNL" data-validator-validate="required email" name="email" placeholder="eMail Adresse eintragen" style="color: black; background-image: none; background-color: #ffffff; border-radius: 5px 0px 0px 5px;" type="text" /> </div> <div class="NL_btn_container" style="width: 50%; float: right;"> <input class="btnNL" style="border-radius: 0px 5px 5px 0px;" type="submit" value="Newsletter bestellen" /> </div> </form> </div> </div> </div> <div class="inside"> <div class="row"> <div class="footer-col-1"><div class="box box-content panel panel-default"> <div class="panel-heading"> <span class="panel-title">Informationen</span> </div> <div class="panel-body"> <nav> <ul class="nav"> <li> <a href="https://headtek.de/de/#about_us" target="_top" title="Über Uns">
+													Über Uns
+												</a> </li> <li> <a href="https://headtek.de/de/info/mein-kontakt.html" title="Kontakt">
+													Kontakt
+												</a> </li> <li> <a href="https://headtek.de/de/info/callback-service.html" title="Callback Service">
+													Callback Service
+												</a> </li> <li> <a href="https://headtek.de/de/info/agb.html" title="AGB">
+													AGB
+												</a> </li> <li> <a href="https://headtek.de/de/info/Versand-und-Zahlungsarten.html" title="Versand & Zahlungsarten">
+													Versand & Zahlungsarten
+												</a> </li> <li> <a href="https://headtek.de/de/info/widerruf-rueckgaberichtlinien.html" title="Widerrufsrecht & Rückgaberichtlinien">
+													Widerrufsrecht & Rückgaberichtlinien
+												</a> </li> <li> <a href="https://headtek.de/de/info/faq.html" title="FAQ">
+													FAQ
+												</a> </li> <li> <a href="https://headtek.de/de/info/impressum.html" title="Impressum">
+													Impressum
+												</a> </li> <li> <a href="https://headtek.de/de/info/privatsphaere-und-datenschutz.html" title="Privatsphäre und Datenschutz">
+													Privatsphäre und Datenschutz
+												</a> </li> <li> <a href="https://headtek.de/de/info/ueber-etymotic.html" title="Über Etymotic">
+													Über Etymotic
+												</a> </li> <li> <a href="https://headtek.de/de/info/ueber-beyerdynamic.html" title="Über Beyerdynamic">
+													Über Beyerdynamic
+												</a> </li> <li> <a href="https://headtek.de/de/info/ueber-campfire-audio.html" title="Über Campfire Audio">
+													Über Campfire Audio
+												</a> </li> </ul> </nav> </div> </div></div> <div class="footer-col-2"> <div class="box box-content panel panel-default"> <div class="panel-heading"> <div class="panel-title">
+									Footer 2. Spalte - Marken
+								</div> </div> <div class="panel-body"> <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> <style type="text/css">
+
+	.herstellerlogos {
+		padding: 7px;
+		margin-top: 10px;
+		width: 80px;
+		height:auto;
+	}
+	.herstellerlogos:hover {
+		opacity: 0.5;
+	}
+
+	</style> <p style="text-align: center;"> <strong>OFFIZIELLER PARTNER F&Uuml;R</strong><br> <a href="/hersteller/64-audio/"><img alt="64 Audio" class="herstellerlogos" src="_images/Hersteller_Logos/64Audio_Logo_SM.png"/></a> <a href="/hersteller/soundmagic/"><img alt="SoundMAGIC" class="herstellerlogos" src="_images/Hersteller_Logos/SoundMAGIC_Logo.png"/></a> <a href="/hersteller/final/><img alt="Final" class="herstellerlogos" src="_images/Hersteller_Logos/Final_Logo.svg"/></a> <a href="/hersteller/campfire-audio/"><img alt="Campfire Audio" class="herstellerlogos" src="_images/Hersteller_Logos/Campfire_Audio_Logo.svg" /></a> <a href="/hersteller/etymotic-research/"><img alt="Etymotic" class="herstellerlogos" src="_images/Hersteller_Logos/Etymotic_Logo.png"/></a> <a href="/hersteller/westone/"><img alt="Westone" class="herstellerlogos" src="_images/Hersteller_Logos/Westone_Logo.png"/></a> <a href="/hersteller/blackbird/"><img alt="Blackbird" class="herstellerlogos" src="_images/Hersteller_Logos/Blackbird_Logo.png"/></a> <a href="/hersteller/rme/"><img alt="RME" class="herstellerlogos" src="images/manufacturers/rme_logo.svg"/></a> <a href="/hersteller/oriveti/"><img alt="Oriveti" class="herstellerlogos" src="_images/Hersteller_Logos/Oriveti_Logo.svg"/></a> <a href="/hersteller/astrotec/"><img alt="Astrotec" class="herstellerlogos" src="_images/Hersteller_Logos/Astrotec_Logo.svg"/></a> <a href="/hersteller/fender/"><img alt="Fender" class="herstellerlogos" src="_images/Hersteller_Logos/Fender_logo.svg"/></a> <a href="/hersteller/beyerdynamic/"><img alt="Beyerdynamic" class="herstellerlogos" src="_images/Hersteller_Logos/Beyerdynamic_Logo.svg"/></a> </p> </div> </div> </div> <div class="footer-col-3"> <div class="box box-content panel panel-default"> <div class="panel-heading"> <div class="panel-title">
+										Footer 3. Spalte - Zahlungsmöglichkeiten
+									</div> </div> <div class="panel-body"> <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> <style>
+	
+	.social {
+		width: 45px; 
+		height: auto; 
+		padding: 5px; 
+		outline: none;
+		opacity: 1;
+	}
+	
+	.social:hover {
+		opacity: 0.5;
+	}
+</style> <p style="text-align: center;"> <strong>ZAHLUNGSMETHODEN</strong> </p> <div style="text-align: center;"> <img alt="" src="images/de-pp-logo-150px.png" style="width: 90px; height: auto; padding: 8px;" /> <img alt="" src="images/Sofortueberweisung_Logo.png" style="width: 90px; height: auto; padding: 8px;" /> <img alt="" src="images/ec.png" style="width: 90px; height: auto; padding: 8px;" /> <img alt="" src="images/DHL.jpg" style="width: 80px; height: auto; padding: 8px;" /> <br> <br> <p style="text-align: center;"> <strong>VERSAND</strong> </p> <p style="text-align: center">
+	Ab einem Bestellwert von 25&euro; versenden wir deutschlandweit kostenlos.
+	</p> <p style="text-align: center;"> <img alt="" src="images/DHL_rgb.png" style="width: 100px; height: auto;" /> </p> <br> </div> </div> </div> </div> <div class="footer-col-4"> <div class="box box-content panel panel-default"> <div class="panel-heading"> <div class="panel-title">
+										Footer 4. Spalte - Versand
+									</div> </div> <div class="panel-body"> <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> <style type="text/css">
+@media (min-width: 768px) {
+  #ft4 {
+  float: right;}
+  }
+  
+.other_marketplaces {
+	opacity: 1.0;
+    border: none;
+  outline: none;
+  margin: 10px 10px 0 0;
+} 
+
+.other_marketplaces:hover {
+	opacity: 0.6
+} 
+  
+@media (max-width: 767px) {
+  #ft4 {
+  float: center;}
+  }
+
+.header_info{
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.3;
+	color: #5c5c5c;
+	background-color: none;
+	margin: 0px;
+	display:inline-block;
+	padding: 0px;
+	}
+
+.header_info_container {
+	text-align: center; 
+	width:auto; 
+	transition: 0.3s
+	}
+	
+	
+@media (max-width: 1200px) {
+	.header_info {
+		margin: 0 0 2px 0;
+	}
+	.header_info_container{
+		margin-top:3px;
+	}
+}
+	
+@media (min-width: 768px) and (max-width: 992px){
+	.header_info {
+		margin: 0 0 1px 0;
+		padding: 1px 9px;
+	}
+	.header_info_container{
+		margin-top:13px;
+	}
+}
+	
+	
+.header_info_container > ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.header_info_container > li {
+  padding-left: 0em;
+	padding-bottom: 6px;
+  text-indent: -1.2em;
+  text-align: center;
+}
+
+.header_info_container > li:before {
+  content: "◥";
+}
+	
+
+</style> <div id="ft4"> <p style="text-align: center;"> <strong>UNSER SERVICE</strong><br /> <ul style="padding-inline-start: 0px !important; line-height: 0px; text-align:center; width: 80%; margin: auto" class="header_info_container"> <li class="header_info">
+				 Kostenfreie Lieferung ab einem Bestellwert von 25&euro;
+			</li> <li class="header_info">
+				Bestellungen an Werktagen bis 14:00 werden sofort versendet
+			</li> <li class="header_info" style="letter-spacing: 0.5px">
+				30 Tage R&uuml;ckgaberecht
+			</li> </ul> </p> <p style="text-align: center;"> <strong>PARTNERPROGRAMME</strong><br /> <a href="https://www.idealo.de/preisvergleich/Shop/316237.html" target="_blank"><img alt="" class="other_marketplaces" src="https://img.idealo.com/folder/Shop/316/2/316237/s1_idealo-partner.png" style="width: 60px; height: auto; border:none;" /></a> <a href="https://geizhals.de" target="_blank"><img src="images/Geizhals_Logo.png" alt="Geizhals Preisvergleich" style="padding-top: 20px; width: 120px; height: auto; border:none;"></a> </p> <br> <p style="text-align: center;"> <strong>FOLGEN SIE UNS</strong> </p> <div style="text-align: center;"> <a href="https://www.facebook.com/HEADTEK-1855549778096705/" target="_blank" Title="Facebook"><img alt="Facebook" src="images/ICON_facebook_SM.jpg" class="social"/></a> <a href="https://twitter.com/headtek_de" target="_blank" Title="Twitter"><img alt="Twitter" src="images/ICON_twitter_SM.jpg" class="social"/></a> <a href="https://www.instagram.com/headtek.de/" target="_blank" Title="Instagram"><img alt="Instagram" src="images/ICON_instagram_SM.png" class="social"/></a> </div> </div> <p style="color: #9e9e9e;
+    bottom: -34px;
+    right: 10px;
+    font-size: 10px;
+    position: absolute;"> <strong>&copy;2018 Headtek / KS Distribution GmbH </strong> </p> </div> </div> </div> </div> </div> <div class="footer-bottom"><a href="https://www.gambio.de" target="_blank">Webshop erstellen</a> mit Gambio.de &copy; 2019</div> </footer> </div> <a class="pageup" data-gambio-widget="pageup" title="Nach oben" href="#"> </a> <div class="layer" style="display: none;"> <div id="magnific_wrapper"> <div class="modal-dialog"> <div class="modal-content">
+						{{#title}}
+						<div class="modal-header"> <span class="modal-title">{{title}}</span> </div>
+						{{/title}}
+		
+						<div class="modal-body">
+							{{{items.src}}}
+						</div>
+		
+						{{#showButtons}}
+						<div class="modal-footer">
+							{{#buttons}}
+							<button type="button" id="button_{{index}}_{{uid}}" data-index="{{index}}" class="btn {{class}}" >{{name}}</button>
+							{{/buttons}}
+						</div>
+						{{/showButtons}}
+					</div> </div> </div> <div id="modal_prompt"> <div>
+					{{#content}}
+					<div class="icon">&nbsp;</div> <p>{{.}}</p>
+					{{/content}}
+					<form name="prompt" action="#"> <input type="text" name="input" value="{{value}}" autocomplete="off" /> </form> </div> </div> <div id="modal_alert"> <div class="white-popup">
+					{{#content}}
+					<div class="icon">&nbsp;</div> <p>{{{.}}}</p>
+					{{/content}}
+				</div> </div> </div> <script src="templates/Honeygrid/assets/javascript/init-de.min.js?bust=32b4b4bf8cf63e5da7b5689d6975e648" data-page-token="dcb988bed805f7d53c4c627d68289b5e" id="init-js"></script> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5X3VXQR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5X3VXQR');</script> <script async type="text/javascript" src="/gm/javascript/GMCounter.js"></script> </body> </html>

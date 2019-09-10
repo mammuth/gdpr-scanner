@@ -1,0 +1,689 @@
+<!DOCTYPE html> <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="de"> <head> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106611691-1"></script> <script>
+						var gaDisable = 'ga-disable-UA-106611691-1';
+
+			if (document.cookie.indexOf(gaDisable + '=true') > -1) {
+				window[gaDisable] = true;
+			}
+
+			function gaOptOut() {
+				document.cookie = gaDisable + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+				window[gaDisable] = true;
+				console.log('Disabled Google-Analytics Tracking');
+			}
+
+			function gaOptout() {
+				gaOptOut();
+			}
+
+			function checkGaOptOutAnchor() {
+				if (location.hash.substr(1) === 'gaOptOut') {
+					gaOptOut();
+				}
+			}
+
+			checkGaOptOutAnchor();
+			window.addEventListener('hashchange', checkGaOptOutAnchor);
+			
+			window.dataLayer = window.dataLayer || [];
+			
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			
+
+			gtag('js', new Date());
+
+						gtag('config', 'UA-106611691-1', { 'anonymize_ip': true });
+			
+						gtag('config', 'AW-977607356');
+					</script> <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="language" content="de" /> <meta property="og:url" content="https://headtek.de/de/info/mein-kontakt.html" /> <meta property="og:title" content="HEADTEK – finest headphones and more" /> <meta name="page-type" content="Online Shop" /> <meta name="twitter_url" content="https://twitter.com/headtek_de" /> <title>Kontakt - HEADTEK</title> <meta name="keywords" content="E10, E11, E11C, E11BT, soundmagic, bester, sieger, preis, westone, etymotic, Final, Fender, RME, Beyerdynamic,  Blackbird, kopfhörer, in-ear, kaufen, shop, over-ear, on-ear, ,review, reviews, test, tests, kopfhörertest, beratung, service" /> <meta name="description" content="Kopfhörer und Zubehör der Marken SoundMAGIC, Etymotic, Westone, Fender, Beyerdynamic, RME, Final uvm. Günstig, schnell und zuverlässig kaufen in unserem Online-Shop." /> <script>
+							var Hyphenopoly = {
+								require: {
+									"de": "FORCEHYPHENOPOLY"
+								},
+								paths: {
+									patterndir: "https://headtek.de/JSEngine/build/vendor/hyphenopoly/patterns/",
+									maindir: "https://headtek.de/JSEngine/build/vendor/hyphenopoly/"
+								},
+								setup: {
+									timeout: 1000,
+									classnames: {
+										"title": {},
+										"product-url": {},
+										"hyphenate": {},
+									}
+								}
+							};
+							
+							/**
+ * @license Hyphenopoly_Loader 2.6.1 - client side hyphenation
+ * ©2019  Mathias Nater, Zürich (mathiasnater at gmail dot com)
+ * https://github.com/mnater/Hyphenopoly
+ *
+ * Released under the MIT license
+ * http://mnater.github.io/Hyphenopoly/LICENSE
+ */
+!function(){"use strict";const e=document,t=Hyphenopoly;function n(){return Object.create(null)}function s(e,t){Object.keys(e).forEach(t)}t.cacheFeatureTests&&sessionStorage.getItem("Hyphenopoly_Loader")?t.clientFeat=JSON.parse(sessionStorage.getItem("Hyphenopoly_Loader")):t.clientFeat={langs:n(),polyfill:!1,wasm:null},t.dfltPaths=Object.create({maindir:"../Hyphenopoly/",patterndir:"../Hyphenopoly/patterns/"}),t.paths&&t.paths.patterndir&&(t.dfltPaths.patterndir=t.paths.patterndir),t.paths&&t.paths.maindir&&(t.dfltPaths.maindir=t.paths.maindir),t.setup?(t.setup.selectors=t.setup.selectors||{".hyphenate":{}},t.setup.classnames&&(s(t.setup.classnames,function(e){t.setup.selectors["."+e]=t.setup.classnames[e]}),t.setup.classnames=null,delete t.setup.classnames),t.setup.timeout=t.setup.timeout||1e3,t.setup.hide=t.setup.hide||"all"):t.setup={hide:"all",selectors:{".hyphenate":{}},timeout:1e3},t.lcRequire=n(),s(t.require,function(e){t.lcRequire[e.toLowerCase()]=t.require[e]}),t.fallbacks&&(t.lcFallbacks=n(),s(t.fallbacks,function(e){t.lcFallbacks[e.toLowerCase()]=t.fallbacks[e].toLowerCase()})),t.toggle=function(n){if("on"===n){const t=e.getElementById("H9Y_Styles");t&&t.parentNode.removeChild(t)}else{const n=" {visibility: hidden !important}\n",a=e.createElement("style");switch(a.id="H9Y_Styles",t.setup.hide){case"all":a.innerHTML="html"+n;break;case"element":s(t.setup.selectors,function(e){a.innerHTML+=e+n});break;case"text":s(t.setup.selectors,function(e){a.innerHTML+=e+" {color: transparent !important}\n"});break;default:a.innerHTML=""}e.getElementsByTagName("head")[0].appendChild(a)}},function(){const e=n(),a=[],o=[];function i(t,n,s){e[t]={cancellable:s,default:n,register:[]}}function l(n,s,a){e[n]?e[n].register.push(s):a?o.push({handler:s,name:n}):t.events.dispatch("error",{msg:'unknown Event "'+n+'" discarded'})}i("timeout",function(e){t.toggle("on"),window.console.info("Hyphenopolys 'FOUHC'-prevention timed out after %dms",e.delay)},!1),i("error",function(e){window.console.error(e.msg)},!0),i("contentLoaded",function(e){a.push({data:e,name:"contentLoaded"})},!1),i("engineLoaded",function(e){a.push({data:e,name:"engineLoaded"})},!1),i("hpbLoaded",function(e){a.push({data:e,name:"hpbLoaded"})},!1),t.handleEvent&&s(t.handleEvent,function(e){l(e,t.handleEvent[e],!0)}),t.events=n(),t.events.deferred=a,t.events.tempRegister=o,t.events.dispatch=function(t,s){s=s||n();let a=!1;e[t].register.forEach(function(n){s.preventDefault=function(){e[t].cancellable&&(a=!0)},n(s)}),!a&&e[t].default&&e[t].default(s)},t.events.define=i,t.events.addListener=l}();const a=function(){const s=n();return function(n,a){if(!s[a]){const o=e.createElement("script");s[a]=!0,o.src=n+a,"hyphenEngine.asm.js"===a&&o.addEventListener("load",function(){t.events.dispatch("engineLoaded",{msg:"asm"})}),e.head.appendChild(o)}}}(),o=n();function i(e,n,s,a){var i,l,r,c;t.clientFeat.wasm?(i=e,l=n,c=a,o[r=s]||(o[r]=!0,window.fetch(i+l).then(function(e){e.ok&&(t.binaries[r]="hyphenEngine"===r?e.arrayBuffer().then(function(e){return new WebAssembly.Module(e)}):e.arrayBuffer(),t.events.dispatch(c[0],{msg:c[1]}))}))):function(e,n,s,a){if(!o[s]){o[s]=!0;const i=new XMLHttpRequest;i.onload=function(){t.binaries[s]=i.response,t.events.dispatch(a[0],{msg:a[1]})},i.open("GET",e+n),i.responseType="arraybuffer",i.send()}}(e,n,s,a)}!function(){const o=function(){let n=null;const s=["visibility:hidden;","-moz-hyphens:auto;","-webkit-hyphens:auto;","-ms-hyphens:auto;","hyphens:auto;","width:48px;","font-size:12px;","line-height:12px;","border:none;","padding:0;","word-wrap:normal"].join("");return{append:function(e){return n?(e.appendChild(n),n):null},clear:function(){n&&n.parentNode.removeChild(n)},create:function(a){if(t.clientFeat.langs[a])return;n=n||e.createElement("body");const o=e.createElement("div");o.lang=a,o.id=a,o.style.cssText=s,o.appendChild(e.createTextNode(t.lcRequire[a])),n.appendChild(o)}}}();function l(e){let s=e+".hpb";t.lcFallbacks&&t.lcFallbacks[e]&&(s=t.lcFallbacks[e]+".hpb"),t.binaries=t.binaries||n(),null===t.clientFeat.wasm&&(t.clientFeat.wasm=function(){if("object"==typeof WebAssembly&&"function"==typeof WebAssembly.instantiate){const e=new WebAssembly.Module(Uint8Array.from([0,97,115,109,1,0,0,0,1,6,1,96,1,127,1,127,3,2,1,0,5,3,1,0,1,7,8,1,4,116,101,115,116,0,0,10,16,1,14,0,32,0,65,1,54,2,0,32,0,40,2,0,11]));if(WebAssembly.Module.prototype.isPrototypeOf(e)){const t=new WebAssembly.Instance(e);return WebAssembly.Instance.prototype.isPrototypeOf(t)&&0!==t.exports.test(4)}}return!1}()),a(t.dfltPaths.maindir,"Hyphenopoly.js"),t.clientFeat.wasm?i(t.dfltPaths.maindir,"hyphenEngine.wasm","hyphenEngine",["engineLoaded","wasm"]):a(t.dfltPaths.maindir,"hyphenEngine.asm.js"),i(t.dfltPaths.patterndir,s,e,["hpbLoaded",e]),function(e){const s={de:55,hu:207,"nb-no":92,nl:41}[e]||32;if(t.specMems=t.specMems||n(),t.clientFeat.wasm)t.specMems[e]=new WebAssembly.Memory({initial:s,maximum:256});else{Math.log2=Math.log2||function(e){return Math.log(e)*Math.LOG2E};const n=65536*(2<<Math.floor(Math.log2(s)));t.specMems[e]=new ArrayBuffer(n)}}(e),function(e){t.hyphenators=t.hyphenators||n(),t.hyphenators[e]||(window.Promise?t.hyphenators[e]=new Promise(function(n,s){t.events.addListener("engineReady",function(s){s.msg===e&&n(t.createHyphenator(s.msg))},!0),t.events.addListener("error",function(t){t.key!==e&&"hyphenEngine"!==t.key||s(t.msg)},!0)}):t.hyphenators[e]={then:function(){t.events.dispatch("error",{msg:"Promises not supported in this engine. Use a polyfill (e.g. https://github.com/taylorhakes/promise-polyfill)!"})}})}(e)}s(t.lcRequire,function(e){"FORCEHYPHENOPOLY"===t.lcRequire[e]?(t.clientFeat.polyfill=!0,t.clientFeat.langs[e]="H9Y",l(e)):t.clientFeat.langs[e]&&"H9Y"===t.clientFeat.langs[e]?l(e):o.create(e)}),null!==o.append(e.documentElement)&&(s(t.lcRequire,function(n){if("FORCEHYPHENOPOLY"!==t.lcRequire[n]){const a=e.getElementById(n);("auto"===(s=a).style.hyphens||"auto"===s.style.webkitHyphens||"auto"===s.style.msHyphens||"auto"===s.style["-moz-hyphens"])&&a.offsetHeight>12?t.clientFeat.langs[n]="CSS":(t.clientFeat.polyfill=!0,t.clientFeat.langs[n]="H9Y",l(n))}var s}),o.clear())}(),t.clientFeat.polyfill?("all"===t.setup.hide&&t.toggle("off"),"none"!==t.setup.hide&&(t.setup.timeOutHandler=window.setTimeout(function(){t.toggle("on"),t.events.dispatch("timeout",{delay:t.setup.timeout})},t.setup.timeout)),e.addEventListener("DOMContentLoaded",function(){t.setup.hide.match(/^(element|text)$/)&&t.toggle("off"),t.events.dispatch("contentLoaded",{msg:["contentLoaded"]})},{once:!0,passive:!0})):window.Hyphenopoly=null,t.cacheFeatureTests&&sessionStorage.setItem("Hyphenopoly_Loader",JSON.stringify(t.clientFeat))}();
+						</script> <base href="https://headtek.de/" /> <link rel="shortcut icon" href="https://headtek.de/images/logos/favicon.ico" type="image/x-icon" /> <link rel="apple-touch-icon" href="https://headtek.de/images/logos/favicon.png" /> <link id="main-css" type="text/css" rel="stylesheet" href="templates/Honeygrid/main.min.css?bust=1567817003" /> <meta name="robots" content="index,follow" /> <link rel="canonical" href="https://headtek.de/de/info/mein-kontakt.html" /> <meta property="og:url" content="https://headtek.de/de/info/mein-kontakt.html"> </head> <body class="page-shop-content" data-gambio-namespace="https://headtek.de/templates/Honeygrid/assets/javascript/engine" data-jse-namespace="https://headtek.de/JSEngine/build" data-gambio-controller="initialize" data-gambio-widget="input_number responsive_image_loader transitions header image_maps modal history dropdown core_workarounds anchor" data-input_number-separator="," > <div id="outer-wrapper" > <header id="header" class="navbar"> <div id="topbar-container"> <div class="navbar-topbar"> <nav data-gambio-widget="menu link_crypter" data-menu-switch-element-position="false" data-menu-events='{"desktop": ["click"], "mobile": ["click"]}' data-menu-ignore-class="dropdown-menu"> <ul class="nav navbar-nav navbar-right"> <li class="dropdown navbar-topbar-item first"> <a title="Anmeldung" href="/de/info/mein-kontakt.html#" class="dropdown-toggle" data-toggle-hover="dropdown"><span class="fa fa-user-o"></span>&nbsp;Kundenlogin</a> <ul class="dropdown-menu dropdown-menu-login arrow-top"> <li class="arrow"></li> <li class="dropdown-header hidden-xs">Kundenlogin</li> <li> <form action="https://headtek.de/de/login.php?action=process" method="post" class="form-horizontal"> <input type="hidden" name="return_url" value="https://headtek.de/de/info/mein-kontakt.html"> <input type="hidden" name="return_url_hash" value="6398cbed7f9b67e5eaf3f8adf2c54e3fd007fb4ade55845a78d843f8b91ed885"> <div class="form-group"> <input autocomplete="username" type="email" id="box-login-dropdown-login-username" class="form-control" placeholder="E-Mail" name="email_address" /> </div> <div class="form-group"> <input autocomplete="current-password" type="password" id="box-login-dropdown-login-password" class="form-control" placeholder="Passwort" name="password" /> </div> <div class="dropdown-footer row"> <input type="submit" class="btn btn-primary btn-block" value="Anmelden" /> <ul> <li> <a title="Konto erstellen" href="https://headtek.de/de/shop.php?do=CreateRegistree">
+												Konto erstellen
+											</a> </li> <li> <a title="Passwort vergessen?" href="https://headtek.de/de/password_double_opt.php">
+												Passwort vergessen?
+											</a> </li> </ul> </div> </form> </li> </ul> </li> <li class="navbar-topbar-item"> <a href="https://headtek.de/de/wish_list.php" title="Merkzettel anzeigen"><span class="fa fa-heart-o"></span>&nbsp;Merkzettel</a> </li> </ul> </nav> </div> </div> <div class="inside"> <div class="row"> <div class="navbar-search collapse"> <p class="navbar-search-header dropdown-header">Suche</p> <form action="de/advanced_search_result.php" method="get" data-gambio-widget="live_search"> <div class="navbar-search-input-group input-group"> <div class="navbar-search-input-group-btn input-group-btn custom-dropdown" data-dropdown-trigger-change="false" data-dropdown-trigger-no-change="false"> <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="dropdown-name">Alle</span> <span class="caret"></span> </button> <ul class="dropdown-menu"> <li><a href="#" data-rel="0">Alle</a></li> <li><a href="#" data-rel="15">Hersteller</a></li> <li><a href="#" data-rel="21">Kopfhörer</a></li> <li><a href="#" data-rel="6">Zubehör</a></li> <li><a href="#" data-rel="36">Wandler und Verstärker</a></li> <li><a href="#" data-rel="42">Angebote</a></li> </ul> <select name="categories_id"> <option value="0">Alle</option> <option value="15">Hersteller</option> <option value="21">Kopfhörer</option> <option value="6">Zubehör</option> <option value="36">Wandler und Verstärker</option> <option value="42">Angebote</option> </select> </div> <input type="text" name="keywords" placeholder="Suche..." class="form-control search-input" autocomplete="off" /> <button type="submit" class="gm-search form-control-feedback"></button> </div> <input type="hidden" value="1" name="inc_subcat" /> <div class="navbar-search-footer visible-xs-block"> <button class="btn btn-primary btn-block" type="submit">
+								Suche...
+							</button> <a href="advanced_search.php" class="btn btn-default btn-block" title="Erweiterte Suche">
+								Erweiterte Suche
+							</a> </div> <div class="search-result-container"></div> </form> </div> <div class="navbar-header" data-gambio-widget="mobile_menu"> <div id="navbar-brand" class="navbar-brand"> <a href="https://headtek.de/de/" title="Headtek"> <img class="img-responsive" src="https://headtek.de/images/logos/headtek_logofinest_blue_214h_logo.png" alt="Headtek-Logo"> </a> </div> <button type="button" class="navbar-toggle" data-mobile_menu-target="#categories .navbar-collapse" data-mobile_menu-body-class="categories-open" data-mobile_menu-toggle-content-visibility> <i class="gm-menu"></i> </button> <button type="button" class="navbar-toggle cart-icon" data-mobile_menu-location="shopping_cart.php"> <i class="gm-cart-basket"></i> <span class="cart-products-count hidden">
+				0
+			</span> </button> <button type="button" class="navbar-toggle" data-mobile_menu-target=".navbar-search" data-mobile_menu-body-class="search-open" data-mobile_menu-toggle-content-visibility> <i class="gm-search"></i> </button> </div> <nav id="cart-container" class="navbar-cart" data-gambio-widget="menu cart_dropdown" data-menu-switch-element-position="false"> <ul class="cart-container-inner"> <li> <a href="https://headtek.de/de/shopping_cart.php" class="dropdown-toggle"> <i class="gm-cart-basket"></i> <span class="cart">
+									Warenkorb<br /> <span class="products">
+										0,00 EUR
+									</span> </span> <span class="cart-products-count hidden"> </span> </a> <ul class="dropdown-menu arrow-top cart-dropdown cart-empty"> <li class="arrow"></li> <li class="cart-dropdown-inside"> <div class="cart-empty">
+							Sie haben noch keine Artikel in Ihrem Warenkorb.
+						</div> </li> </ul> </li> </ul> </nav> </div> </div> <div class="row cookie-bar top" style="background-color: #9c9c9c; opacity: 1" data-gambio-widget="cookie_bar"> <span class="col-sm-9 col-md-10 content"> <div style="text-align: justify;">
+	Diese Webseite nutzt Cookies, um ihre Nutzung zu vereinfachen. Mit der weiteren Nutzung der Website erkl&auml;ren Sie sich mit der Verwendung von Cookies grunds&auml;tzlich einverstanden. Weitere Informationen zum Datenschutz und dazu, wie die Einstellungen zu Cookies von Ihnen ge&auml;ndert werden k&ouml;nnen, finden Sie in unserer Datenschutzerkl&auml;rung.
+</div> </span> <span class="col-sm-3 col-md-2 close-button"> <a href="https://headtek.de/de/info/privatsphaere-und-datenschutz.html" style="background-color: #0b5083; color: #ffffff; margin-right: 15px;" class="btn btn-default btn-sm close-button">
+															Mehr erfahren
+													</a> <span class="fa-stack"> <i class="fa fa-circle fa-inverse fa-stack-2x"></i> <i class="fa fa-close fa-stack-1x"></i> </span> </span> </div> <noscript> <div class="alert alert-danger noscript-notice">
+								JavaScript ist in Ihrem Browser deaktiviert. Aktivieren Sie JavaScript, um alle Funktionen des Shops nutzen und alle Inhalte sehen zu können.
+							</div> </noscript> <div id="categories"> <div class="navbar-collapse collapse"> <nav class="navbar-default navbar-categories" data-gambio-widget="menu"> <ul class="level-1 nav navbar-nav"> <li class="dropdown level-1-child" data-id="15"> <a class="dropdown-toggle" href="https://headtek.de/de/hersteller/" title="Hersteller">
+												
+													Hersteller
+												
+																							</a> <ul data-level="2" class="level-2 dropdown-menu dropdown-menu-child"> <li class="enter-category hidden-sm hidden-md hidden-lg hide-more"> <a class="dropdown-toggle" href="https://headtek.de/de/hersteller/" title="Hersteller">
+																		
+																			Hersteller anzeigen
+																		
+																	</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/64-audio/" title="64 Audio">
+																			64 Audio
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/astrotec/" title="Astrotec">
+																			Astrotec
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/beyerdynamic/" title="Beyerdynamic">
+																			Beyerdynamic
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/blackbird/" title="Blackbird">
+																			Blackbird
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/campfire-audio/" title="Campfire Audio">
+																			Campfire Audio
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/etymotic-research/" title="Etymotic Research">
+																			Etymotic Research
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/fender/" title="Fender">
+																			Fender
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/final/" title="Final">
+																			Final
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/oriveti/" title="Oriveti">
+																			Oriveti
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/rme/" title="RME">
+																			RME
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/soundmagic/" title="SoundMAGIC">
+																			SoundMAGIC
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/hersteller/westone/" title="Westone">
+																			Westone
+																		</a> </li> <li class="enter-category hidden-more hidden-xs"> <a class="dropdown-toggle col-xs-6" href="https://headtek.de/de/hersteller/" title="Hersteller">Hersteller anzeigen</a> <span class="close-menu-container col-xs-6"> <span class="close-flyout"> <i class="fa fa-close"></i> </span> </span> </li> </ul> </li> <li class="dropdown level-1-child" data-id="21"> <a class="dropdown-toggle" href="https://headtek.de/de/kopfhoerer/" title="Kopfhörer">
+												
+													Kopfhörer
+												
+																							</a> <ul data-level="2" class="level-2 dropdown-menu dropdown-menu-child"> <li class="enter-category hidden-sm hidden-md hidden-lg hide-more"> <a class="dropdown-toggle" href="https://headtek.de/de/kopfhoerer/" title="Kopfhörer">
+																		
+																			Kopfhörer anzeigen
+																		
+																	</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/in-ear-kopfhoerer/" title="In-Ear Kopfhörer">
+																			In-Ear Kopfhörer
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/in-ear-monitore/" title="In-Ear Monitore">
+																			In-Ear Monitore
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/ohraufliegende-kopfhoerer/" title="Ohraufliegende Kopfhörer">
+																			Ohraufliegende Kopfhörer
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/ohrumschliessende-kopfhoerer/" title="Ohrumschließende Kopfhörer">
+																			Ohrumschließende Kopfhörer
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/drahtlos-kopfhoerer/" title="Drahtlos-Kopfhörer">
+																			Drahtlos-Kopfhörer
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/kopfhoerer-mit-digitalanschluss/" title="Kopfhörer mit Digitalanschluss">
+																			Kopfhörer mit Digitalanschluss
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/kopfhoerer/sport-kopfhoerer/" title="Sport-Kopfhörer">
+																			Sport-Kopfhörer
+																		</a> </li> <li class="dropdown level-2-child"> <a href="https://headtek.de/de/kopfhoerer/preisreduzierte-artikel/" title="Preisreduzierte Artikel">
+																			Preisreduzierte Artikel
+																		</a> <ul data-level="3" class="level-3 dropdown-menu dropdown-menu-child"> <li class="enter-category"> <a href="https://headtek.de/de/kopfhoerer/preisreduzierte-artikel/" title="Preisreduzierte Artikel" class="dropdown-toggle">
+																						Preisreduzierte Artikel anzeigen
+																					</a> </li> <li class="level-3-child"> <a href="https://headtek.de/de/kopfhoerer/preisreduzierte-artikel/ware-mit-verpackungsschaeden/" title="Ware mit Verpackungsschäden">
+																								Ware mit Verpackungsschäden
+																							</a> </li> <li class="level-3-child"> <a href="https://headtek.de/de/kopfhoerer/preisreduzierte-artikel/generalueberholte-ware/" title="Generalüberholte Ware">
+																								Generalüberholte Ware
+																							</a> </li> </ul> </li> <li class="enter-category hidden-more hidden-xs"> <a class="dropdown-toggle col-xs-6" href="https://headtek.de/de/kopfhoerer/" title="Kopfhörer">Kopfhörer anzeigen</a> <span class="close-menu-container col-xs-6"> <span class="close-flyout"> <i class="fa fa-close"></i> </span> </span> </li> </ul> </li> <li class="dropdown level-1-child" data-id="6"> <a class="dropdown-toggle" href="https://headtek.de/de/zubehoer/" title="Zubehör">
+												
+													Zubehör
+												
+																							</a> <ul data-level="2" class="level-2 dropdown-menu dropdown-menu-child"> <li class="enter-category hidden-sm hidden-md hidden-lg hide-more"> <a class="dropdown-toggle" href="https://headtek.de/de/zubehoer/" title="Zubehör">
+																		
+																			Zubehör anzeigen
+																		
+																	</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/zubehoer/aufbewahrung-transport/" title="Aufbewahrung & Transport">
+																			Aufbewahrung & Transport
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/zubehoer/adapter/" title="Adapter">
+																			Adapter
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/zubehoer/gehoerschutz/" title="Gehörschutz">
+																			Gehörschutz
+																		</a> </li> <li class="level-2-child"> <a href="https://headtek.de/de/zubehoer/kabel/" title="Kabel">
+																			Kabel
+																		</a> </li> <li class="dropdown level-2-child"> <a href="https://headtek.de/de/zubehoer/ohrpolster-ohrpassstuecke/" title="Ohrpolster & Ohrpassstücke">
+																			Ohrpolster & Ohrpassstücke
+																		</a> <ul data-level="3" class="level-3 dropdown-menu dropdown-menu-child"> <li class="enter-category"> <a href="https://headtek.de/de/zubehoer/ohrpolster-ohrpassstuecke/" title="Ohrpolster & Ohrpassstücke" class="dropdown-toggle">
+																						Ohrpolster & Ohrpassstücke anzeigen
+																					</a> </li> <li class="level-3-child"> <a href="https://headtek.de/de/zubehoer/ohrpolster-ohrpassstuecke/in-ear-silikon/" title="In-Ear Silikon">
+																								In-Ear Silikon
+																							</a> </li> <li class="level-3-child"> <a href="https://headtek.de/de/zubehoer/ohrpolster-ohrpassstuecke/in-ear-schaumstoff/" title="In-Ear Schaumstoff">
+																								In-Ear Schaumstoff
+																							</a> </li> <li class="level-3-child"> <a href="https://headtek.de/de/zubehoer/ohrpolster-ohrpassstuecke/ohrumschliessend-ohraufliegend/" title="Bügelkopfhörer">
+																								Bügelkopfhörer
+																							</a> </li> </ul> </li> <li class="level-2-child"> <a href="https://headtek.de/de/zubehoer/sonstige/" title="Sonstige">
+																			Sonstige
+																		</a> </li> <li class="enter-category hidden-more hidden-xs"> <a class="dropdown-toggle col-xs-6" href="https://headtek.de/de/zubehoer/" title="Zubehör">Zubehör anzeigen</a> <span class="close-menu-container col-xs-6"> <span class="close-flyout"> <i class="fa fa-close"></i> </span> </span> </li> </ul> </li> <li class="level-1-child" data-id="36"> <a class="dropdown-toggle" href="https://headtek.de/de/wandler-und-verstaerker/" title="Wandler und Verstärker">
+												
+													Wandler und Verstärker
+												
+																							</a> </li> <li class="level-1-child" data-id="42"> <a class="dropdown-toggle" href="https://headtek.de/de/angebote/" title="Angebote">
+												
+													Angebote
+												
+																							</a> </li> <li class="custom custom-entries hidden-xs"> <a data-id="top_custom-0" href="https://headtek.de/_blog/" target="_blank" title="Blog">
+									Blog
+							</a> </li> <li class="dropdown custom topmenu-content visible-xs" data-id="top_custom-0"> <a class="dropdown-toggle" href="https://headtek.de/_blog/" target="_blank" title="Blog">
+								Blog
+							</a> </li> <li class="dropdown dropdown-more" style="display: none"> <a class="dropdown-toggle" href="#" title="">
+										Weitere
+									</a> <ul class="level-2 dropdown-menu ignore-menu"></ul> </li> </ul> </nav> </div> </div> </header> <div id="wrapper"> <div class="row"> <div id="main"> <div class="main-inside"> <div id="breadcrumb_navi" itemscope itemtype="http://schema.org/BreadcrumbList"> <span class="breadcrumbEntry" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"> <a href="https://headtek.de/" class="headerNavigation" itemprop="item"> <span itemprop="name">Startseite</span> </a> <meta itemprop="position" content="1"> </span> <span class="breadcrumbSeparator"> &raquo; </span> <span class="breadcrumbEntry" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"> <a href="https://headtek.de/de/info/mein-kontakt.html" class="headerNavigation" itemprop="item"> <span itemprop="name">Kontakt</span> </a> <meta itemprop="position" content="2"> </span> </div> <h1>Kontakt</h1> <p>
+	Unser Kundendienst f&uuml;r Fragen, Hinweise, Reklamationen oder Beanstandungen steht Ihnen werktags von 10:00 bis 16:00 Uhr unter<br />
+	Telefon: <strong>+49 30 76 76 73 75</strong> oder per Email: <strong>support@headtek.de</strong> zur Verf&uuml;gung.<br /> <br />
+	Alternativ benutzen Sie bitte unser Kontaktformular. Wir melden uns umgehend bei Ihnen.
+</p> <form class="form-horizontal" id="contactus" action="de/shop_content.php?action=send&amp;coID=7" method="post"> <fieldset> <div class="form-group"> <label for="name" class="control-label col-sm-3">
+									Ihr Name
+								</label> <div class="col-sm-9 col-lg-6 input-container"> <input type="text" placeholder="Ihr Name" id="name" name="name" class="form-control" value="" /> </div> </div> <div class="form-group mandatory"> <label for="email" class="control-label col-sm-3">
+									Ihre E-Mail-Adresse
+								</label> <div class="col-sm-9 col-lg-6 input-container"> <input type="email" placeholder="Ihre E-Mail-Adresse" id="email" name="email" class="form-control" value="" /> </div> </div> <div class="form-group"> <label for="subject" class="control-label col-sm-3">
+									Betreff
+								</label> <div class="col-sm-9 col-lg-6 input-container"> <input type="text" placeholder="Betreff" id="subject" name="subject" class="form-control" value="" /> </div> </div> <div class="form-group"> <label for="message_body" class="control-label col-sm-3">
+									Ihre Nachricht
+								</label> <div class="col-sm-9 col-lg-6 input-container"> <textarea placeholder="Ihre Nachricht"
+											  id="message_body"
+											  name="message_body"
+											  class="form-control"></textarea> </div> </div> <div class="form-group mandatory"> <label for="vvcode_input" class="control-label col-sm-3">
+											Sicherheitscode
+										</label> <div class="col-sm-9 col-lg-6 input-container"> <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script> <div class="g-recaptcha" data-sitekey="6LfqUbAUAAAAAMB2dV333paK86J46msMIQHl6JCF"></div> </div> </div> <fieldset> <span>Die <a href="https://headtek.de/de/popup_content.php?lightbox_mode=1&amp;coID=2" target="_blank" class="lightbox_iframe" data-modal-settings='{"title":"Datenschutzbestimmungen", "convertModal":"info", "sectionSelector":".content_text", "bootstrapClass":"modal-lg", "zIndex": 9999}'>Datenschutzbestimmungen</a> habe ich zur Kenntnis genommen.</span> </fieldset> <div class="row"> <div class="col-xs-6 col-sm-4 col-md-3"> <a class="btn btn-default btn-block history-back" href="/de/info/mein-kontakt.html#" title="Zurück">
+											Zurück
+										</a> </div> <div class="col-xs-6 col-sm-4 col-sm-offset-4 col-md-3 col-md-offset-6 text-right"> <label for="form-input" class="form-input"></label> <input id="form-input" type="text" name="message" value=""> <button type="submit" class="btn btn-primary btn-block" title="Senden">
+											Senden
+										</button> </div> </div> </fieldset> <p class="mandatory-info">
+						* notwendige Angaben
+					</p> </form> </div> </div> <aside id="left"> <div id="gm_box_pos_1" class="gm_box_container"><div class="box box-extrabox1 panel panel-default"> <div class="panel-heading">
+									UNSER SERVICE
+							</div> <div class="panel-body"> <style type="text/css">
+
+	.shakehands {
+		width: 100%;
+		height: auto;
+		margin-bottom: 5px
+	}
+	
+	.info_box {
+	display: block;
+    background-color: #0B5083;
+    padding: 15px;
+    color: #ffffff;
+    margin: 0;
+	text-align: left
+	}
+	
+		.info_box > ul {
+	   font-size: 12px important;
+	}
+	
+ul#zb {
+  list-style: none;
+  margin-left: 10px;
+  padding-left: 0;
+		margin-block-end: 0;
+}
+
+li#zb {
+  padding-left: 2em;
+  text-indent: -1.5em;
+}
+
+li#zb:before {
+  content: "✔";
+  margin-right: 0.6em;
+  }
+  
+#zb a, #zb a:link, #zb a:visited, #zb a:active {
+  text-decoration: none;
+  color: #FFFFFF;
+  }
+#zb a:link:hover {
+  color: #157cd8; }	
+
+	
+</style> <div style="text-align: right"> <img src="https://www.headtek.de/_images/icons/handshake.svg" class="shakehands"> <div class="info_box"> <ul id="zb"> <li id="zb"><span>Kostenfreier Versand ab &euro;25,-</span></li> <li id="zb"><span>Bei Bestellungen an Werktagen bis 14:00 versenden wir am selben Tag</span></li> <li id="zb"><span>30 Tage R&uuml;ckgaberecht</span></li> <li id="zb"><span>Service &amp; Support&nbsp; unter</span><br /> <span>+49 30 76 76 73 75</span><br /> <span"oder>support@headtek.de</span"oder></li> </ul> </div> </div> </div> </div></div> <div id="gm_box_pos_7" class="gm_box_container"><div class="box box-bestsellers panel panel-default"> <div class="panel-heading">
+									Bestseller
+							</div> <div class="panel-body"> <ol> <li class="row"> <a href="https://headtek.de/de/soundmagic-e11c-premium-in-ear-kopfhoerer-mit-fernbedienung-und-mikrofon.html" title="Nach dem Erfolg des mehrfach preisgekrönten Testsiegers E10C hebt SoundMAGIC..."> <span class="col-xs-4"> <span class="img-thumbnail"> <span class="align-helper"></span> <img src="images/product_images/thumbnail_images/E11C_Hero.jpg" class="img-responsive" alt="SoundMAGIC E11C Silver Edition - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon" /> </span> </span> <span class="col-xs-8"> <span class="hyphenate">SoundMAGIC E11C Silver Edition - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon</span> <br /> <span class="price">
+													
+														39,98 EUR
+														
+																													
+													
+												</span> </span> </a> </li> <li class="row"> <a href="https://headtek.de/de/soundmagic-e11-premium-in-ear-kopfhoerer.html" title="Nach dem Erfolg des mehrfach preisgekrönten Testsiegers E10 hebt SoundMAGIC..."> <span class="col-xs-4"> <span class="img-thumbnail"> <span class="align-helper"></span> <img src="images/product_images/thumbnail_images/E11_Hero.jpg" class="img-responsive" alt="SoundMAGIC E11 Silver Edition - Premium In-Ear Kopfhörer" /> </span> </span> <span class="col-xs-8"> <span class="hyphenate">SoundMAGIC E11 Silver Edition - Premium In-Ear Kopfhörer</span> <br /> <span class="price">
+													
+														34,99 EUR
+														
+																													
+													
+												</span> </span> </a> </li> <li class="row"> <a href="https://headtek.de/de/soundmagic-e11c-schwarz-premium-in-ear-kopfhoerer-mit-fernbedienung-und-mikrofon.html" title="Nach dem Erfolg des mehrfach preisgekrönten Testsiegers E10C hebt SoundMAGIC..."> <span class="col-xs-4"> <span class="img-thumbnail"> <span class="align-helper"></span> <img src="images/product_images/thumbnail_images/E11C_Black_Hero_1280.jpg" class="img-responsive" alt="SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon" /> </span> </span> <span class="col-xs-8"> <span class="hyphenate">SoundMAGIC E11C Black - Premium In-Ear Kopfhörer mit Fernbedienung und Mikrofon</span> <br /> <span class="price">
+													
+														39,98 EUR
+														
+																													
+													
+												</span> </span> </a> </li> </ol> </div> </div> <script>
+		gtag('event', 'view_item_list', { items: [{"id":"KSDM1470","name":"SoundMAGIC E11C Silver Edition - Premium In-Ear Kopfh\u00f6rer mit Fernbedienung und Mikrofon","list_name":"Bestseller Box","brand":"SoundMAGIC"},{"id":"KSDM1460","name":"SoundMAGIC E11 Silver Edition - Premium In-Ear Kopfh\u00f6rer","list_name":"Bestseller Box","brand":"SoundMAGIC"},{"id":"KSDM1471","name":"SoundMAGIC E11C Black - Premium In-Ear Kopfh\u00f6rer mit Fernbedienung und Mikrofon","list_name":"Bestseller Box","brand":"SoundMAGIC"}] });
+	</script> <script data-json='[{"id":"KSDM1470","name":"SoundMAGIC E11C Silver Edition - Premium In-Ear Kopfh\u00f6rer mit Fernbedienung und Mikrofon","list_name":"Bestseller Box","brand":"SoundMAGIC"},{"id":"KSDM1460","name":"SoundMAGIC E11 Silver Edition - Premium In-Ear Kopfh\u00f6rer","list_name":"Bestseller Box","brand":"SoundMAGIC"},{"id":"KSDM1471","name":"SoundMAGIC E11C Black - Premium In-Ear Kopfh\u00f6rer mit Fernbedienung und Mikrofon","list_name":"Bestseller Box","brand":"SoundMAGIC"}]' data-selector="li.row" data-match-name-by-template-selector="template.google-analytics-product-name">
+		(function() {
+			const CLICK_EVENT_NAME = 'click';
+			const TIMEOUT = 250;
+
+			const data = JSON.parse(document.currentScript.dataset.json);
+			const selector = document.currentScript.dataset.selector;
+			const templateSelector = document.currentScript.dataset.matchNameByTemplateSelector;
+
+			if (!data || !selector) {
+				throw new Error('Missing or invalid arguments');
+			}
+
+			const triggers = document.currentScript.parentNode.querySelectorAll(selector);
+
+			document.addEventListener('JSENGINE_INIT_FINISHED', function() {
+				triggers.forEach(function(element, index) {
+					let listener;
+
+					listener = function (event) {
+						let isClicked = false;
+						let impression = templateSelector ? impressionByName() : data[index];
+
+						function impressionByName() {
+							const name = element.querySelector(templateSelector).content.textContent.trim();
+
+							return data.find(function(dataset) {
+								return 'name' in dataset && dataset.name === name;
+							});
+						}
+
+						function performClick() {
+							if (!isClicked) {
+								isClicked = true;
+								event.target.click();
+							}
+						}
+
+						event.preventDefault();
+
+						setTimeout(performClick, TIMEOUT);
+
+						gtag('event', 'select_content', {
+							content_type: 'product',
+							items: [impression],
+							event_callback: performClick,
+						});
+
+						element.removeEventListener(CLICK_EVENT_NAME, listener);
+					};
+
+					element.addEventListener(CLICK_EVENT_NAME, listener);
+				});
+			});
+		})();
+	</script> </div> <div id="gm_box_pos_15" class="gm_box_container"><div class="box box-whatsnew panel panel-default"> <div class="panel-heading"> <span class="fa fa-"></span> Neue Artikel				<a href="https://headtek.de/de/products_new.php" class="pull-right" title="Neue Artikel"> <span class="fa fa-arrow-circle-right "></span> </a> </div> <div class="panel-body"> <div class="promotion-box-image"> <a href="https://headtek.de/de/64-audio-tia-fourte-noir-limited-edition-universal-fit-4-treiber-hybrid-in-ear-monitor-mit-apex-und-tia.html" title="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia"> <img class="img-responsive" src="images/product_images/thumbnail_images/fourte_noir_Main.jpg" alt="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia" title="64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia" /> </a> </div> <div> <br /> <span class="promotion-box-title hyphenate"> <a href="https://headtek.de/de/64-audio-tia-fourte-noir-limited-edition-universal-fit-4-treiber-hybrid-in-ear-monitor-mit-apex-und-tia.html" title="64 Audio's Flaggschiff tia Fourté wurde aus dem Wunsch geboren, das...">
+						64 Audio tia Fourté Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia
+					</a> </span> <br /> <br /> <span class="promotion-box-price"> <a href="https://headtek.de/de/64-audio-tia-fourte-noir-limited-edition-universal-fit-4-treiber-hybrid-in-ear-monitor-mit-apex-und-tia.html" title="64 Audio's Flaggschiff tia Fourté wurde aus dem Wunsch geboren, das...">
+						4.199,00 EUR
+					</a> </span> <br /> </div> </div> </div> <script>
+		gtag('event', 'view_item_list', { items: [{"id":"K64U0041","name":"64 Audio tia Fourt\u00e9 Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia","list_name":"Whats New Box","brand":"64 Audio"}] });
+	</script> <script data-json='[{"id":"K64U0041","name":"64 Audio tia Fourt\u00e9 Noir - Limited Edition Universal-Fit 4-Treiber Hybrid In-Ear Monitor mit apex und tia","list_name":"Whats New Box","brand":"64 Audio"}]' data-selector=".panel-body > div" >
+		(function() {
+			const CLICK_EVENT_NAME = 'click';
+			const TIMEOUT = 250;
+
+			const data = JSON.parse(document.currentScript.dataset.json);
+			const selector = document.currentScript.dataset.selector;
+			const templateSelector = document.currentScript.dataset.matchNameByTemplateSelector;
+
+			if (!data || !selector) {
+				throw new Error('Missing or invalid arguments');
+			}
+
+			const triggers = document.currentScript.parentNode.querySelectorAll(selector);
+
+			document.addEventListener('JSENGINE_INIT_FINISHED', function() {
+				triggers.forEach(function(element, index) {
+					let listener;
+
+					listener = function (event) {
+						let isClicked = false;
+						let impression = templateSelector ? impressionByName() : data[index];
+
+						function impressionByName() {
+							const name = element.querySelector(templateSelector).content.textContent.trim();
+
+							return data.find(function(dataset) {
+								return 'name' in dataset && dataset.name === name;
+							});
+						}
+
+						function performClick() {
+							if (!isClicked) {
+								isClicked = true;
+								event.target.click();
+							}
+						}
+
+						event.preventDefault();
+
+						setTimeout(performClick, TIMEOUT);
+
+						gtag('event', 'select_content', {
+							content_type: 'product',
+							items: [impression],
+							event_callback: performClick,
+						});
+
+						element.removeEventListener(CLICK_EVENT_NAME, listener);
+					};
+
+					element.addEventListener(CLICK_EVENT_NAME, listener);
+				});
+			});
+		})();
+	</script> </div> <div id="gm_box_pos_23" class="gm_box_container"><div class="box box-extrabox2 panel panel-default"> <div class="panel-heading">
+									Bildungseinrichtung?
+							</div> <div class="panel-body"> <style type="text/css">
+
+	.bildungslogo {
+		width: 100%;
+		height: auto;
+		margin-bottom: 5px
+	}
+	
+	.info_box {
+		display: block;
+    background-color: #0B5083;
+    padding: 15px;
+    color: #ffffff;
+    margin: 0;
+	}
+	
+	.info_box > p {
+	   font-size: 14px important;
+	}
+	
+</style> <img src="https://www.headtek.de/_images/icons/bildungseinrichtung.svg" class="bildungslogo"> <div class="info_box"> <p style="margin: 0px">Angebote und Konditionen für Schulen, Universitäten und andere private und staatliche Bildungseinrichtungen erfragen Sie bitte unter <a href="mailto:shop@headtek.de?subject=Konditionen%20f%C3%BCr%20Bildungseinrichtungen" target="_blank" style="text-decoration: none; color: white"><strong>shop@headtek.de</strong></a>.<br>Wir erstellen Ihnen gerne ein passendes Angebot.</p> </div> </div> </div></div> </aside> <aside id="right"> </aside> </div> </div> <footer id="footer"> <div class="footer-header"> <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> <style type="text/css">
+	
+/*	
+	
+	body {
+		background-color: #0b5083;
+		font-family: 'Roboto', sans-serif;
+		font-size: 13px
+	}	
+*/
+	
+.NL_footer {
+		position: relative;
+		height: auto;
+		min-height: 90px;
+		width: 1140px;
+    	margin: auto;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		padding: 20px 0;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		align-content:space-between;
+		flex-wrap: nowrap;
+}
+ @media (max-width: 1200px){
+		.NL_footer {
+		width: 940px;
+		}
+	}	
+ 
+	@media (max-width: 991px){
+		.NL_footer {
+        	width: 100%;
+			flex-direction: column;
+			justify-content: space-between;
+            font-size: 16px
+		}
+        .footer_item_container {
+        width: 100% !important;
+        justify-content: center
+        }
+	}	
+	
+.btnNL {
+	position: relative;
+	width: 150px;
+	height: 28px;
+  background: #0F3259;
+  border: none;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  color: #ffffff;
+  font-size: 11px;
+  padding: 5px 10px;
+  text-decoration: none;
+	    transition: 0.2s
+}
+
+.btnNL:hover {
+  background: #0284d4;
+  text-decoration: none;
+}
+
+.form-style {
+	height: 30px; 
+	margin: 0;
+	}
+
+		
+.footer_item_container {
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	color: #ffffff;
+	padding: 6px 0px;
+    width: 152px;
+	min-height: 40px;
+    transition: 0.4s
+	}
+	
+	
+.footer_item_container a:hover {
+text-shadow: 0px 0px 5px #fff;
+} 
+	
+</style> <div class="NL_footer"> <div class="footer_item_container" style="margin-right:auto"> <img src="https://www.headtek.de/_images/icons/Phone.svg" height="26px">&nbsp;<a href="tel:+493076767375" style="text-decoration: none; color: white;">+49 30 76 76 73 75
+		</div> <div class="footer_item_container" style="width: 190px; margin:auto"> <img src="https://www.headtek.de/_images/icons/eMail.svg" height="29px">&nbsp;<a href="mailto:shop@headtek.de" style="text-decoration: none; color: white;">SHOP@HEADTEK.DE</a> </div> <div class="footer_item_container" style="width: 275px; margin:auto"> <img src="https://www.headtek.de/_images/icons/Location.svg" height="35px" > &nbsp; <a href="https://goo.gl/maps/ppr1ejacRRJ2" target="_blank" style="text-decoration: none; text-transform: uppercase; color: white">Dietzgenstr. 56, 13156 Berlin</a> </div> <div class="NL_container" style="margin: none; display: flex; justify-content: flex-end; min-width: 300px; padding: 15px 0"> <form action="newsletter.php" class="form-style" method="post" style="height: 28px"> <div class="NL_btn_container" style="width: 50%; height: auto; float: left; margin-right:0px;"> <input class="btnNL" data-validator-validate="required email" name="email" placeholder="eMail Adresse eintragen" style="color: black; background-image: none; background-color: #ffffff; border-radius: 5px 0px 0px 5px;" type="text" /> </div> <div class="NL_btn_container" style="width: 50%; float: right;"> <input class="btnNL" style="border-radius: 0px 5px 5px 0px;" type="submit" value="Newsletter bestellen" /> </div> </form> </div> </div> </div> <div class="inside"> <div class="row"> <div class="footer-col-1"><div class="box box-content panel panel-default"> <div class="panel-heading"> <span class="panel-title">Informationen</span> </div> <div class="panel-body"> <nav> <ul class="nav"> <li> <a href="https://headtek.de/de/#about_us" target="_top" title="Über Uns">
+													Über Uns
+												</a> </li> <li> <a href="https://headtek.de/de/info/mein-kontakt.html" title="Kontakt">
+													Kontakt
+												</a> </li> <li> <a href="https://headtek.de/de/info/callback-service.html" title="Callback Service">
+													Callback Service
+												</a> </li> <li> <a href="https://headtek.de/de/info/agb.html" title="AGB">
+													AGB
+												</a> </li> <li> <a href="https://headtek.de/de/info/Versand-und-Zahlungsarten.html" title="Versand & Zahlungsarten">
+													Versand & Zahlungsarten
+												</a> </li> <li> <a href="https://headtek.de/de/info/widerruf-rueckgaberichtlinien.html" title="Widerrufsrecht & Rückgaberichtlinien">
+													Widerrufsrecht & Rückgaberichtlinien
+												</a> </li> <li> <a href="https://headtek.de/de/info/faq.html" title="FAQ">
+													FAQ
+												</a> </li> <li> <a href="https://headtek.de/de/info/impressum.html" title="Impressum">
+													Impressum
+												</a> </li> <li> <a href="https://headtek.de/de/info/privatsphaere-und-datenschutz.html" title="Privatsphäre und Datenschutz">
+													Privatsphäre und Datenschutz
+												</a> </li> <li> <a href="https://headtek.de/de/info/ueber-etymotic.html" title="Über Etymotic">
+													Über Etymotic
+												</a> </li> <li> <a href="https://headtek.de/de/info/ueber-beyerdynamic.html" title="Über Beyerdynamic">
+													Über Beyerdynamic
+												</a> </li> <li> <a href="https://headtek.de/de/info/ueber-campfire-audio.html" title="Über Campfire Audio">
+													Über Campfire Audio
+												</a> </li> </ul> </nav> </div> </div></div> <div class="footer-col-2"> <div class="box box-content panel panel-default"> <div class="panel-heading"> <div class="panel-title">
+									Footer 2. Spalte - Marken
+								</div> </div> <div class="panel-body"> <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> <style type="text/css">
+
+	.herstellerlogos {
+		padding: 7px;
+		margin-top: 10px;
+		width: 80px;
+		height:auto;
+	}
+	.herstellerlogos:hover {
+		opacity: 0.5;
+	}
+
+	</style> <p style="text-align: center;"> <strong>OFFIZIELLER PARTNER F&Uuml;R</strong><br> <a href="/hersteller/64-audio/"><img alt="64 Audio" class="herstellerlogos" src="_images/Hersteller_Logos/64Audio_Logo_SM.png"/></a> <a href="/hersteller/soundmagic/"><img alt="SoundMAGIC" class="herstellerlogos" src="_images/Hersteller_Logos/SoundMAGIC_Logo.png"/></a> <a href="/hersteller/final/><img alt="Final" class="herstellerlogos" src="_images/Hersteller_Logos/Final_Logo.svg"/></a> <a href="/hersteller/campfire-audio/"><img alt="Campfire Audio" class="herstellerlogos" src="_images/Hersteller_Logos/Campfire_Audio_Logo.svg" /></a> <a href="/hersteller/etymotic-research/"><img alt="Etymotic" class="herstellerlogos" src="_images/Hersteller_Logos/Etymotic_Logo.png"/></a> <a href="/hersteller/westone/"><img alt="Westone" class="herstellerlogos" src="_images/Hersteller_Logos/Westone_Logo.png"/></a> <a href="/hersteller/blackbird/"><img alt="Blackbird" class="herstellerlogos" src="_images/Hersteller_Logos/Blackbird_Logo.png"/></a> <a href="/hersteller/rme/"><img alt="RME" class="herstellerlogos" src="images/manufacturers/rme_logo.svg"/></a> <a href="/hersteller/oriveti/"><img alt="Oriveti" class="herstellerlogos" src="_images/Hersteller_Logos/Oriveti_Logo.svg"/></a> <a href="/hersteller/astrotec/"><img alt="Astrotec" class="herstellerlogos" src="_images/Hersteller_Logos/Astrotec_Logo.svg"/></a> <a href="/hersteller/fender/"><img alt="Fender" class="herstellerlogos" src="_images/Hersteller_Logos/Fender_logo.svg"/></a> <a href="/hersteller/beyerdynamic/"><img alt="Beyerdynamic" class="herstellerlogos" src="_images/Hersteller_Logos/Beyerdynamic_Logo.svg"/></a> </p> </div> </div> </div> <div class="footer-col-3"> <div class="box box-content panel panel-default"> <div class="panel-heading"> <div class="panel-title">
+										Footer 3. Spalte - Zahlungsmöglichkeiten
+									</div> </div> <div class="panel-body"> <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> <style>
+	
+	.social {
+		width: 45px; 
+		height: auto; 
+		padding: 5px; 
+		outline: none;
+		opacity: 1;
+	}
+	
+	.social:hover {
+		opacity: 0.5;
+	}
+</style> <p style="text-align: center;"> <strong>ZAHLUNGSMETHODEN</strong> </p> <div style="text-align: center;"> <img alt="" src="images/de-pp-logo-150px.png" style="width: 90px; height: auto; padding: 8px;" /> <img alt="" src="images/Sofortueberweisung_Logo.png" style="width: 90px; height: auto; padding: 8px;" /> <img alt="" src="images/ec.png" style="width: 90px; height: auto; padding: 8px;" /> <img alt="" src="images/DHL.jpg" style="width: 80px; height: auto; padding: 8px;" /> <br> <br> <p style="text-align: center;"> <strong>VERSAND</strong> </p> <p style="text-align: center">
+	Ab einem Bestellwert von 25&euro; versenden wir deutschlandweit kostenlos.
+	</p> <p style="text-align: center;"> <img alt="" src="images/DHL_rgb.png" style="width: 100px; height: auto;" /> </p> <br> </div> </div> </div> </div> <div class="footer-col-4"> <div class="box box-content panel panel-default"> <div class="panel-heading"> <div class="panel-title">
+										Footer 4. Spalte - Versand
+									</div> </div> <div class="panel-body"> <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> <style type="text/css">
+@media (min-width: 768px) {
+  #ft4 {
+  float: right;}
+  }
+  
+.other_marketplaces {
+	opacity: 1.0;
+    border: none;
+  outline: none;
+  margin: 10px 10px 0 0;
+} 
+
+.other_marketplaces:hover {
+	opacity: 0.6
+} 
+  
+@media (max-width: 767px) {
+  #ft4 {
+  float: center;}
+  }
+
+.header_info{
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.3;
+	color: #5c5c5c;
+	background-color: none;
+	margin: 0px;
+	display:inline-block;
+	padding: 0px;
+	}
+
+.header_info_container {
+	text-align: center; 
+	width:auto; 
+	transition: 0.3s
+	}
+	
+	
+@media (max-width: 1200px) {
+	.header_info {
+		margin: 0 0 2px 0;
+	}
+	.header_info_container{
+		margin-top:3px;
+	}
+}
+	
+@media (min-width: 768px) and (max-width: 992px){
+	.header_info {
+		margin: 0 0 1px 0;
+		padding: 1px 9px;
+	}
+	.header_info_container{
+		margin-top:13px;
+	}
+}
+	
+	
+.header_info_container > ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.header_info_container > li {
+  padding-left: 0em;
+	padding-bottom: 6px;
+  text-indent: -1.2em;
+  text-align: center;
+}
+
+.header_info_container > li:before {
+  content: "◥";
+}
+	
+
+</style> <div id="ft4"> <p style="text-align: center;"> <strong>UNSER SERVICE</strong><br /> <ul style="padding-inline-start: 0px !important; line-height: 0px; text-align:center; width: 80%; margin: auto" class="header_info_container"> <li class="header_info">
+				 Kostenfreie Lieferung ab einem Bestellwert von 25&euro;
+			</li> <li class="header_info">
+				Bestellungen an Werktagen bis 14:00 werden sofort versendet
+			</li> <li class="header_info" style="letter-spacing: 0.5px">
+				30 Tage R&uuml;ckgaberecht
+			</li> </ul> </p> <p style="text-align: center;"> <strong>PARTNERPROGRAMME</strong><br /> <a href="https://www.idealo.de/preisvergleich/Shop/316237.html" target="_blank"><img alt="" class="other_marketplaces" src="https://img.idealo.com/folder/Shop/316/2/316237/s1_idealo-partner.png" style="width: 60px; height: auto; border:none;" /></a> <a href="https://geizhals.de" target="_blank"><img src="images/Geizhals_Logo.png" alt="Geizhals Preisvergleich" style="padding-top: 20px; width: 120px; height: auto; border:none;"></a> </p> <br> <p style="text-align: center;"> <strong>FOLGEN SIE UNS</strong> </p> <div style="text-align: center;"> <a href="https://www.facebook.com/HEADTEK-1855549778096705/" target="_blank" Title="Facebook"><img alt="Facebook" src="images/ICON_facebook_SM.jpg" class="social"/></a> <a href="https://twitter.com/headtek_de" target="_blank" Title="Twitter"><img alt="Twitter" src="images/ICON_twitter_SM.jpg" class="social"/></a> <a href="https://www.instagram.com/headtek.de/" target="_blank" Title="Instagram"><img alt="Instagram" src="images/ICON_instagram_SM.png" class="social"/></a> </div> </div> <p style="color: #9e9e9e;
+    bottom: -34px;
+    right: 10px;
+    font-size: 10px;
+    position: absolute;"> <strong>&copy;2018 Headtek / KS Distribution GmbH </strong> </p> </div> </div> </div> </div> </div> <div class="footer-bottom"><a href="https://www.gambio.de" target="_blank">Webshop erstellen</a> mit Gambio.de &copy; 2019</div> </footer> </div> <a class="pageup" data-gambio-widget="pageup" title="Nach oben" href="#"> </a> <div class="layer" style="display: none;"> <div id="magnific_wrapper"> <div class="modal-dialog"> <div class="modal-content">
+						{{#title}}
+						<div class="modal-header"> <span class="modal-title">{{title}}</span> </div>
+						{{/title}}
+		
+						<div class="modal-body">
+							{{{items.src}}}
+						</div>
+		
+						{{#showButtons}}
+						<div class="modal-footer">
+							{{#buttons}}
+							<button type="button" id="button_{{index}}_{{uid}}" data-index="{{index}}" class="btn {{class}}" >{{name}}</button>
+							{{/buttons}}
+						</div>
+						{{/showButtons}}
+					</div> </div> </div> <div id="modal_prompt"> <div>
+					{{#content}}
+					<div class="icon">&nbsp;</div> <p>{{.}}</p>
+					{{/content}}
+					<form name="prompt" action="#"> <input type="text" name="input" value="{{value}}" autocomplete="off" /> </form> </div> </div> <div id="modal_alert"> <div class="white-popup">
+					{{#content}}
+					<div class="icon">&nbsp;</div> <p>{{{.}}}</p>
+					{{/content}}
+				</div> </div> </div> <script src="templates/Honeygrid/assets/javascript/init-de.min.js?bust=32b4b4bf8cf63e5da7b5689d6975e648" data-page-token="6887d80c8542dc4e3e8a18d233e50255" id="init-js"></script> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5X3VXQR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5X3VXQR');</script> </body> </html>

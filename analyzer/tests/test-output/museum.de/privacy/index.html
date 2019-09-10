@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="museum.de">
+		<meta property="og:title" content="	Datenschutz
+"/>
+	<meta property="og:description" content="	Museen veröffentlichen Ausstellungstermine, Museums-News und Bildergalerien. Mit App und Magazin macht museum.de Lust auf einen Museumsbesuch.
+"/>
+	<meta property="og:type" content="article"/>
+
+    <link media="all" type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/fonts/font-awesome.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/bootstrap/css/bootstrap.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/css/bootstrap-select.min.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/css/jquery.slider.min.css">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/css/jquery.bxslider.css">
+
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/css/style.css">
+
+
+    
+
+    <script src="http://museum.de/assets/js/jquery-2.1.0.min.js"></script>
+
+    
+    <title>	Datenschutz
+ @museum.de</title>
+    <meta name="description" content="	Museen veröffentlichen Ausstellungstermine, Museums-News und Bildergalerien. Mit App und Magazin macht museum.de Lust auf einen Museumsbesuch.
+">
+	<base href="https://www.museum.de/" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="alternate" type="application/rss+xml"  title="Museums-Events" href="/events-feed/rss" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body class="page-sub-page " id="page-top">
+<div class="wrapper">
+    <div class="navigation">
+    <div class="secondary-navigation">
+        <div class="container">
+           <div class="language">
+           <a href="http://museum.de/de/museen">DE</a>
+           <a href="http://museum.de/en/museen">EN</a>
+           </div>
+            <div class="user-area">
+	            <ul>
+                                      <li><a href="http://museum.de/de/register" class="promoted">Registrieren</a></li>
+                      <li><a href="http://museum.de/de/login">Anmelden</a></li>
+
+                                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <header class="navbar" id="top">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Navigation auffahren</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand nav" id="brand">
+                    <a href="/" title="zur Startseite Magazin museum.de"> <img src="http://museum.de/assets/img/logo.png" alt="MAGAZIN museum.de Logo"></a>
+                </div>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="parent"><a href="http://museum.de/de/museen">Museen</a>
+		            <section id="menuform" class="submenu">
+						<span class="tri"> </span>
+						<form class="searchform" method="post" action="/museen">
+						  <div>Suche Museen</div><br />
+						  <div class="form-group">
+						    <label>in Stadt </label>
+						  <input checked="checked" name="searchtype" type="radio" value="1">
+						  &nbsp;
+						  <label> nach Name </label>
+						  <input name="searchtype" type="radio" value="2">
+						  </div>
+						  <div class="form-group">
+						  <input placeholder="Stadt/Name" name="query" type="text">
+						  </div>
+						  <div class="form-group">
+						  <label for="country" style="display: none">in Land </label>
+						  <select name="country"><option value="DE">Deutschland</option><option value="AT">&Ouml;sterreich</option><option value="CH">Schweiz</option><option value="AF">Afghanistan</option><option value="AX">&Aring;land Islands</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctica</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BA">Bosnia and Herzegovina</option><option value="BW">Botswana</option><option value="BV">Bouvet Island</option><option value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option value="BN">Brunei Darussalam</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CC">Cocos (Keeling) Islands</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CG">Congo</option><option value="CD">Congo, The Democratic Republic of The</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica</option><option value="CI">Cote D ivoire</option><option value="HR">Croatia</option><option value="CU">Cuba</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FK">Falkland Islands (Malvinas)</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HM">Heard Island and Mcdonald Islands</option><option value="VA">Holy See (Vatican City State)</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran, Islamic Republic of</option><option value="IQ">Iraq</option><option value="IE">Ireland</option><option value="IM">Isle of Man</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="KP">Korea, Democratic Peoples Republic of</option><option value="KR">Korea, Republic of</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Lao Peoples Democratic Republic</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libyan Arab Jamahiriya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macao</option><option value="MK">Macedonia, The Former Yugoslav Republic of</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MQ">Martinique</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="YT">Mayotte</option><option value="MX">Mexico</option><option value="FM">Micronesia, Federated States of</option><option value="MD">Moldova, Republic of</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="NU">Niue</option><option value="NF">Norfolk Island</option><option value="MP">Northern Mariana Islands</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PW">Palau</option><option value="PS">Palestinian Territory, Occupied</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PN">Pitcairn</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="RE">Reunion</option><option value="RO">Romania</option><option value="RU">Russian Federation</option><option value="RW">Rwanda</option><option value="SH">Saint Helena</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="PM">Saint Pierre and Miquelon</option><option value="VC">Saint Vincent and The Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">Sao Tome and Principe</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="GS">South Georgia and The South Sandwich Islands</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SD">Sudan</option><option value="SR">Suriname</option><option value="SJ">Svalbard and Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="SY">Syrian Arab Republic</option><option value="TW">Taiwan, Province of China</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania, United Republic of</option><option value="TH">Thailand</option><option value="TL">Timor-leste</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States</option><option value="UM">United States Minor Outlying Islands</option><option value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VE">Venezuela</option><option value="VN">Viet Nam</option><option value="VG">Virgin Islands, British</option><option value="VI">Virgin Islands, U.S.</option><option value="WF">Wallis and Futuna</option><option value="EH">Western Sahara</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option></select>
+                                        <br>
+						  </div>
+						  <div class="form-group">
+						    <input value="Suche" class="btn pull-right btn-default" type="submit">
+						  </div>
+
+						 </form>
+		            </section>
+                    </li>
+                    <li  class="parent"><a href="http://museum.de/de/empfehlungen">Empfehlungen</a>
+                    <span class="tri"> </span>
+	                    <ul class="submenu">
+
+		                    <li><a href="http://museum.de/de/lange-nacht-der-museen">Lange Nacht der Museen</a></li>
+                            <li><a href="http://museum.de/de/akustische-reise">Akustische Reise</a></li>
+                            <li><a href="http://museum.de/de/gewinnspiel">Gewinnspiel</a></li>
+                            <li><a href="https://www.tiqets.com/en/?partner=museumde" target="_blank">Tickets</a></li>
+	                    </ul>
+                    </li>
+                    <li><a href="http://museum.de/de/events">Termine</a></li>
+                    <li><a href="http://museum.de/de/news">News</a></li>
+                    <li><a href="http://museum.de/de/audioguides">Audioguides</a></li>
+                    <li><a href="http://museum.de/de/videos">Videos</a></li>
+                    <li><a href="http://museum.de/de/magazine">Magazin</a></li>
+                    <li><a href="http://museum.de/de/expo">Expo</a></li>
+                    <li class="parent"><a href="http://museum.de/de/about">&Uuml;ber uns</a>
+                    <span class="tri"> </span>
+                    <ul class="submenu">
+
+	                    <li><a href="http://museum.de/de/contact">Kontakt</a></li>
+	                    <li><a href="http://museum.de/de/media">Media Daten</a></li>
+	                    <!--li><a href="http://museum.de/de/itb-berlin">ITB Berlin</a></li-->
+	                    <li><a href="http://museum.de/de/infobackend">Datenpflege</a></li>
+	                    <li><a href="http://museum.de/de/product">Museumsf&uuml;hrer-App</a></li>
+	                    <li><a href="http://museum.de/de/heimatgefluester">Heimatgefl&uuml;ster</a></li>
+                        <li><a href="http://museum.de/blog">Blog</a></li>
+	                    </ul>
+	                </li>
+                </ul>
+            </nav><!-- /.navbar collapse-->
+        </header><!-- /.navbar -->
+    </div><!-- /.container -->
+</div><!-- /.navigation -->
+    
+
+    <div id="page-content">
+
+
+            
+            <!-- content begin -->
+    		
+
+        <div class="container">
+            <div class="row">
+                <!-- Contact -->
+                <div class="col-md-12 col-sm-12">
+                    <section id="agent-detail">
+                        <header><h1>Datenschutzerklärung</h1></header>
+                        <section id="contact-information">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-5">
+                                    <section id="address">
+                                        <header><h3>Adresse</h3></header>
+                                        <address>
+                                            <strong>museum.de </strong><br>
+                                            Dipl.-Inf. (TU) Uwe Strauch <br>
+                                            Postfach 1156<br>
+                                            Ostwall 2<br>
+                                            46509 Xanten
+                                        </address>
+                                        <p>Tel 0 28 01-9 88 20 72<br>
+                                        Fax 0 28 01-9 88 20 73<br>
+                                        <a href="mailto:contact@museum.de">contact@museum.de</a><br>
+                                        <a href="http://www.museum.de">http://www.museum.de</a></p>
+                                    </section><!-- /#address -->
+
+                                </div><!-- /.col-md-4 -->
+                                <section id="legal">
+                                	<div class="col-md-8 col-sm-7">
+
+										<article class="postcontent">
+					                       <h1 class="entry-title h2">Datenschutz</h1>		</header><!-- .entry-header -->
+
+		
+		                                  <div class="entry-content">
+                                              <h3><strong>1. Auf einen Blick</strong></h3>
+
+<p><strong>Allgemeine Hinweise</strong></p>
+
+<p>Die folgenden Hinweise geben einen einfachen &Uuml;berblick dar&uuml;ber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie pers&ouml;nlich identifiziert werden k&ouml;nnen. Ausf&uuml;hrliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgef&uuml;hrten Datenschutzerkl&auml;rung.</p>
+
+<p><strong>Datenerfassung auf unserer Website</strong></p>
+
+<p><strong>Wer ist verantwortlich f&uuml;r die Datenerfassung auf dieser Website?</strong></p>
+
+<p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten k&ouml;nnen Sie dem Impressum dieser Website entnehmen.</p>
+
+<p><strong>Wie erfassen wir Ihre Daten?</strong></p>
+
+<p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben.</p>
+
+<p>Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie unsere Website betreten.</p>
+
+<p><strong>Wof&uuml;r nutzen wir Ihre Daten?</strong></p>
+
+<p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gew&auml;hrleisten. Andere Daten k&ouml;nnen zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
+
+<p><strong>Welche Rechte haben Sie bez&uuml;glich Ihrer Daten?</strong></p>
+
+<p>Sie haben jederzeit das Recht unentgeltlich Auskunft &uuml;ber Herkunft, Empf&auml;nger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben au&szlig;erdem ein Recht, die Berichtigung, Sperrung oder L&ouml;schung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz k&ouml;nnen Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden. Des Weiteren steht Ihnen ein Beschwerderecht bei der zust&auml;ndigen Aufsichtsbeh&ouml;rde zu.</p>
+
+<p><strong>Analyse-Tools und Tools von Drittanbietern</strong></p>
+
+<p>Beim Besuch unserer Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Das geschieht vor allem mit Cookies und mit sogenannten Analyseprogrammen. Die Analyse Ihres Surf-Verhaltens erfolgt in der Regel anonym; das Surf-Verhalten kann nicht zu Ihnen zur&uuml;ckverfolgt werden. Sie k&ouml;nnen dieser Analyse widersprechen oder sie durch die Nichtbenutzung bestimmter Tools verhindern. Detaillierte Informationen dazu finden Sie in der folgenden Datenschutzerkl&auml;rung.</p>
+
+<p>Sie k&ouml;nnen dieser Analyse widersprechen. &Uuml;ber die Widerspruchsm&ouml;glichkeiten werden wir Sie in dieser Datenschutzerkl&auml;rung informieren.</p>
+
+<h3><strong>2. Allgemeine Hinweise und Pflichtinformationen</strong></h3>
+
+<p><strong>Datenschutz</strong></p>
+
+<p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer pers&ouml;nlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerkl&auml;rung.</p>
+
+<p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie pers&ouml;nlich identifiziert werden k&ouml;nnen. Die vorliegende Datenschutzerkl&auml;rung erl&auml;utert, welche Daten wir erheben und wof&uuml;r wir sie nutzen. Sie erl&auml;utert auch, wie und zu welchem Zweck das geschieht.</p>
+
+<p>Wir weisen darauf hin, dass die Daten&uuml;bertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitsl&uuml;cken aufweisen kann. Ein l&uuml;ckenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht m&ouml;glich.</p>
+
+<p>Hinweis zur verantwortlichen Stelle</p>
+
+<p><strong>Die verantwortliche Stelle f&uuml;r die Datenverarbeitung auf dieser Website ist:</strong></p>
+
+<p>museum.de<br />
+Postfach 1156<br />
+Ostwall 2<br />
+46509 Xanten</p>
+
+<p>Telefon: +49 28 01/9 88 20 72<br />
+E-Mail: <a href="mailto:c%6Fntact@m%75seu%6D.d%65">contact@museum.de</a></p>
+
+<p>Verantwortliche Stelle ist die nat&uuml;rliche oder juristische Person, die allein oder gemeinsam mit anderen &uuml;ber die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z.B. Namen, E-Mail-Adressen o. &Auml;.) entscheidet.</p>
+
+<p><strong>Widerruf Ihrer Einwilligung zur Datenverarbeitung</strong></p>
+
+<p>Viele Datenverarbeitungsvorg&auml;nge sind nur mit Ihrer ausdr&uuml;cklichen Einwilligung m&ouml;glich. Sie k&ouml;nnen eine bereits erteilte Einwilligung jederzeit widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns. Die Rechtm&auml;&szlig;igkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unber&uuml;hrt.</p>
+
+<p><strong>Beschwerderecht bei der zust&auml;ndigen Aufsichtsbeh&ouml;rde</strong></p>
+
+<p>Im Falle datenschutzrechtlicher Verst&ouml;&szlig;e steht dem Betroffenen ein Beschwerderecht bei der zust&auml;ndigen Aufsichtsbeh&ouml;rde zu. Zust&auml;ndige Aufsichtsbeh&ouml;rde in datenschutzrechtlichen Fragen ist der Landesdatenschutzbeauftragte des Bundeslandes, in dem unser Unternehmen seinen Sitz hat. Eine Liste der Datenschutzbeauftragten sowie deren Kontaktdaten k&ouml;nnen folgendem Link entnommen werden: <a href="https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html" target="_blank">https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html</a>.</p>
+
+<p><strong>Recht auf Daten&uuml;bertragbarkeit</strong></p>
+
+<p>Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erf&uuml;llung eines Vertrags automatisiert verarbeiten, an sich oder an einen Dritten in einem g&auml;ngigen, maschinenlesbaren Format aush&auml;ndigen zu lassen. Sofern Sie die direkte &Uuml;bertragung der Daten an einen anderen Verantwortlichen verlangen, erfolgt dies nur, soweit es technisch machbar ist.</p>
+
+<p><strong>SSL- bzw. TLS-Verschl&uuml;sselung</strong></p>
+
+<p>Diese Seite nutzt aus Sicherheitsgr&uuml;nden und zum Schutz der &Uuml;bertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL-bzw. TLS-Verschl&uuml;sselung. Eine verschl&uuml;sselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von &ldquo;http://&rdquo; auf &ldquo;https://&rdquo; wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+
+<p>Wenn die SSL- bzw. TLS-Verschl&uuml;sselung aktiviert ist, k&ouml;nnen die Daten, die Sie an uns &uuml;bermitteln, nicht von Dritten mitgelesen werden.</p>
+
+<p><strong>Verschl&uuml;sselter Zahlungsverkehr auf dieser Website</strong></p>
+
+<p>Besteht nach dem Abschluss eines kostenpflichtigen Vertrags eine Verpflichtung, uns Ihre Zahlungsdaten (z.B. Kontonummer bei Einzugserm&auml;chtigung) zu &uuml;bermitteln, werden diese Daten zur Zahlungsabwicklung ben&ouml;tigt.</p>
+
+<p>Der Zahlungsverkehr &uuml;ber die g&auml;ngigen Zahlungsmittel (Visa/MasterCard, Lastschriftverfahren) erfolgt ausschlie&szlig;lich &uuml;ber eine verschl&uuml;sselte SSL- bzw. TLS-Verbindung. Eine verschl&uuml;sselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von &ldquo;http://&rdquo; auf &ldquo;https://&rdquo; wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+
+<p>Bei verschl&uuml;sselter Kommunikation k&ouml;nnen Ihre Zahlungsdaten, die Sie an uns &uuml;bermitteln, nicht von Dritten mitgelesen werden.</p>
+
+<p><strong>Auskunft, Sperrung, L&ouml;schung</strong></p>
+
+<p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft &uuml;ber Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empf&auml;nger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung, Sperrung oder L&ouml;schung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten k&ouml;nnen Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
+
+<p><strong>Widerspruch gegen Werbe-Mails</strong></p>
+
+<p>Der Nutzung von im Rahmen der Impressumspflicht ver&ouml;ffentlichten Kontaktdaten zur &Uuml;bersendung von nicht ausdr&uuml;cklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen. Die Betreiber der Seiten behalten sich ausdr&uuml;cklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-E-Mails, vor.</p>
+
+<h3><strong>3. Datenerfassung auf unserer Website</strong></h3>
+
+<p><strong>Cookies</strong></p>
+
+<p>Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.</p>
+
+<p>Die meisten der von uns verwendeten Cookies sind so genannte &ldquo;Session-Cookies&rdquo;. Sie werden nach Ende Ihres Besuchs automatisch gel&ouml;scht. Andere Cookies bleiben auf Ihrem Endger&auml;t gespeichert bis Sie diese l&ouml;schen. Diese Cookies erm&ouml;glichen es uns, Ihren Browser beim n&auml;chsten Besuch wiederzuerkennen.</p>
+
+<p>Sie k&ouml;nnen Ihren Browser so einstellen, dass Sie &uuml;ber das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies f&uuml;r bestimmte F&auml;lle oder generell ausschlie&szlig;en sowie das automatische L&ouml;schen der Cookies beim Schlie&szlig;en des Browser aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalit&auml;t dieser Website eingeschr&auml;nkt sein.</p>
+
+<p>Cookies, die zur Durchf&uuml;hrung des elektronischen Kommunikationsvorgangs oder zur Bereitstellung bestimmter, von Ihnen erw&uuml;nschter Funktionen (z.B. Warenkorbfunktion) erforderlich sind, werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Der Websitebetreiber hat ein berechtigtes Interesse an der Speicherung von Cookies zur technisch fehlerfreien und optimierten Bereitstellung seiner Dienste. Soweit andere Cookies (z.B. Cookies zur Analyse Ihres Surfverhaltens) gespeichert werden, werden diese in dieser Datenschutzerkl&auml;rung gesondert behandelt.</p>
+
+<p><strong>Server-Log-Dateien</strong></p>
+
+<p>Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns &uuml;bermittelt. Dies sind:</p>
+
+<ul>
+	<li>Browsertyp und Browserversion</li>
+	<li>verwendetes Betriebssystem</li>
+	<li>Referrer URL</li>
+	<li>Hostname des zugreifenden Rechners</li>
+	<li>Uhrzeit der Serveranfrage</li>
+	<li>IP-Adresse</li>
+</ul>
+
+<p>Eine Zusammenf&uuml;hrung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.</p>
+
+<p>Grundlage f&uuml;r die Datenverarbeitung ist Art. 6 Abs. 1 lit. b DSGVO, der die Verarbeitung von Daten zur Erf&uuml;llung eines Vertrags oder vorvertraglicher Ma&szlig;nahmen gestattet.</p>
+
+<p><strong>Kontaktformular</strong></p>
+
+<p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und f&uuml;r den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+
+<p>Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt somit ausschlie&szlig;lich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie k&ouml;nnen diese Einwilligung jederzeit widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns. Die Rechtm&auml;&szlig;igkeit der bis zum Widerruf erfolgten Datenverarbeitungsvorg&auml;nge bleibt vom Widerruf unber&uuml;hrt.</p>
+
+<p>Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur L&ouml;schung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck f&uuml;r die Datenspeicherung entf&auml;llt (z.B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen &ndash; insbesondere Aufbewahrungsfristen &ndash; bleiben unber&uuml;hrt.</p>
+
+<p><strong>Registrierung auf dieser Website</strong></p>
+
+<p>Sie k&ouml;nnen sich auf unserer Website registrieren, um zus&auml;tzliche Funktionen auf der Seite zu nutzen. Die dazu eingegebenen Daten verwenden wir nur zum Zwecke der Nutzung des jeweiligen Angebotes oder Dienstes, f&uuml;r den Sie sich registriert haben. Die bei der Registrierung abgefragten Pflichtangaben m&uuml;ssen vollst&auml;ndig angegeben werden. Anderenfalls werden wir die Registrierung ablehnen.</p>
+
+<p>F&uuml;r wichtige &Auml;nderungen etwa beim Angebotsumfang oder bei technisch notwendigen &Auml;nderungen nutzen wir die bei der Registrierung angegebene E-Mail-Adresse, um Sie auf diesem Wege zu informieren.</p>
+
+<p>Die Verarbeitung der bei der Registrierung eingegebenen Daten erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie k&ouml;nnen eine von Ihnen erteilte Einwilligung jederzeit widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns. Die Rechtm&auml;&szlig;igkeit der bereits erfolgten Datenverarbeitung bleibt vom Widerruf unber&uuml;hrt.</p>
+
+<p>Die bei der Registrierung erfassten Daten werden von uns gespeichert, solange Sie auf unserer Website registriert sind und werden anschlie&szlig;end gel&ouml;scht. Gesetzliche Aufbewahrungsfristen bleiben unber&uuml;hrt.</p>
+
+<p><strong>Registrierung mit Facebook Connect</strong></p>
+
+<p>Statt einer direkten Registrierung auf unserer Website k&ouml;nnen Sie sich mit Facebook Connect registrieren. Anbieter dieses Dienstes ist die Facebook Ireland Limited, 4 Grand Canal Square, Dublin 2, Irland.</p>
+
+<p>Wenn Sie sich f&uuml;r die Registrierung mit Facebook Connect entscheiden und auf den &ldquo;Login with Facebook&rdquo;- / &ldquo;Connect with Facebook&rdquo;-Button klicken, werden Sie automatisch auf die Plattform von Facebook weitergeleitet. Dort k&ouml;nnen Sie sich mit Ihren Nutzungsdaten anmelden. Dadurch wird Ihr Facebook-Profil mit unserer Website bzw. unseren Diensten verkn&uuml;pft. Durch diese Verkn&uuml;pfung erhalten wir Zugriff auf Ihre bei Facebook hinterlegten Daten. Dies sind vor allem:</p>
+
+<ul>
+	<li>Facebook-Name</li>
+	<li>Facebook-Profil- und Titelbild</li>
+	<li>Facebook-Titelbild</li>
+	<li>bei Facebook hinterlegte E-Mail-Adresse</li>
+	<li>Facebook-ID</li>
+	<li>Facebook-Freundeslisten</li>
+	<li>Facebook Likes (&ldquo;Gef&auml;llt-mir&rdquo;-Angaben)</li>
+	<li>Geburtstag</li>
+	<li>Geschlecht</li>
+	<li>Land</li>
+	<li>Sprache</li>
+</ul>
+
+<p>Diese Daten werden zur Einrichtung, Bereitstellung und Personalisierung Ihres Accounts genutzt.</p>
+
+<p>Weitere Informationen finden Sie in den Facebook-Nutzungsbedingungen und den Facebook-Datenschutzbestimmungen. Diese finden Sie unter: <a href="https://de-de.facebook.com/about/privacy/" target="_blank">https://de-de.facebook.com/about/privacy/</a> und <a href="https://www.facebook.com/legal/terms/" target="_blank">https://www.facebook.com/legal/terms/</a>.</p>
+
+<p><strong>Kommentarfunktion auf dieser Website</strong></p>
+
+<p>F&uuml;r die Kommentarfunktion auf dieser Seite werden neben Ihrem Kommentar auch Angaben zum Zeitpunkt der Erstellung des Kommentars, Ihre E-Mail-Adresse und, wenn Sie nicht anonym posten, der von Ihnen gew&auml;hlte Nutzername gespeichert.</p>
+
+<p><strong>Speicherung der IP-Adresse</strong></p>
+
+<p>Unsere Kommentarfunktion speichert die IP-Adressen der Nutzer, die Kommentare verfassen. Da wir Kommentare auf unserer Seite nicht vor der Freischaltung pr&uuml;fen, ben&ouml;tigen wir diese Daten, um im Falle von Rechtsverletzungen wie Beleidigungen oder Propaganda gegen den Verfasser vorgehen zu k&ouml;nnen.</p>
+
+<p><strong>Abonnieren von Kommentaren</strong></p>
+
+<p>Als Nutzer der Seite k&ouml;nnen Sie nach einer Anmeldung Kommentare abonnieren. Sie erhalten eine Best&auml;tigungsemail, um zu pr&uuml;fen, ob Sie der Inhaber der angegebenen E-Mail-Adresse sind. Sie k&ouml;nnen diese Funktion jederzeit &uuml;ber einen Link in den Info-Mails abbestellen. Die im Rahmen des Abonnierens von Kommentaren eingegebenen Daten werden in diesem Fall gel&ouml;scht; wenn Sie diese Daten f&uuml;r andere Zwecke und an anderer Stelle (z.B. Newsletterbestellung) an uns &uuml;bermittelt haben, verbleiben die jedoch bei uns.</p>
+
+<p><strong>Speicherdauer der Kommentare</strong></p>
+
+<p>Die Kommentare und die damit verbundenen Daten (z.B. IP-Adresse) werden gespeichert und verbleiben auf unserer Website, bis der kommentierte Inhalt vollst&auml;ndig gel&ouml;scht wurde oder die Kommentare aus rechtlichen Gr&uuml;nden gel&ouml;scht werden m&uuml;ssen (z.B. beleidigende Kommentare).</p>
+
+<p><strong>Rechtsgrundlage</strong></p>
+
+<p>Die Speicherung der Kommentare erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie k&ouml;nnen eine von Ihnen erteilte Einwilligung jederzeit widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns. Die Rechtm&auml;&szlig;igkeit der bereits erfolgten Datenverarbeitungsvorg&auml;nge bleibt vom Widerruf unber&uuml;hrt.</p>
+
+<p><strong>Verarbeiten von Daten (Kunden- und Vertragsdaten)</strong></p>
+
+<p>Wir erheben, verarbeiten und nutzen personenbezogene Daten nur, soweit sie f&uuml;r die Begr&uuml;ndung, inhaltliche Ausgestaltung oder &Auml;nderung des Rechtsverh&auml;ltnisses erforderlich sind (Bestandsdaten). Dies erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, der die Verarbeitung von Daten zur Erf&uuml;llung eines Vertrags oder vorvertraglicher Ma&szlig;nahmen gestattet. Personenbezogene Daten &uuml;ber die Inanspruchnahme unserer Internetseiten (Nutzungsdaten) erheben, verarbeiten und nutzen wir nur, soweit dies erforderlich ist, um dem Nutzer die Inanspruchnahme des Dienstes zu erm&ouml;glichen oder abzurechnen.</p>
+
+<p>Die erhobenen Kundendaten werden nach Abschluss des Auftrags oder Beendigung der Gesch&auml;ftsbeziehung gel&ouml;scht. Gesetzliche Aufbewahrungsfristen bleiben unber&uuml;hrt.</p>
+
+<p><strong>Daten&uuml;bermittlung bei Vertragsschluss f&uuml;r Dienstleistungen und digitale Inhalte</strong></p>
+
+<p>Wir &uuml;bermitteln personenbezogene Daten an Dritte nur dann, wenn dies im Rahmen der Vertragsabwicklung notwendig ist, etwa an das mit der Zahlungsabwicklung beauftragte Kreditinstitut.</p>
+
+<p>Eine weitergehende &Uuml;bermittlung der Daten erfolgt nicht bzw. nur dann, wenn Sie der &Uuml;bermittlung ausdr&uuml;cklich zugestimmt haben. Eine Weitergabe Ihrer Daten an Dritte ohne ausdr&uuml;ckliche Einwilligung, etwa zu Zwecken der Werbung, erfolgt nicht.</p>
+
+<p>Grundlage f&uuml;r die Datenverarbeitung ist Art. 6 Abs. 1 lit. b DSGVO, der die Verarbeitung von Daten zur Erf&uuml;llung eines Vertrags oder vorvertraglicher Ma&szlig;nahmen gestattet.</p>
+
+<h3><strong>4. Analyse Tools und Werbung</strong></h3>
+
+<p><strong>Google Analytics</strong></p>
+
+<p>Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics. Anbieter ist die Google Inc., 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.</p>
+
+<p>Google Analytics verwendet so genannte &ldquo;Cookies&rdquo;. Das sind Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie erm&ouml;glichen. Die durch den Cookie erzeugten Informationen &uuml;ber Ihre Benutzung dieser Website werden in der Regel an einen Server von Google in den USA &uuml;bertragen und dort gespeichert.</p>
+
+<p>Die Speicherung von Google-Analytics-Cookies erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der Analyse des Nutzerverhaltens, um sowohl sein Webangebot als auch seine Werbung zu optimieren.</p>
+
+<p><strong>IP Anonymisierung</strong></p>
+
+<p>Wir haben auf dieser Website die Funktion IP-Anonymisierung aktiviert. Dadurch wird Ihre IP-Adresse von Google innerhalb von Mitgliedstaaten der Europ&auml;ischen Union oder in anderen Vertragsstaaten des Abkommens &uuml;ber den Europ&auml;ischen Wirtschaftsraum vor der &Uuml;bermittlung in die USA gek&uuml;rzt. Nur in Ausnahmef&auml;llen wird die volle IP-Adresse an einen Server von Google in den USA &uuml;bertragen und dort gek&uuml;rzt. Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports &uuml;ber die Websiteaktivit&auml;ten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen gegen&uuml;ber dem Websitebetreiber zu erbringen. Die im Rahmen von Google Analytics von Ihrem Browser &uuml;bermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengef&uuml;hrt.</p>
+
+<p><strong>Browser Plugin</strong></p>
+
+<p>Sie k&ouml;nnen die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht s&auml;mtliche Funktionen dieser Website vollumf&auml;nglich werden nutzen k&ouml;nnen. Sie k&ouml;nnen dar&uuml;ber hinaus die Erfassung der durch den Cookie erzeugten und auf Ihre Nutzung der Website bezogenen Daten (inkl. Ihrer IP-Adresse) an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem Sie das unter dem folgenden Link verf&uuml;gbare Browser-Plugin herunterladen und installieren: <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank">https://tools.google.com/dlpage/gaoptout?hl=de</a>.</p>
+
+<p><strong>Widerspruch gegen Datenerfassung</strong></p>
+
+<p>Sie k&ouml;nnen die Erfassung Ihrer Daten durch Google Analytics verhindern, indem Sie auf folgenden Link klicken. Es wird ein Opt-Out-Cookie gesetzt, der die Erfassung Ihrer Daten bei zuk&uuml;nftigen Besuchen dieser Website verhindert: Google Analytics deaktivieren.</p>
+
+<p>Mehr Informationen zum Umgang mit Nutzerdaten bei Google Analytics finden Sie in der Datenschutzerkl&auml;rung von Google: <a href="https://support.google.com/analytics/answer/6004245?hl=de" target="_blank">https://support.google.com/analytics/answer/6004245?hl=de</a>.</p>
+
+<p><strong>Auftragsdatenverarbeitung</strong></p>
+
+<p>Wir haben mit Google einen Vertrag zur Auftragsdatenverarbeitung abgeschlossen und setzen die strengen Vorgaben der deutschen Datenschutzbeh&ouml;rden bei der Nutzung von Google Analytics vollst&auml;ndig um.</p>
+
+<p><strong>Demografische Merkmale bei Google Analytics</strong></p>
+
+<p>Diese Website nutzt die Funktion &ldquo;demografische Merkmale&rdquo; von Google Analytics. Dadurch k&ouml;nnen Berichte erstellt werden, die Aussagen zu Alter, Geschlecht und Interessen der Seitenbesucher enthalten. Diese Daten stammen aus interessenbezogener Werbung von Google sowie aus Besucherdaten von Drittanbietern. Diese Daten k&ouml;nnen keiner bestimmten Person zugeordnet werden. Sie k&ouml;nnen diese Funktion jederzeit &uuml;ber die Anzeigeneinstellungen in Ihrem Google-Konto deaktivieren oder die Erfassung Ihrer Daten durch Google Analytics wie im Punkt &ldquo;Widerspruch gegen Datenerfassung&rdquo; dargestellt generell untersagen.</p>
+
+<p><strong>WordPress Stats</strong></p>
+
+<p>Diese Website nutzt das WordPress Tool Stats, um Besucherzugriffe statistisch auszuwerten. Anbieter ist die Automattic Inc., 60 29th Street #343, San Francisco, CA 94110-4929, USA.</p>
+
+<p>WordPress Stats verwendet Cookies, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website erlauben. Die durch die Cookies generierten Informationen &uuml;ber die Benutzung unserer Website werden auf Servern in den USA gespeichert. Ihre IP-Adresse wird nach der Verarbeitung und vor der Speicherung anonymisiert.</p>
+
+<p>&ldquo;WordPress-Stats&rdquo;-Cookies verbleiben auf Ihrem Endger&auml;t, bis Sie sie l&ouml;schen.</p>
+
+<p>Die Speicherung von &ldquo;WordPress Stats&rdquo;-Cookies erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der anonymisierten Analyse des Nutzerverhaltens, um sowohl sein Webangebot als auch seine Werbung zu optimieren.</p>
+
+<p>Sie k&ouml;nnen Ihren Browser so einstellen, dass Sie &uuml;ber das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies f&uuml;r bestimmte F&auml;lle oder generell ausschlie&szlig;en sowie das automatische L&ouml;schen der Cookies beim Schlie&szlig;en des Browser aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalit&auml;t unserer Website eingeschr&auml;nkt sein.</p>
+
+<p>Sie k&ouml;nnen der Erhebung und Nutzung Ihrer Daten f&uuml;r die Zukunft widersprechen, indem Sie mit einem Klick auf diesen Link einen Opt-Out-Cookie in Ihrem Browser setzen: <a href="https://www.quantcast.com/opt-out/" target="_blank">https://www.quantcast.com/opt-out/</a>.</p>
+
+<p>Wenn Sie die Cookies auf Ihrem Rechner l&ouml;schen, m&uuml;ssen Sie den Opt-Out-Cookie erneut setzen.</p>
+
+<p><strong>Google reCAPTCHA</strong></p>
+
+<p>Wir nutzen &ldquo;Google reCAPTCHA&rdquo; (im Folgenden &ldquo;reCAPTCHA&rdquo;) auf unseren Websites. Anbieter ist die Google Inc., 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (&ldquo;Google&rdquo;).</p>
+
+<p>Mit reCAPTCHA soll &uuml;berpr&uuml;ft werden, ob die Dateneingabe auf unseren Websites (z.B. in einem Kontaktformular) durch einen Menschen oder durch ein automatisiertes Programm erfolgt. Hierzu analysiert reCAPTCHA das Verhalten des Websitebesuchers anhand verschiedener Merkmale. Diese Analyse beginnt automatisch, sobald der Websitebesucher die Website betritt. Zur Analyse wertet reCAPTCHA verschiedene Informationen aus (z.B. IP-Adresse, Verweildauer des Websitebesuchers auf der Website oder vom Nutzer get&auml;tigte Mausbewegungen). Die bei der Analyse erfassten Daten werden an Google weitergeleitet.</p>
+
+<p>Die reCAPTCHA-Analysen laufen vollst&auml;ndig im Hintergrund. Websitebesucher werden nicht darauf hingewiesen, dass eine Analyse stattfindet.</p>
+
+<p>Die Datenverarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse daran, seine Webangebote vor missbr&auml;uchlicher automatisierter Aussp&auml;hung und vor SPAM zu sch&uuml;tzen.</p>
+
+<p>Weitere Informationen zu Google reCAPTCHA sowie die Datenschutzerkl&auml;rung von Google entnehmen Sie folgenden Links: <a href="https://www.google.com/intl/de/policies/privacy/" target="_blank">https://www.google.com/intl/de/policies/privacy/</a> und <a href="https://www.google.com/recaptcha/intro/android.html" target="_blank">https://www.google.com/recaptcha/intro/android.html</a>.</p>
+
+<h3><strong>5. Newsletter</strong></h3>
+
+<p><strong>Newsletterdaten</strong></p>
+
+<p>Wenn Sie den auf der Website angebotenen Newsletter beziehen m&ouml;chten, ben&ouml;tigen wir von Ihnen eine E-Mail-Adresse sowie Informationen, welche uns die &Uuml;berpr&uuml;fung gestatten, dass Sie der Inhaber der angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind. Weitere Daten werden nicht bzw. nur auf freiwilliger Basis erhoben. Diese Daten verwenden wir ausschlie&szlig;lich f&uuml;r den Versand der angeforderten Informationen und geben diese nicht an Dritte weiter.</p>
+
+<p>Die Verarbeitung der in das Newsletteranmeldeformular eingegebenen Daten erfolgt ausschlie&szlig;lich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Die erteilte Einwilligung zur Speicherung der Daten, der E-Mail-Adresse sowie deren Nutzung zum Versand des Newsletters k&ouml;nnen Sie jederzeit widerrufen, etwa &uuml;ber den &ldquo;Austragen&rdquo;-Link im Newsletter. Die Rechtm&auml;&szlig;igkeit der bereits erfolgten Datenverarbeitungsvorg&auml;nge bleibt vom Widerruf unber&uuml;hrt.</p>
+
+<p>Die von Ihnen zum Zwecke des Newsletter-Bezugs bei uns hinterlegten Daten werden von uns bis zu Ihrer Austragung aus dem Newsletter gespeichert und nach der Abbestellung des Newsletters gel&ouml;scht. Daten, die zu anderen Zwecken bei uns gespeichert wurden (z.B. E-Mail-Adressen f&uuml;r den Mitgliederbereich) bleiben hiervon unber&uuml;hrt.</p>
+
+<p>&nbsp;</p>
+
+<h3><strong>6. Plugins und Tools</strong></h3>
+
+<p><strong>YouTube</strong></p>
+
+<p>Unsere Website nutzt Plugins der von Google betriebenen Seite YouTube. Betreiber der Seiten ist die YouTube, LLC, 901 Cherry Ave., San Bruno, CA 94066, USA.</p>
+
+<p>Wenn Sie eine unserer mit einem YouTube-Plugin ausgestatteten Seiten besuchen, wird eine Verbindung zu den Servern von YouTube hergestellt. Dabei wird dem YouTube-Server mitgeteilt, welche unserer Seiten Sie besucht haben.</p>
+
+<p>Wenn Sie in Ihrem YouTube-Account eingeloggt sind, erm&ouml;glichen Sie YouTube, Ihr Surfverhalten direkt Ihrem pers&ouml;nlichen Profil zuzuordnen. Dies k&ouml;nnen Sie verhindern, indem Sie sich aus Ihrem YouTube-Account ausloggen.</p>
+
+<p>Die Nutzung von YouTube erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.</p>
+
+<p>Weitere Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerkl&auml;rung von YouTube unter: <a href="https://www.google.de/intl/de/policies/privacy" target="_blank">https://www.google.de/intl/de/policies/privacy</a>.</p>
+
+<p><strong>Vimeo</strong></p>
+
+<p>Unsere Website nutzt Plugins des Videoportals Vimeo. Anbieter ist die Vimeo Inc., 555 West 18th Street, New York, New York 10011, USA.</p>
+
+<p>Wenn Sie eine unserer mit einem Vimeo-Plugin ausgestatteten Seiten besuchen, wird eine Verbindung zu den Servern von Vimeo hergestellt. Dabei wird dem Vimeo-Server mitgeteilt, welche unserer Seiten Sie besucht haben. Zudem erlangt Vimeo Ihre IP-Adresse. Dies gilt auch dann, wenn Sie nicht bei Vimeo eingeloggt sind oder keinen Account bei Vimeo besitzen. Die von Vimeo erfassten Informationen werden an den Vimeo-Server in den USA &uuml;bermittelt.</p>
+
+<p>Wenn Sie in Ihrem Vimeo-Account eingeloggt sind, erm&ouml;glichen Sie Vimeo, Ihr Surfverhalten direkt Ihrem pers&ouml;nlichen Profil zuzuordnen. Dies k&ouml;nnen Sie verhindern, indem Sie sich aus Ihrem Vimeo-Account ausloggen.</p>
+
+<p>Weitere Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerkl&auml;rung von Vimeo unter: <a href="https://vimeo.com/privacy" target="_blank">https://vimeo.com/privacy</a>.</p>
+
+<p><strong>Google Web Fonts</strong></p>
+
+<p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Web Fonts, die von Google bereitgestellt werden. Beim Aufruf einer Seite l&auml;dt Ihr Browser die ben&ouml;tigten Web Fonts in ihren Browsercache, um Texte und Schriftarten korrekt anzuzeigen.</p>
+
+<p>Zu diesem Zweck muss der von Ihnen verwendete Browser Verbindung zu den Servern von Google aufnehmen. Hierdurch erlangt Google Kenntnis dar&uuml;ber, dass &uuml;ber Ihre IP-Adresse unsere Website aufgerufen wurde. Die Nutzung von Google Web Fonts erfolgt im Interesse einer einheitlichen und ansprechenden Darstellung unserer Online-Angebote. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.</p>
+
+<p>Wenn Ihr Browser Web Fonts nicht unterst&uuml;tzt, wird eine Standardschrift von Ihrem Computer genutzt.</p>
+
+<p>Weitere Informationen zu Google Web Fonts finden Sie unter <a href="https://developers.google.com/fonts/faq" target="_blank">https://developers.google.com/fonts/faq</a> und in der Datenschutzerkl&auml;rung von Google: <a href="https://www.google.com/policies/privacy/" target="_blank">https://www.google.com/policies/privacy/</a>.</p>
+
+<p><strong>Google Maps</strong></p>
+
+<p>Diese Seite nutzt &uuml;ber eine API den Kartendienst Google Maps. Anbieter ist die Google Inc., 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.</p>
+
+<p>Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP Adresse zu speichern. Diese Informationen werden in der Regel an einen Server von Google in den USA &uuml;bertragen und dort gespeichert. Der Anbieter dieser Seite hat keinen Einfluss auf diese Daten&uuml;bertragung.</p>
+
+<p>Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote und an einer leichten Auffindbarkeit der von uns auf der Website angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.</p>
+
+<p>Mehr Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerkl&auml;rung von Google: <a href="https://www.google.de/intl/de/policies/privacy/" target="_blank">https://www.google.de/intl/de/policies/privacy/</a>.</p>
+
+                                        </div>
+					                    </article>
+                                	</div><!-- /.col-md-8 -->
+                                </section><!-- / #legal -->
+                            </div><!-- /.row -->
+                        </section><!-- /#agent-info -->
+
+                     </section><!-- /#agent-detail -->
+                </div><!-- /.col-md-9 -->
+                <!-- end Contact -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+
+<!-- content end -->
+
+    </div><!-- page-content -->
+
+    <footer id="page-footer">
+        <div class="inner">
+            <section id="footer-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <article>
+                                <h3>Das Museumsportal-Alle Museen auf einen Blick</h3>
+                                <p>Museen aus aller Welt veröffentlichen über das Museumsportal <a href="http://www.museum.de">museum.de</a> und der zugehörigen <a href="http://www.museum.de/de/product" title="Zur Museumsführer-App">Museumsführer-App</a> ihre Ausstellungstermine, Museums-News, Bildergalerien, Audioguides und Führungen. Die Museumsführer-App funktioniert auch als <a href="http://www.museum.de/de/audioguides" title="Zu den Museum-Audioguides" >Audioguide</a> innerhalb und außerhalb von Museen. Unser <a href="http://www.museum.de/magazine">Magazin Museum.de</a> macht Lust auf einen Museumsbesuch.
+                                </p>
+                                <hr>
+                                <section id="agent-detail">
+                                <section id="social">
+                                     <div class="agent-social">
+                                        <a href="https://twitter.com/museum_de" class="fa fa-twitter btn btn-grey-dark" title="museum.de auf Twitter"></a>
+                                        <a href="https://www.facebook.com/groups/museumde/" class="fa fa-facebook btn btn-grey-dark" title="museum.de bei Facebook"></a>
+                                        <a href="http://de.linkedin.com/in/museumde" class="fa fa-linkedin btn btn-grey-dark" title="museum.de bei linked.in"></a>
+  | <a href="/events-feed/rss" title="Events RSS-Feed" class="fa fa-rss btn btn-grey-dark"></a>
+<a href="/news-feed/rss" title="News RSS-Feed" class="fa fa-rss btn btn-gray-light"></a>
+                                    </div>
+                                </section>
+                                </section>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Wo Sie uns in Xanten finden:</h3>
+                                <address>
+                                    <strong>museum.de</strong><br>
+                                    Postfach 1156<br />
+                                    Ostwall 2<br>
+                                    46509 Xanten<br>
+                                    Germany
+                                </address>
+                                T: +49 28 01-9 88 20 72<br>
+                                
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Hilfreiche Links</h3>
+                                <ul class="list-unstyled list-links">
+                                    <li><a href="/login">Login</a></li>
+                                    <li><a href="/faq">FAQ</a></li>
+                                    <li><a href="/legal">Impressum</a></li>
+                                    <li><a href="/privacy">Datenschutz</a></li>
+                                    <li><a href="/termsconditions">Allgemeine Geschäftsbedingungen</a></li>
+                                </ul>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </section><!-- /#footer-main -->
+            <section id="footer-copyright">
+                <div class="container">
+                    <span>Copyright © 2019. Alle Rechte vorbehalten.</span>
+                    <span class="pull-right"><a href="#page-top" class="roll">Nach oben</a></span>
+                </div>
+            </section>
+        </div><!-- /.inner -->
+    </footer>
+
+<script src="http://museum.de/assets/js/jquery-migrate-1.2.1.min.js"></script>
+
+<script src="http://museum.de/assets/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="http://museum.de/assets/js/smoothscroll.js"></script>
+
+<script src="http://museum.de/assets/js/jquery.bxslider.js"></script>
+
+<script src="http://museum.de/assets/js/retina-1.1.0.min.js"></script>
+
+<script src="http://museum.de/assets/js/imagesloaded.pkgd.min.js"></script>
+
+<script src="http://museum.de/assets/js/masonry.pkgd.min.js"></script>
+
+<script src="http://museum.de/assets/js/scrollReveal.min.js"></script>
+
+<script src="http://museum.de/assets/js/jshashtable-2.1_src.js"></script>
+
+<script src="http://museum.de/assets/js/jquery.numberformatter-1.2.3.js"></script>
+
+<script src="http://museum.de/assets/js/tmpl.js"></script>
+
+<script src="http://museum.de/assets/js/jquery.dependClass-0.1.js"></script>
+
+<script src="http://museum.de/assets/js/draggable-0.1.js"></script>
+
+<script src="http://museum.de/assets/js/jquery.slider.js"></script>
+
+<script src="http://museum.de/assets/js/fileinput.min.js"></script>
+
+<script src="http://museum.de/assets/js/custom.js"></script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+    revokable:true,
+    onStatusChange: function(status) {
+     console.log(this.hasConsented() ? 'enable cookies' : 'disable cookies');
+        if(this.hasConsented){
+            window['ga-disable-UA-57161027-1'] = false;
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-57161027-1', {'storage': 'none'});
+          ga('send', 'pageview');
+        }else{
+            window['ga-disable-UA-57161027-1'] = true;
+        }
+    },
+  "theme": "edgeless",
+  "type": "opt-out",
+  "content": {
+    "message": "Diese Seite benutzt Cookies zur Steigerung der Benutzererfahrung ",
+    "dismiss": "Einverstanden",
+    "allow": 'Cookies erlauben',
+    "deny": "ablehnen",
+    "link": "mehr erfahren.",
+    "href": "/datenschutz",
+    "policy": 'Cookie Policy',
+    "target": '_blank',
+  }
+});
+</script>
+</div><!-- /.wrapper -->
+
+
+<!--/div-->
+
+</body>
+</html>

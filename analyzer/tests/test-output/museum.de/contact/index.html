@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="museum.de">
+		<meta property="og:title" content="	Das Museumsportal Ihr Kontakt zu uns
+"/>
+	<meta property="og:description" content="	Museen veröffentlichen Ausstellungstermine, Museums-News und Bildergalerien. Mit App und Magazin macht museum.de Lust auf einen Museumsbesuch.
+"/>
+	<meta property="og:type" content="article"/>
+
+    <link media="all" type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/fonts/font-awesome.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/bootstrap/css/bootstrap.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/css/bootstrap-select.min.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/css/jquery.slider.min.css">
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/css/jquery.bxslider.css">
+
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="http://museum.de/assets/css/style.css">
+
+
+    <style>
+.leaflet-tile-pane {
+	z-index: 200;
+	filter: grayscale(100%);
+}
+.leaflet-popup .leaflet-popup-content-wrapper .leaflet-popup-content {
+	border-bottom: 5px solid #fff;
+	border-top: 5px solid #073855;
+	height: 206px;
+	width: 260px;
+	margin: 0;
+	overflow: hidden;
+	padding: 1em;
+	font-size: 1.5em;
+	word-wrap: break-word;
+}
+</style>
+
+
+    <script src="http://museum.de/assets/js/jquery-2.1.0.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css"
+   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+   crossorigin=""/>
+
+    <title>	Das Museumsportal Ihr Kontakt zu uns
+ @museum.de</title>
+    <meta name="description" content="	Museen veröffentlichen Ausstellungstermine, Museums-News und Bildergalerien. Mit App und Magazin macht museum.de Lust auf einen Museumsbesuch.
+">
+	<base href="https://www.museum.de/" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="alternate" type="application/rss+xml"  title="Museums-Events" href="/events-feed/rss" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body class="page-sub-page " id="page-top">
+<div class="wrapper">
+    <div class="navigation">
+    <div class="secondary-navigation">
+        <div class="container">
+           <div class="language">
+           <a href="http://museum.de/de/museen">DE</a>
+           <a href="http://museum.de/en/museen">EN</a>
+           </div>
+            <div class="user-area">
+	            <ul>
+                                      <li><a href="http://museum.de/de/register" class="promoted">Registrieren</a></li>
+                      <li><a href="http://museum.de/de/login">Anmelden</a></li>
+
+                                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <header class="navbar" id="top">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Navigation auffahren</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand nav" id="brand">
+                    <a href="/" title="zur Startseite Magazin museum.de"> <img src="http://museum.de/assets/img/logo.png" alt="MAGAZIN museum.de Logo"></a>
+                </div>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="parent"><a href="http://museum.de/de/museen">Museen</a>
+		            <section id="menuform" class="submenu">
+						<span class="tri"> </span>
+						<form class="searchform" method="post" action="/museen">
+						  <div>Suche Museen</div><br />
+						  <div class="form-group">
+						    <label>in Stadt </label>
+						  <input checked="checked" name="searchtype" type="radio" value="1">
+						  &nbsp;
+						  <label> nach Name </label>
+						  <input name="searchtype" type="radio" value="2">
+						  </div>
+						  <div class="form-group">
+						  <input placeholder="Stadt/Name" name="query" type="text">
+						  </div>
+						  <div class="form-group">
+						  <label for="country" style="display: none">in Land </label>
+						  <select name="country"><option value="DE">Deutschland</option><option value="AT">&Ouml;sterreich</option><option value="CH">Schweiz</option><option value="AF">Afghanistan</option><option value="AX">&Aring;land Islands</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctica</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BA">Bosnia and Herzegovina</option><option value="BW">Botswana</option><option value="BV">Bouvet Island</option><option value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option value="BN">Brunei Darussalam</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CC">Cocos (Keeling) Islands</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CG">Congo</option><option value="CD">Congo, The Democratic Republic of The</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica</option><option value="CI">Cote D ivoire</option><option value="HR">Croatia</option><option value="CU">Cuba</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FK">Falkland Islands (Malvinas)</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HM">Heard Island and Mcdonald Islands</option><option value="VA">Holy See (Vatican City State)</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran, Islamic Republic of</option><option value="IQ">Iraq</option><option value="IE">Ireland</option><option value="IM">Isle of Man</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="KP">Korea, Democratic Peoples Republic of</option><option value="KR">Korea, Republic of</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Lao Peoples Democratic Republic</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libyan Arab Jamahiriya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macao</option><option value="MK">Macedonia, The Former Yugoslav Republic of</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MQ">Martinique</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="YT">Mayotte</option><option value="MX">Mexico</option><option value="FM">Micronesia, Federated States of</option><option value="MD">Moldova, Republic of</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="NU">Niue</option><option value="NF">Norfolk Island</option><option value="MP">Northern Mariana Islands</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PW">Palau</option><option value="PS">Palestinian Territory, Occupied</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PN">Pitcairn</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="RE">Reunion</option><option value="RO">Romania</option><option value="RU">Russian Federation</option><option value="RW">Rwanda</option><option value="SH">Saint Helena</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="PM">Saint Pierre and Miquelon</option><option value="VC">Saint Vincent and The Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">Sao Tome and Principe</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="GS">South Georgia and The South Sandwich Islands</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SD">Sudan</option><option value="SR">Suriname</option><option value="SJ">Svalbard and Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="SY">Syrian Arab Republic</option><option value="TW">Taiwan, Province of China</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania, United Republic of</option><option value="TH">Thailand</option><option value="TL">Timor-leste</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States</option><option value="UM">United States Minor Outlying Islands</option><option value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VE">Venezuela</option><option value="VN">Viet Nam</option><option value="VG">Virgin Islands, British</option><option value="VI">Virgin Islands, U.S.</option><option value="WF">Wallis and Futuna</option><option value="EH">Western Sahara</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option></select>
+                                        <br>
+						  </div>
+						  <div class="form-group">
+						    <input value="Suche" class="btn pull-right btn-default" type="submit">
+						  </div>
+
+						 </form>
+		            </section>
+                    </li>
+                    <li  class="parent"><a href="http://museum.de/de/empfehlungen">Empfehlungen</a>
+                    <span class="tri"> </span>
+	                    <ul class="submenu">
+
+		                    <li><a href="http://museum.de/de/lange-nacht-der-museen">Lange Nacht der Museen</a></li>
+                            <li><a href="http://museum.de/de/akustische-reise">Akustische Reise</a></li>
+                            <li><a href="http://museum.de/de/gewinnspiel">Gewinnspiel</a></li>
+                            <li><a href="https://www.tiqets.com/en/?partner=museumde" target="_blank">Tickets</a></li>
+	                    </ul>
+                    </li>
+                    <li><a href="http://museum.de/de/events">Termine</a></li>
+                    <li><a href="http://museum.de/de/news">News</a></li>
+                    <li><a href="http://museum.de/de/audioguides">Audioguides</a></li>
+                    <li><a href="http://museum.de/de/videos">Videos</a></li>
+                    <li><a href="http://museum.de/de/magazine">Magazin</a></li>
+                    <li><a href="http://museum.de/de/expo">Expo</a></li>
+                    <li class="parent"><a href="http://museum.de/de/about">&Uuml;ber uns</a>
+                    <span class="tri"> </span>
+                    <ul class="submenu">
+
+	                    <li><a href="http://museum.de/de/contact">Kontakt</a></li>
+	                    <li><a href="http://museum.de/de/media">Media Daten</a></li>
+	                    <!--li><a href="http://museum.de/de/itb-berlin">ITB Berlin</a></li-->
+	                    <li><a href="http://museum.de/de/infobackend">Datenpflege</a></li>
+	                    <li><a href="http://museum.de/de/product">Museumsf&uuml;hrer-App</a></li>
+	                    <li><a href="http://museum.de/de/heimatgefluester">Heimatgefl&uuml;ster</a></li>
+                        <li><a href="http://museum.de/blog">Blog</a></li>
+	                    </ul>
+	                </li>
+                </ul>
+            </nav><!-- /.navbar collapse-->
+        </header><!-- /.navbar -->
+    </div><!-- /.container -->
+</div><!-- /.navigation -->
+    
+
+    <div id="page-content">
+
+
+            
+            <!-- content begin -->
+    		
+
+        <div class="container">
+            <div class="row">
+                <!-- Contact -->
+                <div class="col-md-12 col-sm-12">
+                    <section id="agent-detail">
+                        <header><h1>Kontakt</h1></header>
+                        <section id="contact-information">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-5">
+                                    <section id="address">
+                                        <header><h3>Adresse</h3></header>
+                                        <address>
+                                            <strong>museum.de </strong><br>
+                                            Dipl.-Inf. (TU) Uwe Strauch <br>
+                                            Postfach 1156<br>
+											Ostwall 2<br>
+                                            46509 Xanten
+                                        </address>
+                                        <p>Tel +49 28 01/9 88 20 72<br>
+                                        Fax +49 28 01/9 88 20 73<br>
+                                        <a href="mailto:contact@museum.de"><script>document.write('<'+'a'+' '+'h'+'r'+'e'+'f'+'='+"'"+'&'+'#'+'1'+'0'+'9'+';'+'a'+'i'+'l'+'t'+'&'+'#'+'1'+'1'+'1'+';'+
+'&'+'#'+'5'+'8'+';'+'&'+'#'+'9'+'9'+';'+'%'+'6'+'&'+'#'+'7'+'0'+';'+'n'+'t'+'a'+'&'+'#'+'9'+'9'+';'+
+'t'+'&'+'#'+'6'+'4'+';'+'&'+'#'+'1'+'0'+'9'+';'+'%'+'7'+'5'+'s'+'e'+'&'+'#'+'1'+'1'+'7'+';'+'%'+'6'+
+'D'+'&'+'#'+'4'+'6'+';'+'d'+'&'+'#'+'3'+'7'+';'+'6'+'&'+'#'+'5'+'3'+';'+"'"+'>'+'c'+'o'+'&'+'#'+'1'+
+'1'+'0'+';'+'t'+'a'+'c'+'t'+'&'+'#'+'6'+'4'+';'+'m'+'&'+'#'+'1'+'1'+'7'+';'+'&'+'#'+'1'+'1'+'5'+';'+
+'e'+'&'+'#'+'1'+'1'+'7'+';'+'m'+'&'+'#'+'4'+'6'+';'+'&'+'#'+'1'+'0'+'0'+';'+'e'+'<'+'/'+'a'+'>');</script><noscript>[Turn on JavaScript to see the email address]</noscript></a><br>
+                                        <a href="http://www.museum.de">http://www.museum.de</a></p>
+                                    </section><!-- /#address -->
+                                    <section id="social">
+                                        <header><h3>Soziale Kanäle</h3></header>
+                                        <div class="agent-social">
+                                            <a href="https://twitter.com/museum_de" class="fa fa-twitter btn btn-grey-dark"></a>
+                                            <a href="https://www.facebook.com/groups/museumde/" class="fa fa-facebook btn btn-grey-dark"></a>
+                                            <a href="http://de.linkedin.com/in/museumde" class="fa fa-linkedin btn btn-grey-dark"></a>
+                                        </div>
+                                    </section><!-- /#social -->
+                                </div><!-- /.col-md-4 -->
+                                <div class="col-md-8 col-sm-7">
+                                    <header><h3>Wo Sie uns in Xanten finden:</h3></header>
+                                    <div id="contact-map"></div>
+                                </div><!-- /.col-md-8 -->
+                            </div><!-- /.row -->
+                        </section><!-- /#agent-info -->
+                        <hr class="thick">
+                        <section id="form">
+                            <header><h3>Senden Sie uns eine Nachricht</h3></header>
+                            <form role="form" id="form-contact" method="post" action="" class="clearfix">
+                            <form method="POST" action="http://museum.de/de/contact" accept-charset="UTF-8"><input name="_token" type="hidden" value="eNMu3lq0jgpQrMBcbxcvRzwlCOzJJQZXyLaR7YBd">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form-contact-name">Ihre Name<em>*</em></label>
+                                            <input type="text" class="form-control" id="form-contact-name" name="form-contact-name" required>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-6 -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form-contact-email">Ihre E-Mail<em>*</em></label>
+                                            <input type="email" class="form-control" id="form-contact-email" name="form-contact-email" required>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-6 -->
+                                </div><!-- /.row -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="form-contact-message">Ihre Nachricht<em>*</em></label>
+                                            <textarea class="form-control" id="form-contact-message" rows="8" name="form-contact-message" required></textarea>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-12 -->
+                                </div><!-- /.row -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+											<div class="g-recaptcha" data-sitekey="6LcbeCITAAAAAA10YWPzxZpE6MhD9getsltx213Q"></div>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-md-12 -->
+                                </div><!-- /.row -->
+
+                                <div class="form-group clearfix">
+                                    <button type="submit" class="btn pull-right btn-default" id="form-contact-submit">Nachricht senden</button>
+                                </div><!-- /.form-group -->
+                                <div id="form-status"></div>
+                            </form>
+                        </section>
+                    </section><!-- /#agent-detail -->
+                </div><!-- /.col-md-9 -->
+                <!-- end Contact -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+
+<!-- content end -->
+
+    </div><!-- page-content -->
+
+    <footer id="page-footer">
+        <div class="inner">
+            <section id="footer-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <article>
+                                <h3>Das Museumsportal-Alle Museen auf einen Blick</h3>
+                                <p>Museen aus aller Welt veröffentlichen über das Museumsportal <a href="http://www.museum.de">museum.de</a> und der zugehörigen <a href="http://www.museum.de/de/product" title="Zur Museumsführer-App">Museumsführer-App</a> ihre Ausstellungstermine, Museums-News, Bildergalerien, Audioguides und Führungen. Die Museumsführer-App funktioniert auch als <a href="http://www.museum.de/de/audioguides" title="Zu den Museum-Audioguides" >Audioguide</a> innerhalb und außerhalb von Museen. Unser <a href="http://www.museum.de/magazine">Magazin Museum.de</a> macht Lust auf einen Museumsbesuch.
+                                </p>
+                                <hr>
+                                <section id="agent-detail">
+                                <section id="social">
+                                     <div class="agent-social">
+                                        <a href="https://twitter.com/museum_de" class="fa fa-twitter btn btn-grey-dark" title="museum.de auf Twitter"></a>
+                                        <a href="https://www.facebook.com/groups/museumde/" class="fa fa-facebook btn btn-grey-dark" title="museum.de bei Facebook"></a>
+                                        <a href="http://de.linkedin.com/in/museumde" class="fa fa-linkedin btn btn-grey-dark" title="museum.de bei linked.in"></a>
+  | <a href="/events-feed/rss" title="Events RSS-Feed" class="fa fa-rss btn btn-grey-dark"></a>
+<a href="/news-feed/rss" title="News RSS-Feed" class="fa fa-rss btn btn-gray-light"></a>
+                                    </div>
+                                </section>
+                                </section>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Wo Sie uns in Xanten finden:</h3>
+                                <address>
+                                    <strong>museum.de</strong><br>
+                                    Postfach 1156<br />
+                                    Ostwall 2<br>
+                                    46509 Xanten<br>
+                                    Germany
+                                </address>
+                                T: +49 28 01-9 88 20 72<br>
+                                
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Hilfreiche Links</h3>
+                                <ul class="list-unstyled list-links">
+                                    <li><a href="/login">Login</a></li>
+                                    <li><a href="/faq">FAQ</a></li>
+                                    <li><a href="/legal">Impressum</a></li>
+                                    <li><a href="/privacy">Datenschutz</a></li>
+                                    <li><a href="/termsconditions">Allgemeine Geschäftsbedingungen</a></li>
+                                </ul>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </section><!-- /#footer-main -->
+            <section id="footer-copyright">
+                <div class="container">
+                    <span>Copyright © 2019. Alle Rechte vorbehalten.</span>
+                    <span class="pull-right"><a href="#page-top" class="roll">Nach oben</a></span>
+                </div>
+            </section>
+        </div><!-- /.inner -->
+    </footer>
+
+<script src="http://museum.de/assets/js/jquery-migrate-1.2.1.min.js"></script>
+
+<script src="http://museum.de/assets/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="http://museum.de/assets/js/smoothscroll.js"></script>
+
+<script src="http://museum.de/assets/js/jquery.bxslider.js"></script>
+
+<script src="http://museum.de/assets/js/retina-1.1.0.min.js"></script>
+
+<script src="http://museum.de/assets/js/imagesloaded.pkgd.min.js"></script>
+
+<script src="http://museum.de/assets/js/masonry.pkgd.min.js"></script>
+
+<script src="http://museum.de/assets/js/scrollReveal.min.js"></script>
+
+<script src="http://museum.de/assets/js/jshashtable-2.1_src.js"></script>
+
+<script src="http://museum.de/assets/js/jquery.numberformatter-1.2.3.js"></script>
+
+<script src="http://museum.de/assets/js/tmpl.js"></script>
+
+<script src="http://museum.de/assets/js/jquery.dependClass-0.1.js"></script>
+
+<script src="http://museum.de/assets/js/draggable-0.1.js"></script>
+
+<script src="http://museum.de/assets/js/jquery.slider.js"></script>
+
+<script src="http://museum.de/assets/js/fileinput.min.js"></script>
+
+<script src="http://museum.de/assets/js/custom.js"></script>
+
+
+
+<script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"
+   integrity="sha512-C7BBF9irt5R7hqbUm2uxtODlUVs+IsNu2UULGuZN7gM+k/mmeG4xvIEac01BtQa4YIkUpp23zZC4wIwuXaPMQA=="
+   crossorigin=""></script>
+<script>
+    jQuery(document).ready(function() {
+        var tilelayer = [];
+        tilelayer[0] = "http://a.tile.stamen.com/toner/${z}/${x}/${y}.png";
+        tilelayer[1] = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+        var landscape = L.tileLayer(tilelayer[1], {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 22,
+            minZoom: 0
+        });
+        var map = L.map('contact-map',{
+		center :	['51.66259160000001','6.456039300000043'],
+		zoom : 17,
+		layers: [landscape], // default map (at the beginning)
+		drawControl: true
+	   });
+        L.marker(['51.66259160000001','6.456039300000043']).addTo(map)
+    .bindPopup('museum.de')
+    .openPopup();
+    });
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+    revokable:true,
+    onStatusChange: function(status) {
+     console.log(this.hasConsented() ? 'enable cookies' : 'disable cookies');
+        if(this.hasConsented){
+            window['ga-disable-UA-57161027-1'] = false;
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-57161027-1', {'storage': 'none'});
+          ga('send', 'pageview');
+        }else{
+            window['ga-disable-UA-57161027-1'] = true;
+        }
+    },
+  "theme": "edgeless",
+  "type": "opt-out",
+  "content": {
+    "message": "Diese Seite benutzt Cookies zur Steigerung der Benutzererfahrung ",
+    "dismiss": "Einverstanden",
+    "allow": 'Cookies erlauben',
+    "deny": "ablehnen",
+    "link": "mehr erfahren.",
+    "href": "/datenschutz",
+    "policy": 'Cookie Policy',
+    "target": '_blank',
+  }
+});
+</script>
+</div><!-- /.wrapper -->
+
+
+<!--/div-->
+
+</body>
+</html>
