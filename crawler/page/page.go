@@ -36,6 +36,7 @@ func TypeFromInterface(i interface{}) Type {
 // GetEstimatedPageTypesOfLink returns the estimated type of the link, based on url and text
 func GetEstimatedPageTypeOfLink(linkText, linkTarget string) Type {
 	// ToDo: Return []Type and store the page for both types
+	// ToDo: Somehow avoid flagging eg. PDF links as Privacy Policy and store them as HTML (not sure right now where to handle this)
 	wordToTypeMap := map[string]Type{
 		"privacy":     PrivacyPage,
 		"datenschutz": PrivacyPage,

@@ -2,11 +2,12 @@ import json
 import logging
 import os
 from collections import defaultdict
-from typing import List, Dict, Optional
+from typing import List, Optional
 
 from analyzer.checks import MetricCheck, CheckResult
-from analyzer.checks.privacy_statement_missing import PrivacyStatementMissingCheck
-from analyzer.checks.tracking_service_ip_not_anonymized import TrackingServiceIPNotAnonymizedCheck
+from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck
+from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
+from analyzer.checks.metrics.tracking_service_ip_not_anonymized import GoogleAnalyticsIPNotAnonymizedCheck
 from analyzer.exceptions import InvalidMetricCheckException, ToDo
 from analyzer.types_definitions import CrawlerMetaData
 
@@ -14,7 +15,11 @@ logger = logging.getLogger(__name__)
 
 
 class Analyzer:
-    checks: List[MetricCheck] = [PrivacyStatementMissingCheck, TrackingServiceIPNotAnonymizedCheck, ]
+    checks: List[MetricCheck] = [
+        PrivacyStatementMissingCheck,
+        GoogleAnalyticsIPNotAnonymizedCheck,
+        PrivacyMissingGoogleAnalyticsCheck,
+    ]
 
     def __init__(self, crawler_metadata_filepath: str, checks: List[MetricCheck] = None, *args, **kwargs):
         self.crawler_metadata_filepath = crawler_metadata_filepath
