@@ -70,8 +70,9 @@ func (s *Storage) storePageVisit(originalDomain string, url *url.URL, body []byt
 	//}
 }
 
+// Relative path (as seen from crawler.json meta data file) to the html file of the given page
 func (s *Storage) getHtmlFilePathForPage(domain string, pageType page.Type) string {
-	return filepath.Join(s.outputPath, domain, pageType.StringIdentifier(), "index.html")
+	return filepath.Join(domain, pageType.StringIdentifier(), "index.html")
 }
 
 // TearDown can be used to do storage tidy-up tasks after the crawling is done
