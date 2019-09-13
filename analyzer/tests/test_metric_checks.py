@@ -99,6 +99,13 @@ class PrivacyMissingGAMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase
         result = check.check()
         self.assertEqual(result.passed, CheckResultPassed.FAILED)
 
+    def test_ga_not_used(self):
+        domain = 'logbuch-netzpolitik.de'
+        check = PrivacyMissingGoogleAnalyticsCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResultPassed.UNCERTAIN)
+        self.assertEqual(result.passed.passed, True)
+
 
 if __name__ == '__main__':
     unittest.main()

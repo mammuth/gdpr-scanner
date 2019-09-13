@@ -15,7 +15,7 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
         uses_service = self._page_uses_service(idx_html)
         if not uses_service:
             # Index page does not use the given third party service -> no need to mention it in the privacy statement
-            return self._get_check_result(CheckResultPassed.PASSED)
+            return self._get_check_result(CheckResultPassed.UNCERTAIN)
 
         if 'privacy' not in self.page_types:
             # Index page uses service but there is no privacy statement -> service not mentioned in privacy statement
