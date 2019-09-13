@@ -28,7 +28,7 @@ class Analyzer:
         if checks:
             self.checks = checks
 
-    def _import_crawler_meta(self, path: str) -> Optional[CrawlerMetaData]:
+    def _import_crawler_meta(self, path: str) -> CrawlerMetaData:
         """
 
         :param path:
@@ -41,7 +41,6 @@ class Analyzer:
             for page in raw_json.get('crawledPages'):
                 grouped_by_domain[page.get('originalDomain', None)][page.get('pageType', None)].append(page)
             return grouped_by_domain
-        return None
 
     def run(self, specific_domain: str = None):
         if specific_domain is True:
