@@ -5,10 +5,10 @@ from enum import Enum
 @dataclass
 class CheckResult:
     class PassType(Enum):
-        PASSED = 1
-        FAILED = 2
-        UNCERTAIN = 3
-        NOT_APPLICABLE = 4
+        PASSED = 'passed'
+        FAILED = 'failed'
+        UNCERTAIN = 'uncertain'
+        NOT_APPLICABLE = 'not_applicable'
 
         def __bool__(self):
             return self is not CheckResult.PassType.FAILED
@@ -26,3 +26,6 @@ class CheckResult:
     passed: PassType
     description: str
     severity: 'Severity'
+
+    def __str__(self):
+        return f'{self.domain} - {self.identifier}: {self.passed}'
