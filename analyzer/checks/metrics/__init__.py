@@ -1,7 +1,10 @@
 import logging
 import os
+import re
 from abc import ABC, abstractmethod
 from typing import Dict, List
+
+from bs4 import BeautifulSoup
 
 from analyzer.checks.check_result import CheckResult
 from analyzer.checks.severity import Severity
@@ -35,6 +38,11 @@ class MetricCheck(ABC):
                 html = f.read().decode('utf-8', errors='replace')
                 html_strings.append(html)
         return html_strings
+
+    def phrase_in_html_body(self, phrase: str, html: str) -> bool:
+        soup = BeautifulSoup(html)
+        # We're compiling a regex here, otherwise bs4 would only return for *exact* matches.
+        return soup.body.find(text=re.compile(phrase)) is not None
 
     @property
     @abstractmethod

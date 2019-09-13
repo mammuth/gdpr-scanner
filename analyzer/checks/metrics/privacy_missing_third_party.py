@@ -45,6 +45,6 @@ class PrivacyMissingGoogleAnalyticsCheck(BasePrivacyMissingThirdPartyCheck, Metr
         return has_ga
 
     def _html_mentions_service(self, html: str) -> bool:
-        return 'Google Analytics' in html  # ToDo: Properly examine body / container instead of whole DOM
+        return self.phrase_in_html_body('Google Analytics', html)
 
 # ToDo: Implement more third party integrations: Disqus, Hubspot, Facebook, Instagram, Interecom, ...
