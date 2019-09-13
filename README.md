@@ -25,5 +25,7 @@ The results will be stored in the directory `output/`. It contains a meta data f
 
 #### Analyzer
 
-The analyzer CLI can be run with python3.7.
-- `python3.7 analyzer/main.py analyze`. Available options can be printed using `--help` or by just calling `main.py` without the `analyze` command. 
+The analyzer CLI can be run with python 3.7:
+- `python main.py analyze` 
+
+Available options can be printed using `--help` or by just calling `main.py` without the `analyze` command. 
