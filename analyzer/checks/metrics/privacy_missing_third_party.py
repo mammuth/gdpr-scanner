@@ -15,11 +15,14 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
         uses_service = self._page_uses_service(idx_html)
         if not uses_service:
             # Index page does not use the given third party service -> no need to mention it in the privacy statement
-            return self._get_check_result(CheckResultPassed.UNCERTAIN)
+            return self._get_check_result(CheckResultPassed.NOT_APPLICABLE)
 
         if 'privacy' not in self.page_types:
             # Index page uses service but there is no privacy statement -> service not mentioned in privacy statement
-            return self._get_check_result(CheckResultPassed.FAILED)
+            return self._get_check_result(
+                CheckResultPassed.FAILED,
+                'The tested third party is used in the index page but there seems to be no privacy statement at all.'
+            )
 
         # It might be that the crawler identified multiple privacy statement pages.
         # We're testing all and return "passed" if one of them passes

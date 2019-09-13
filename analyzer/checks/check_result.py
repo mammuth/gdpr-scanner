@@ -6,9 +6,10 @@ class CheckResultPassed(Enum):
     PASSED = 1
     FAILED = 2
     UNCERTAIN = 3
+    NOT_APPLICABLE = 4
 
     def __bool__(self):
-        return self in [CheckResultPassed.PASSED, CheckResultPassed.UNCERTAIN]
+        return self is not CheckResultPassed.FAILED
 
     @property
     def passed(self):
@@ -24,4 +25,5 @@ class CheckResult:
     domain: str
     identifier: str
     passed: CheckResultPassed
+    description: str
     severity: 'Severity'

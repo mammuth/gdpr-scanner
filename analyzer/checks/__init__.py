@@ -17,8 +17,14 @@ class MetricCheck(ABC):
         self.page_types = page_types
         self.meta_data_filepath = meta_data_filepath
 
-    def _get_check_result(self, passed: CheckResultPassed) -> CheckResult:
-        return CheckResult(domain=self.domain, identifier=self.IDENTIFIER, passed=passed, severity=self.SEVERITY)
+    def _get_check_result(self, passed: CheckResultPassed, description: str = '') -> CheckResult:
+        return CheckResult(
+            domain=self.domain,
+            identifier=self.IDENTIFIER,
+            passed=passed,
+            severity=self.SEVERITY,
+            description=description
+        )
 
     def get_html_strings_of(self, page_type: str) -> List[str]:
         html_strings: List[str] = list()
