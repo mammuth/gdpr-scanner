@@ -1,6 +1,7 @@
 import os
 import unittest
 
+from analyzer.checks import CheckResultPassed
 from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck
 from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
 from analyzer.checks.metrics.tracking_service_ip_not_anonymized import GoogleAnalyticsIPNotAnonymizedCheck
@@ -24,13 +25,13 @@ class PrivacyStatementMissingTestCase(BaseMetricCheckTestCase, unittest.TestCase
         domain = 'goldmarie-friends.de'  # has no privacy statement
         check = PrivacyStatementMissingCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, False)
+        self.assertEqual(result.passed, CheckResultPassed.FAILED)
 
     def test_present_privacy_statement_detected(self):
         domain = 'lupus-ddns.de'  # has privacy statement
         check = PrivacyStatementMissingCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, True)
+        self.assertEqual(result.passed, CheckResultPassed.PASSED)
 
 
 class GoogleAnalyticsIPAnonymizationTestCase(BaseMetricCheckTestCase, unittest.TestCase):
@@ -39,13 +40,13 @@ class GoogleAnalyticsIPAnonymizationTestCase(BaseMetricCheckTestCase, unittest.T
         domain = 'kristalltherme-altenau.de'  # has GA, but no anonymization
         check = GoogleAnalyticsIPNotAnonymizedCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, False, 'Missing anonymized IP was not detected')
+        self.assertEqual(result.passed, CheckResultPassed.FAILED, 'Missing anonymized IP was not detected')
 
     def test_ga_with_anonymization(self):
         domain = 'lupus-ddns.de'
         check = GoogleAnalyticsIPNotAnonymizedCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, True)
+        self.assertEqual(result.passed, CheckResultPassed.PASSED)
 
     def test_gtag_without_anonymization(self):
         # ToDo: Test: gtag without anonymization
@@ -55,13 +56,13 @@ class GoogleAnalyticsIPAnonymizationTestCase(BaseMetricCheckTestCase, unittest.T
         domain = 'goldmarie-friends.de'
         check = GoogleAnalyticsIPNotAnonymizedCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, True)
+        self.assertEqual(result.passed, CheckResultPassed.PASSED)
 
     def test_legacy_ga_without_anonymization(self):
         domain = 'officecoach24.de'  # Legacy analytics without anonymize
         check = GoogleAnalyticsIPNotAnonymizedCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, False)
+        self.assertEqual(result.passed, CheckResultPassed.FAILED)
 
     def test_legacy_ga_with_anonymization(self):
         pass
@@ -69,13 +70,13 @@ class GoogleAnalyticsIPAnonymizationTestCase(BaseMetricCheckTestCase, unittest.T
         # domain = ''  # Legacy analytics with anonymize
         # check = GoogleAnalyticsIPNotAnonymizedCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         # result = check.check()
-        # self.assertEqual(result.passed, True, 'Lgecy GA Anonymized IP was not detected')
+        # self.assertEqual(result.passed, CheckResultPassed.PASSED, 'Lgecy GA Anonymized IP was not detected')
 
     def test_domain_without_google_analytics(self):
         domain = 'logbuch-netzpolitik.de'  # has no GA at all
         check = GoogleAnalyticsIPNotAnonymizedCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, True)
+        self.assertEqual(result.passed, CheckResultPassed.PASSED)
 
 
 class PrivacyMissingGAMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase):
@@ -84,19 +85,19 @@ class PrivacyMissingGAMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase
         domain = 'berufskleidung24.de'
         check = PrivacyMissingGoogleAnalyticsCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, False)
+        self.assertEqual(result.passed, CheckResultPassed.FAILED)
 
     def test_ga_used_with_mention(self):
         domain = 'lupus-ddns.de'
         check = PrivacyMissingGoogleAnalyticsCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, True)
+        self.assertEqual(result.passed, CheckResultPassed.PASSED)
 
     def test_ga_used_no_privacy_policy(self):
         domain = 'goldmarie-friends.de'
         check = PrivacyMissingGoogleAnalyticsCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, False)
+        self.assertEqual(result.passed, CheckResultPassed.FAILED)
 
 
 if __name__ == '__main__':

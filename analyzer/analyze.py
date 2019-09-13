@@ -2,9 +2,9 @@ import json
 import logging
 import os
 from collections import defaultdict
-from typing import List, Optional
+from typing import List
 
-from analyzer.checks import MetricCheck, CheckResult
+from analyzer.checks import MetricCheck, CheckResult, CheckResultPassed
 from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck
 from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
 from analyzer.checks.metrics.tracking_service_ip_not_anonymized import GoogleAnalyticsIPNotAnonymizedCheck
@@ -42,6 +42,18 @@ class Analyzer:
                 grouped_by_domain[page.get('originalDomain', None)][page.get('pageType', None)].append(page)
             return grouped_by_domain
 
+    def failed_checks(self, identifier=None) -> List[CheckResult]:
+        if identifier:
+            return [
+                r for r in self.results
+                if r.identifier == identifier and r.passed is CheckResultPassed.FAILED
+            ]
+        else:
+            return [
+                r for r in self.results
+                if r.passed is CheckResultPassed.FAILED
+            ]
+
     def run(self, specific_domain: str = None):
         if specific_domain is True:
             page_types = self.crawler_meta_data.get(specific_domain)
@@ -53,8 +65,10 @@ class Analyzer:
             for domain, page_types in self.crawler_meta_data.items():
                 self._checks_for_domain(domain, page_types)
         logger.info('Scan finished')
+
+        # Print statistics
         for check in self.checks:
-            failed = [r for r in self.results if r.identifier == check.IDENTIFIER and r.passed is False]
+            failed = self.failed_checks(identifier=check.IDENTIFIER)
             logger.info(f'{check.IDENTIFIER} failed on {len(failed)} pages')
 
     def write_results_to_file(self):

@@ -3,7 +3,7 @@ import os
 from abc import ABC, abstractmethod
 from typing import Dict, List
 
-from analyzer.checks.check_result import CheckResult
+from analyzer.checks.check_result import CheckResult, CheckResultPassed
 from analyzer.checks.severity import Severity
 from analyzer.types_definitions import CrawlerDomainMetaData
 
@@ -17,7 +17,7 @@ class MetricCheck(ABC):
         self.page_types = page_types
         self.meta_data_filepath = meta_data_filepath
 
-    def _get_check_result(self, passed: bool) -> CheckResult:
+    def _get_check_result(self, passed: CheckResultPassed) -> CheckResult:
         return CheckResult(domain=self.domain, identifier=self.IDENTIFIER, passed=passed, severity=self.SEVERITY)
 
     def get_html_strings_of(self, page_type: str) -> List[str]:

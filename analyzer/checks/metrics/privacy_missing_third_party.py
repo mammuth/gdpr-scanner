@@ -1,7 +1,7 @@
 import logging
 from abc import ABC
 
-from analyzer.checks import CheckResult, Severity, utils, MetricCheck
+from analyzer.checks import CheckResult, Severity, utils, MetricCheck, CheckResultPassed
 
 logger = logging.getLogger(__name__)
 
@@ -15,20 +15,19 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
         uses_service = self._page_uses_service(idx_html)
         if not uses_service:
             # Index page does not use the given third party service -> no need to mention it in the privacy statement
-            # ToDo: should be not True, but rather uncertain / not tested? Maybe return Optional[CheckResult]?
-            return self._get_check_result(True)
+            return self._get_check_result(CheckResultPassed.PASSED)
 
         if 'privacy' not in self.page_types:
             # Index page uses service but there is no privacy statement -> service not mentioned in privacy statement
-            return self._get_check_result(False)
+            return self._get_check_result(CheckResultPassed.FAILED)
 
         # It might be that the crawler identified multiple privacy statement pages.
         # We're testing all and return "passed" if one of them passes
         for html in self.get_html_strings_of(page_type='privacy'):
             mention = self._html_mentions_service(html)
             if mention:
-                return self._get_check_result(passed=True)
-        return self._get_check_result(passed=False)
+                return self._get_check_result(passed=CheckResultPassed.PASSED)
+        return self._get_check_result(passed=CheckResultPassed.FAILED)
 
 
 class PrivacyMissingGoogleAnalyticsCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):

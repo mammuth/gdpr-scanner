@@ -1,5 +1,27 @@
-from collections import namedtuple
+from dataclasses import dataclass
+from enum import Enum
 
-# passed means everything is fine, the Check did not fail.
-# ToDo: passed should probably be non-binary? (eg. passed, failed, uncertain
-CheckResult = namedtuple('CheckResult', 'domain identifier passed severity')
+
+class CheckResultPassed(Enum):
+    PASSED = 1
+    FAILED = 2
+    UNCERTAIN = 3
+
+    def __bool__(self):
+        return self in [CheckResultPassed.PASSED, CheckResultPassed.UNCERTAIN]
+
+    @property
+    def passed(self):
+        """
+
+        :return: True if the test did not fail (== test passed OR test result is uncertain)
+        """
+        return bool(self)
+
+
+@dataclass
+class CheckResult:
+    domain: str
+    identifier: str
+    passed: CheckResultPassed
+    severity: 'Severity'
