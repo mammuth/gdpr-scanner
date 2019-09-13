@@ -4,7 +4,8 @@ import os
 from collections import defaultdict
 from typing import List
 
-from analyzer.checks import MetricCheck, CheckResult, CheckResultPassed
+from analyzer.checks.check_result import CheckResult
+from analyzer.checks.metrics import MetricCheck
 from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck
 from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
 from analyzer.checks.metrics.tracking_service_ip_not_anonymized import GoogleAnalyticsIPNotAnonymizedCheck
@@ -46,12 +47,12 @@ class Analyzer:
         if identifier:
             return [
                 r for r in self.results
-                if r.identifier == identifier and r.passed is CheckResultPassed.FAILED
+                if r.identifier == identifier and r.passed is CheckResult.PassType.FAILED
             ]
         else:
             return [
                 r for r in self.results
-                if r.passed is CheckResultPassed.FAILED
+                if r.passed is CheckResult.PassType.FAILED
             ]
 
     def run(self, specific_domain: str = None):

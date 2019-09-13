@@ -2,7 +2,10 @@ import logging
 import os
 from abc import ABC
 
-from analyzer.checks import MetricCheck, CheckResult, Severity, utils, CheckResultPassed
+from analyzer.checks import utils
+from analyzer.checks.check_result import CheckResult
+from analyzer.checks.metrics import MetricCheck
+from analyzer.checks.severity import Severity
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +20,7 @@ class BaseTrackingServiceIPNotAnonymizedCheck(ABC):
             # don't fail on encoding issues, but replace the faulty characters
             html = f.read().decode('utf-8', errors='replace')
             passed = not self._page_uses_service_without_anonymization(html)
-        return self._get_check_result(CheckResultPassed.PASSED if passed else CheckResultPassed.FAILED)
+        return self._get_check_result(CheckResult.PassType.PASSED if passed else CheckResult.PassType.FAILED)
 
 
 class GoogleAnalyticsIPNotAnonymizedCheck(BaseTrackingServiceIPNotAnonymizedCheck, MetricCheck):

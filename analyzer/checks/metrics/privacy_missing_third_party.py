@@ -1,7 +1,10 @@
 import logging
 from abc import ABC
 
-from analyzer.checks import CheckResult, Severity, utils, MetricCheck, CheckResultPassed
+from analyzer.checks import utils
+from analyzer.checks.check_result import CheckResult
+from analyzer.checks.metrics import MetricCheck
+from analyzer.checks.severity import Severity
 
 logger = logging.getLogger(__name__)
 
@@ -15,12 +18,12 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
         uses_service = self._page_uses_service(idx_html)
         if not uses_service:
             # Index page does not use the given third party service -> no need to mention it in the privacy statement
-            return self._get_check_result(CheckResultPassed.NOT_APPLICABLE)
+            return self._get_check_result(CheckResult.PassType.NOT_APPLICABLE)
 
         if 'privacy' not in self.page_types:
             # Index page uses service but there is no privacy statement -> service not mentioned in privacy statement
             return self._get_check_result(
-                CheckResultPassed.FAILED,
+                CheckResult.PassType.FAILED,
                 'The tested third party is used in the index page but there seems to be no privacy statement at all.'
             )
 
@@ -29,8 +32,8 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
         for html in self.get_html_strings_of(page_type='privacy'):
             mention = self._html_mentions_service(html)
             if mention:
-                return self._get_check_result(passed=CheckResultPassed.PASSED)
-        return self._get_check_result(passed=CheckResultPassed.FAILED)
+                return self._get_check_result(passed=CheckResult.PassType.PASSED)
+        return self._get_check_result(passed=CheckResult.PassType.FAILED)
 
 
 class PrivacyMissingGoogleAnalyticsCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
