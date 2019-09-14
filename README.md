@@ -25,7 +25,11 @@ The results will be stored in the directory `output/`. It contains a meta data f
 
 #### Analyzer
 
-The analyzer CLI can be run with python 3.7:
-- `python main.py analyze` 
+The analyzer CLI can be run with python 3.7 from the root of the repository:
+- `python -m analyzer analyze` 
 
-Available options can be printed using `--help` or by just calling `main.py` without the `analyze` command. 
+Available options can be printed using `--help` or by just calling `analyzer` without the `analyze` command. 
+
+Note that some few dependencies are required; you can install them by running `pipenv install` in the `analyzer` directory.
+
+Tests can be run with `python -m unittest discover`

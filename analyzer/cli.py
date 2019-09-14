@@ -1,5 +1,6 @@
 import logging
 import os
+import time
 
 import click
 
@@ -28,6 +29,7 @@ def analyze(debug, crawler_json, skip_write):
     # Start analyzer
     main_dir = os.path.dirname(os.path.realpath(__file__))
     analyzer = Analyzer(crawler_metadata_filepath=os.path.join(main_dir, crawler_json))
+
     analyzer.run()
 
     if not skip_write:

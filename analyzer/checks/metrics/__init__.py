@@ -40,8 +40,10 @@ class MetricCheck(ABC):
         return html_strings
 
     def phrase_in_html_body(self, phrase: str, html: str) -> bool:
-        soup = BeautifulSoup(html)
+        soup = BeautifulSoup(html, 'html.parser')
         # We're compiling a regex here, otherwise bs4 would only return for *exact* matches.
+        if soup.body is None:
+            return False
         return soup.body.find(text=re.compile(phrase)) is not None
 
     @property

@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+import time
 from collections import defaultdict
 from typing import List
 
@@ -56,6 +57,7 @@ class Analyzer:
             ]
 
     def run(self, specific_domain: str = None):
+        start_time = time.time()
         if specific_domain is True:
             page_types = self.crawler_meta_data.get(specific_domain)
             self._checks_for_domain(specific_domain, page_types)
@@ -65,7 +67,7 @@ class Analyzer:
             logger.info(f'Activated checks: {", ".join([check.IDENTIFIER for check in self.checks])}')
             for domain, page_types in self.crawler_meta_data.items():
                 self._checks_for_domain(domain, page_types)
-        logger.info('Scan finished')
+        logger.info(f'Scan finished after {round(time.time() - start_time, 2)} seconds')
 
         # Print statistics
         for check in self.checks:
