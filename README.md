@@ -5,9 +5,7 @@ The gdpr scanner consists of multiple components
 1. A web crawler, located at `crawler/`, written in Go
 2. An analyzing service, located at `analyzer/`, written in Python
 
-## Usage
-
-#### Crawler
+## Crawler
 
 The crawler can be built using the `build.sh` script. Binaries for linux, macOS and Windows will be stored at `dist/.
 
@@ -23,7 +21,7 @@ The crawler can be built using the `build.sh` script. Binaries for linux, macOS 
 The results will be stored in the directory `output/`. It contains a meta data file `crawler.json` which tracks which domains got crawled with which pages and an estimation of the type of page (eg. privacy policy or contact page).
 
 
-#### Analyzer
+## Analyzer
 
 The analyzer CLI can be run with python 3.7 from the root of the repository:
 - `python -m analyzer analyze` 
