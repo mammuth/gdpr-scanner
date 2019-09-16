@@ -3,7 +3,7 @@ import unittest
 
 from analyzer.checks.check_result import CheckResult
 from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck, \
-    PrivacyMissingTwitterCheck, PrivacyMissingMatomoCheck, PrivacyMissingHubspotCheck
+    PrivacyMissingTwitterCheck, PrivacyMissingMatomoCheck, PrivacyMissingHubspotCheck, PrivacyMissingFacebookPixelCheck
 from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
 from analyzer.checks.metrics.tracking_service_ip_not_anonymized import GoogleAnalyticsIPNotAnonymizedCheck
 
@@ -49,11 +49,6 @@ class GoogleAnalyticsIPAnonymizationTestCase(BaseMetricCheckTestCase, unittest.T
         result = check.check()
         self.assertEqual(result.passed, CheckResult.PassType.PASSED)
 
-    @unittest.skip("Not implemented")
-    def test_gtag_without_anonymization(self):
-
-        pass
-
     def test_gtag_with_anonymization(self):
         domain = 'goldmarie-friends.de'
         check = GoogleAnalyticsIPNotAnonymizedCheck(domain, self.metadata.get(domain), self.metadata_filepath)
@@ -65,14 +60,6 @@ class GoogleAnalyticsIPAnonymizationTestCase(BaseMetricCheckTestCase, unittest.T
         check = GoogleAnalyticsIPNotAnonymizedCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
         self.assertEqual(result.passed, CheckResult.PassType.FAILED)
-
-    @unittest.skip("Not implemented")
-    def test_legacy_ga_with_anonymization(self):
-        pass
-        # domain = ''  # Legacy analytics with anonymize
-        # check = GoogleAnalyticsIPNotAnonymizedCheck(domain, self.metadata.get(domain), self.metadata_filepath)
-        # result = check.check()
-        # self.assertEqual(result.passed, CheckResult.PassType.PASSED, 'Lgecy GA Anonymized IP was not detected')
 
     def test_domain_without_google_analytics(self):
         domain = 'logbuch-netzpolitik.de'  # has no GA at all
@@ -111,14 +98,6 @@ class PrivacyMissingGAMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase
 
 class PrivacyMissingTwitterMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase):
 
-    @unittest.skip("Not implemented")
-    def test_twitter_used_without_mention(self):
-        pass
-
-    @unittest.skip("Not implemented")
-    def test_twitter_used_with_mention(self):
-        pass
-
     def test_twitter_used_no_privacy_policy(self):
         domain = 'officecoach24.de'
         check = PrivacyMissingTwitterCheck(domain, self.metadata.get(domain), self.metadata_filepath)
@@ -134,10 +113,6 @@ class PrivacyMissingTwitterMentionTestCase(BaseMetricCheckTestCase, unittest.Tes
 
 
 class PrivacyMissingMatomoMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase):
-
-    @unittest.skip("Not implemented")
-    def test_matomo_used_without_mention(self):
-        pass
 
     def test_matomo_used_with_mention(self):
         domain = 'berufskleidung24.de'
@@ -161,23 +136,26 @@ class PrivacyMissingMatomoMentionTestCase(BaseMetricCheckTestCase, unittest.Test
 
 class PrivacyMissingHubspotMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase):
 
-    @unittest.skip("Not implemented")
-    def test_hubspot_used_without_mention(self):
-        pass
-
-    @unittest.skip("Not implemented")
-    def test_hubspot_used_with_mention(self):
-        pass
-
     def test_hubspot_used_no_privacy_policy(self):
         domain = 'goldmarie-friends.de'
         check = PrivacyMissingHubspotCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
         self.assertEqual(result.passed, CheckResult.PassType.FAILED)
 
-    @unittest.skip("Not implemented")
-    def test_hubspot_not_used(self):
-        pass
+
+class PrivacyMissingFacebookMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase):
+
+    def test_facebook_used_no_privacy_policy(self):
+        domain = 'hohenbogen.de'
+        check = PrivacyMissingFacebookPixelCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.FAILED)
+
+    def test_facebook_not_used(self):
+        domain = 'goldmarie-friends.de'
+        check = PrivacyMissingFacebookPixelCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.NOT_APPLICABLE)
 
 
 if __name__ == '__main__':
