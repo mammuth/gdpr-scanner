@@ -25,7 +25,7 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
             # Index page uses service but there is no privacy statement -> service not mentioned in privacy statement
             logger.debug(f'{self.domain} uses it without having a privacy policy!')
             return self._get_check_result(
-                CheckResult.PassType.FAILED,
+                CheckResult.PassType.PRECONDITION_FAILED,
                 'The tested third party is used in the index page but there seems to be no privacy statement at all.'
             )
 

@@ -9,9 +9,10 @@ class CheckResult:
         FAILED = 'failed'
         UNCERTAIN = 'uncertain'
         NOT_APPLICABLE = 'not_applicable'
+        PRECONDITION_FAILED = 'precondition_failed'  # eg. third party is used (and should be mentioned in policy), but there is no policy   # noqa
 
         def __bool__(self):
-            return self is not CheckResult.PassType.FAILED
+            return self not in[CheckResult.PassType.FAILED, CheckResult.PassType.PRECONDITION_FAILED]
 
         @property
         def passed(self):
