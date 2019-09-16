@@ -125,6 +125,13 @@
       "pageType": "privacy",
       "url": "https://kristalltherme-altenau.de/Download_Documents/Transparente_Information_Gewinnspiel_Altenau.pdf",
       "htmlFilePath": "kristalltherme-altenau.de/privacy/index.html"
+    },
+    {
+      "originalDomain": "hohenbogen.de",
+      "actualDomain": "hohenbogen.de",
+      "pageType": "index",
+      "url": "http://hohenbogen.de",
+      "htmlFilePath": "hohenbogen.de/index/index.html"
     }
   ]
 }

@@ -3,7 +3,7 @@ import unittest
 
 from analyzer.checks.check_result import CheckResult
 from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck, \
-    PrivacyMissingTwitterCheck
+    PrivacyMissingTwitterCheck, PrivacyMissingMatomoCheck, PrivacyMissingHubspotCheck
 from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
 from analyzer.checks.metrics.tracking_service_ip_not_anonymized import GoogleAnalyticsIPNotAnonymizedCheck
 
@@ -131,6 +131,53 @@ class PrivacyMissingTwitterMentionTestCase(BaseMetricCheckTestCase, unittest.Tes
         result = check.check()
         self.assertEqual(result.passed, CheckResult.PassType.NOT_APPLICABLE)
         self.assertEqual(result.passed.passed, True)
+
+
+class PrivacyMissingMatomoMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase):
+
+    @unittest.skip("Not implemented")
+    def test_matomo_used_without_mention(self):
+        pass
+
+    def test_matomo_used_with_mention(self):
+        domain = 'berufskleidung24.de'
+        check = PrivacyMissingMatomoCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+
+    def test_matomo_used_no_privacy_policy(self):
+        domain = 'hohenbogen.de'
+        check = PrivacyMissingMatomoCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.FAILED)
+
+    def test_matomo_not_used(self):
+        domain = 'logbuch-netzpolitik.de'
+        check = PrivacyMissingMatomoCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.NOT_APPLICABLE)
+        self.assertEqual(result.passed.passed, True)
+
+
+class PrivacyMissingHubspotMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase):
+
+    @unittest.skip("Not implemented")
+    def test_hubspot_used_without_mention(self):
+        pass
+
+    @unittest.skip("Not implemented")
+    def test_hubspot_used_with_mention(self):
+        pass
+
+    def test_hubspot_used_no_privacy_policy(self):
+        domain = 'goldmarie-friends.de'
+        check = PrivacyMissingHubspotCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.FAILED)
+
+    @unittest.skip("Not implemented")
+    def test_hubspot_not_used(self):
+        pass
 
 
 if __name__ == '__main__':

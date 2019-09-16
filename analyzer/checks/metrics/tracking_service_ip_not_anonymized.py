@@ -2,11 +2,10 @@ import logging
 import os
 from abc import ABC, abstractmethod
 
-from analyzer.checks import utils
+from analyzer.checks import detectors
 from analyzer.checks.check_result import CheckResult
 from analyzer.checks.metrics import MetricCheck
 from analyzer.checks.severity import Severity
-from analyzer.checks.third_party_integrations import GoogleAnalytics
 
 logger = logging.getLogger(__name__)
 
@@ -33,7 +32,7 @@ class GoogleAnalyticsIPNotAnonymizedCheck(BaseTrackingServiceIPNotAnonymizedChec
     SEVERITY = Severity.MEDIUM
 
     def _page_uses_service_without_anonymization(self, html: str) -> bool:
-        if GoogleAnalytics().used_in_page(html):
+        if detectors.page_uses_service(html, detectors.GOOGLE_ANALYTICS):
             anonymize_detectors = ['anonymize_ip', 'anonymizeIp', ]  # gtag, ga,
             has_anon = False
             for detector in anonymize_detectors:

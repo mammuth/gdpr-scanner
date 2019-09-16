@@ -8,7 +8,7 @@ from typing import List
 from analyzer.checks.check_result import CheckResult
 from analyzer.checks.metrics import MetricCheck
 from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck, \
-    PrivacyMissingFacebookPixelCheck
+    PrivacyMissingFacebookPixelCheck, PrivacyMissingMatomoCheck, PrivacyMissingTwitterCheck, PrivacyMissingHubspotCheck
 from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
 from analyzer.checks.metrics.tracking_service_ip_not_anonymized import GoogleAnalyticsIPNotAnonymizedCheck
 from analyzer.exceptions import InvalidMetricCheckException, ToDo
@@ -24,7 +24,10 @@ class Analyzer:
         GoogleAnalyticsIPNotAnonymizedCheck,
 
         PrivacyMissingGoogleAnalyticsCheck,
+        PrivacyMissingMatomoCheck,
         PrivacyMissingFacebookPixelCheck,
+        PrivacyMissingTwitterCheck,
+        PrivacyMissingHubspotCheck,
     ]
 
     def __init__(self, crawler_metadata_filepath: str, checks: List[MetricCheck] = None, *args, **kwargs):
