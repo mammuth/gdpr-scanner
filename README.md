@@ -7,7 +7,7 @@ The gdpr scanner consists of multiple components
 
 ## Crawler
 
-The crawler can be built using the `build.sh` script. Binaries for linux, macOS and Windows will be stored at `dist/.
+The crawler can be built using the `build.sh` script. Binaries for linux, macOS and Windows will be stored at `dist/`.
 
 **Parameter options**:
 - `-domain <domain>` or `-list <path>` is used for specifying the domains to crawl

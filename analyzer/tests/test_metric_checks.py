@@ -2,7 +2,8 @@ import os
 import unittest
 
 from analyzer.checks.check_result import CheckResult
-from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck
+from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck, \
+    PrivacyMissingTwitterCheck
 from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
 from analyzer.checks.metrics.tracking_service_ip_not_anonymized import GoogleAnalyticsIPNotAnonymizedCheck
 
@@ -48,8 +49,9 @@ class GoogleAnalyticsIPAnonymizationTestCase(BaseMetricCheckTestCase, unittest.T
         result = check.check()
         self.assertEqual(result.passed, CheckResult.PassType.PASSED)
 
+    @unittest.skip("Not implemented")
     def test_gtag_without_anonymization(self):
-        # ToDo: Test: gtag without anonymization
+
         pass
 
     def test_gtag_with_anonymization(self):
@@ -64,9 +66,9 @@ class GoogleAnalyticsIPAnonymizationTestCase(BaseMetricCheckTestCase, unittest.T
         result = check.check()
         self.assertEqual(result.passed, CheckResult.PassType.FAILED)
 
+    @unittest.skip("Not implemented")
     def test_legacy_ga_with_anonymization(self):
         pass
-        # ToDo: Test: Legacy analytics with anonymize
         # domain = ''  # Legacy analytics with anonymize
         # check = GoogleAnalyticsIPNotAnonymizedCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         # result = check.check()
@@ -102,6 +104,30 @@ class PrivacyMissingGAMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase
     def test_ga_not_used(self):
         domain = 'logbuch-netzpolitik.de'
         check = PrivacyMissingGoogleAnalyticsCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.NOT_APPLICABLE)
+        self.assertEqual(result.passed.passed, True)
+
+
+class PrivacyMissingTwitterMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase):
+
+    @unittest.skip("Not implemented")
+    def test_twitter_used_without_mention(self):
+        pass
+
+    @unittest.skip("Not implemented")
+    def test_twitter_used_with_mention(self):
+        pass
+
+    def test_twitter_used_no_privacy_policy(self):
+        domain = 'officecoach24.de'
+        check = PrivacyMissingTwitterCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.FAILED)
+
+    def test_twitter_not_used(self):
+        domain = 'logbuch-netzpolitik.de'
+        check = PrivacyMissingTwitterCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
         self.assertEqual(result.passed, CheckResult.PassType.NOT_APPLICABLE)
         self.assertEqual(result.passed.passed, True)

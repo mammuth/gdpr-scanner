@@ -7,7 +7,8 @@ from typing import List
 
 from analyzer.checks.check_result import CheckResult
 from analyzer.checks.metrics import MetricCheck
-from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck
+from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck, \
+    PrivacyMissingFacebookPixelCheck
 from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
 from analyzer.checks.metrics.tracking_service_ip_not_anonymized import GoogleAnalyticsIPNotAnonymizedCheck
 from analyzer.exceptions import InvalidMetricCheckException, ToDo
@@ -19,8 +20,11 @@ logger = logging.getLogger(__name__)
 class Analyzer:
     checks: List[MetricCheck] = [
         PrivacyStatementMissingCheck,
+
         GoogleAnalyticsIPNotAnonymizedCheck,
+
         PrivacyMissingGoogleAnalyticsCheck,
+        PrivacyMissingFacebookPixelCheck,
     ]
 
     def __init__(self, crawler_metadata_filepath: str, checks: List[MetricCheck] = None, *args, **kwargs):
@@ -30,7 +34,8 @@ class Analyzer:
         if checks:
             self.checks = checks
 
-    def _import_crawler_meta(self, path: str) -> CrawlerMetaData:
+    @staticmethod
+    def _import_crawler_meta(path: str) -> CrawlerMetaData:
         """
 
         :param path:
@@ -63,7 +68,7 @@ class Analyzer:
             self._checks_for_domain(specific_domain, page_types)
         else:
             logger.info(f'Scan started')
-            logger.info(f'Number of pages: {len(self.crawler_meta_data)}')
+            logger.info(f'Number of domains: {len(self.crawler_meta_data)}')
             logger.info(f'Activated checks: {", ".join([check.IDENTIFIER for check in self.checks])}')
             for domain, page_types in self.crawler_meta_data.items():
                 self._checks_for_domain(domain, page_types)

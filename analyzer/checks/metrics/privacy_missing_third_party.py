@@ -5,6 +5,7 @@ from analyzer.checks import utils
 from analyzer.checks.check_result import CheckResult
 from analyzer.checks.metrics import MetricCheck
 from analyzer.checks.severity import Severity
+from analyzer.checks.third_party_integrations import GoogleAnalytics, FacebookTracking, Twitter
 
 logger = logging.getLogger(__name__)
 
@@ -40,11 +41,32 @@ class PrivacyMissingGoogleAnalyticsCheck(BasePrivacyMissingThirdPartyCheck, Metr
     IDENTIFIER = 'privacy-missing-googleanalytics'
 
     def _page_uses_service(self, html) -> bool:
-        from analyzer.checks.analytics_providers import AnalyticsProvider
-        has_ga = AnalyticsProvider.GOOGLE_ANALYTICS in utils.analytics_providers_in_page(html)
-        return has_ga
+        return GoogleAnalytics().used_in_page(html)
 
     def _html_mentions_service(self, html: str) -> bool:
-        return self.phrase_in_html_body('Google Analytics', html)
+        return any([
+            self.phrase_in_html_body('Google Analytics', html),
+            self.phrase_in_html_body('Google Tag Manager', html)
+        ])
 
-# ToDo: Implement more third party integrations: Disqus, Hubspot, Facebook, Instagram, Interecom, ...
+
+class PrivacyMissingFacebookPixelCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
+    IDENTIFIER = 'privacy-missing-facebook-pixel'
+
+    def _page_uses_service(self, html) -> bool:
+        return FacebookTracking().used_in_page(html)
+
+    def _html_mentions_service(self, html: str) -> bool:
+        return self.phrase_in_html_body('FacebookTracking Inc', html)
+
+
+class PrivacyMissingTwitterCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
+    IDENTIFIER = 'privacy-missing-twitter'
+
+    def _page_uses_service(self, html) -> bool:
+        return Twitter().used_in_page(html)
+
+    def _html_mentions_service(self, html: str) -> bool:
+        return self.phrase_in_html_body('Twitter Inc', html)
+
+# ToDo: Implement more third party integrations:  Matomo (berufsbekleidung) AdSense, Disqus, Instagram, Interecom, ...

@@ -1,11 +1,12 @@
 from typing import List
 
-from analyzer.checks.analytics_providers import AnalyticsProvider
+from analyzer.checks.third_party_integrations import ThirdPartyIntegration, ALL_THIRD_PARTY_INTEGRATIONS
 
 
-def analytics_providers_in_page(html: str) -> List[AnalyticsProvider]:
-    found_providers: List[AnalyticsProvider] = list()
-    for provider in AnalyticsProvider:
+def third_parties_in_page(html: str) -> List[ThirdPartyIntegration]:
+
+    found_providers: List[ThirdPartyIntegration] = list()
+    for provider in ALL_THIRD_PARTY_INTEGRATIONS:
         for detector in provider.detector_strings:
             if detector in html:
                 found_providers.append(provider)

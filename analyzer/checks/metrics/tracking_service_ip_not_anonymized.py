@@ -1,11 +1,12 @@
 import logging
 import os
-from abc import ABC
+from abc import ABC, abstractmethod
 
 from analyzer.checks import utils
 from analyzer.checks.check_result import CheckResult
 from analyzer.checks.metrics import MetricCheck
 from analyzer.checks.severity import Severity
+from analyzer.checks.third_party_integrations import GoogleAnalytics
 
 logger = logging.getLogger(__name__)
 
@@ -22,15 +23,17 @@ class BaseTrackingServiceIPNotAnonymizedCheck(ABC):
             passed = not self._page_uses_service_without_anonymization(html)
         return self._get_check_result(CheckResult.PassType.PASSED if passed else CheckResult.PassType.FAILED)
 
+    @abstractmethod
+    def _page_uses_service_without_anonymization(self, html):
+        raise NotImplementedError()
+
 
 class GoogleAnalyticsIPNotAnonymizedCheck(BaseTrackingServiceIPNotAnonymizedCheck, MetricCheck):
     IDENTIFIER = 'ip-not-anonymized-googleanalytics'
     SEVERITY = Severity.MEDIUM
 
     def _page_uses_service_without_anonymization(self, html: str) -> bool:
-        from analyzer.checks.analytics_providers import AnalyticsProvider
-        has_ga = AnalyticsProvider.GOOGLE_ANALYTICS in utils.analytics_providers_in_page(html)
-        if has_ga:
+        if GoogleAnalytics().used_in_page(html):
             anonymize_detectors = ['anonymize_ip', 'anonymizeIp', ]  # gtag, ga,
             has_anon = False
             for detector in anonymize_detectors:
