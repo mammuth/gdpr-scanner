@@ -32,14 +32,15 @@ class MetricCheck(ABC):
     def get_html_strings_of(self, page_type: str) -> List[str]:
         html_strings: List[str] = list()
         for page in self.page_types.get(page_type, []):
-            idx_html_abspath = os.path.join(os.path.dirname(self.meta_data_filepath), page['htmlFilePath'])
-            with open(idx_html_abspath, 'rb') as f:
+            html_abspath = os.path.join(os.path.dirname(self.meta_data_filepath), page['htmlFilePath'])
+            with open(html_abspath, 'rb') as f:
                 # don't fail on encoding issues, but replace the faulty characters
                 html = f.read().decode('utf-8', errors='replace')
                 html_strings.append(html)
         return html_strings
 
     def phrase_in_html_body(self, phrase: str, html: str) -> bool:
+        # ToDo: Don't instantiate bs for every call, share it across checks based on the html content / hash
         soup = BeautifulSoup(html, 'html.parser')
         # We're compiling a regex here, otherwise bs4 would only return for *exact* matches.
         if soup.body is None:

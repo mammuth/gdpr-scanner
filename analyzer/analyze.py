@@ -6,11 +6,9 @@ from collections import defaultdict
 from typing import List
 
 from analyzer.checks.check_result import CheckResult
-from analyzer.checks.metrics import MetricCheck
-from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck, \
-    PrivacyMissingFacebookPixelCheck, PrivacyMissingMatomoCheck, PrivacyMissingTwitterCheck, PrivacyMissingHubspotCheck
+from analyzer.checks.metrics import MetricCheck, privacy_missing_paragraph, privacy_missing_third_party, \
+    tracking_service_ip_not_anonymized
 from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
-from analyzer.checks.metrics.tracking_service_ip_not_anonymized import GoogleAnalyticsIPNotAnonymizedCheck
 from analyzer.exceptions import InvalidMetricCheckException, ToDo
 from analyzer.types_definitions import CrawlerMetaData
 
@@ -18,17 +16,10 @@ logger = logging.getLogger(__name__)
 
 
 class Analyzer:
-    checks: List[MetricCheck] = [
-        PrivacyStatementMissingCheck,
-
-        GoogleAnalyticsIPNotAnonymizedCheck,
-
-        PrivacyMissingGoogleAnalyticsCheck,
-        PrivacyMissingMatomoCheck,
-        PrivacyMissingFacebookPixelCheck,
-        PrivacyMissingTwitterCheck,
-        PrivacyMissingHubspotCheck,
-    ]
+    checks: List[MetricCheck] = [PrivacyStatementMissingCheck] \
+                                + tracking_service_ip_not_anonymized.ALL_METRICS \
+                                + privacy_missing_third_party.ALL_METRICS \
+                                + privacy_missing_paragraph.ALL_METRICS
 
     def __init__(self, crawler_metadata_filepath: str, checks: List[MetricCheck] = None, *args, **kwargs):
         self.crawler_metadata_filepath = crawler_metadata_filepath
@@ -72,7 +63,7 @@ class Analyzer:
         else:
             logger.info(f'Scan started')
             logger.info(f'Number of domains: {len(self.crawler_meta_data)}')
-            logger.info(f'Activated checks: {", ".join([check.IDENTIFIER for check in self.checks])}')
+            logger.info(f'{len(self.checks)} activated checks: {", ".join([check.IDENTIFIER for check in self.checks])}')
             for domain, page_types in self.crawler_meta_data.items():
                 self._checks_for_domain(domain, page_types)
         logger.info(f'Scan finished after {round(time.time() - start_time, 2)} seconds')

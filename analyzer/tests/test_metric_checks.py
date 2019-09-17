@@ -2,6 +2,9 @@ import os
 import unittest
 
 from analyzer.checks.check_result import CheckResult
+from analyzer.checks.metrics.privacy_missing_paragraph import ProtectionOfficerMissingContactDetailsCheck, \
+    GDPRInformationRequestMissingCheck, GDPRInformationDeletionMissingCheck, GDPRRevocationMissingCheck, \
+    GDPRObjectMissingCheck, GDPRComplaintMissingCheck, GDPRPortabilityMissingCheck, GDPRNonEuTransmissionMissingCheck
 from analyzer.checks.metrics.privacy_missing_third_party import PrivacyMissingGoogleAnalyticsCheck, \
     PrivacyMissingTwitterCheck, PrivacyMissingMatomoCheck, PrivacyMissingHubspotCheck, PrivacyMissingFacebookPixelCheck
 from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
@@ -156,6 +159,73 @@ class PrivacyMissingFacebookMentionTestCase(BaseMetricCheckTestCase, unittest.Te
         check = PrivacyMissingFacebookPixelCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
         self.assertEqual(result.passed, CheckResult.PassType.NOT_APPLICABLE)
+
+
+class PrivacyPhrasesMissingTestCase(BaseMetricCheckTestCase, unittest.TestCase):
+
+    def test_officer_present_with_email(self):
+        domain = 'heise.de'
+        check = ProtectionOfficerMissingContactDetailsCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+
+        domain = 'lupus-ddns.de'
+        check = ProtectionOfficerMissingContactDetailsCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+
+        domain = 'kristalltherme-altenau.de'
+        check = ProtectionOfficerMissingContactDetailsCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+
+    def test_officer_not_present(self):
+        domain = 'berufskleidung24.de'
+        check = ProtectionOfficerMissingContactDetailsCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+
+    def test_gdpr_information_request_present(self):
+        domain = 'heise.de'
+        check = GDPRInformationRequestMissingCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+
+    def test_gdpr_information_deletion_present(self):
+        domain = 'heise.de'
+        check = GDPRInformationDeletionMissingCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+
+    def test_gdpr_revocation_present(self):
+        domain = 'heise.de'
+        check = GDPRRevocationMissingCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+
+    def test_gdpr_object_present(self):
+        domain = 'heise.de'
+        check = GDPRObjectMissingCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+
+    def test_gdpr_complaint_present(self):
+        domain = 'heise.de'
+        check = GDPRComplaintMissingCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+
+    def test_gdpr_portability_present(self):
+        domain = 'heise.de'
+        check = GDPRPortabilityMissingCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+
+    def test_gdpr_non_eu_transmission_present(self):
+        domain = 'heise.de'
+        check = GDPRNonEuTransmissionMissingCheck(domain, self.metadata.get(domain), self.metadata_filepath)
+        result = check.check()
+        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
 
 
 if __name__ == '__main__':

@@ -117,14 +117,14 @@
       "actualDomain": "kristalltherme-altenau.de",
       "pageType": "privacy",
       "url": "https://kristalltherme-altenau.de/Formal/datenschutz.php",
-      "htmlFilePath": "kristalltherme-altenau.de/privacy/index.html"
+      "htmlFilePath": "kristalltherme-altenau.de/privacy/2.html"
     },
     {
       "originalDomain": "kristalltherme-altenau.de",
       "actualDomain": "kristalltherme-altenau.de",
       "pageType": "privacy",
       "url": "https://kristalltherme-altenau.de/Download_Documents/Transparente_Information_Gewinnspiel_Altenau.pdf",
-      "htmlFilePath": "kristalltherme-altenau.de/privacy/index.html"
+      "htmlFilePath": "kristalltherme-altenau.de/privacy/1.html"
     },
     {
       "originalDomain": "hohenbogen.de",
@@ -132,6 +132,21 @@
       "pageType": "index",
       "url": "http://hohenbogen.de",
       "htmlFilePath": "hohenbogen.de/index/index.html"
+    },
+
+    {
+      "originalDomain": "heise.de",
+      "actualDomain": "www.heise.de",
+      "pageType": "index",
+      "url": "https://www.heise.de/",
+      "htmlFilePath": "heise.de/index/index.html"
+    },
+    {
+      "originalDomain": "heise.de",
+      "actualDomain": "www.heise.de",
+      "pageType": "privacy",
+      "url": "https://www.heise.de/Datenschutzerklaerung-der-Heise-Medien-GmbH-Co-KG-4860.html",
+      "htmlFilePath": "heise.de/privacy/index.html"
     }
   ]
 }

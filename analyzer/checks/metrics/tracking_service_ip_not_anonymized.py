@@ -42,3 +42,8 @@ class GoogleAnalyticsIPNotAnonymizedCheck(BaseTrackingServiceIPNotAnonymizedChec
             return not has_anon
         else:
             return False
+
+
+ALL_METRICS = [
+    GoogleAnalyticsIPNotAnonymizedCheck,
+]

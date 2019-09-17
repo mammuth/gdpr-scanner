@@ -43,7 +43,8 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
         """Returns True if the given provider is mentioned in `html`.
         """
         for detector in self.mention_detector_strings:
-            if detector in html:
+            match = self.phrase_in_html_body(detector, html)
+            if match:
                 return True
         return False
 
@@ -87,4 +88,12 @@ class PrivacyMissingHubspotCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck)
     detector_strings = detectors.HUBSPOT
     mention_detector_strings = ['Hubspot Inc']
 
+
 # ToDo: Implement more third party integrations:  Matomo (berufsbekleidung) AdSense, Disqus, Instagram, Interecom, ...
+ALL_METRICS = [
+    PrivacyMissingGoogleAnalyticsCheck,
+    PrivacyMissingMatomoCheck,
+    PrivacyMissingFacebookPixelCheck,
+    PrivacyMissingTwitterCheck,
+    PrivacyMissingHubspotCheck,
+]
