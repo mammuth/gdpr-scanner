@@ -4,7 +4,6 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
-	"sync"
 
 	"go.uber.org/zap"
 
@@ -16,15 +15,15 @@ type Storage struct {
 	outputPath   string
 	metaDataFile string
 	logger       *zap.SugaredLogger
-	wg           *sync.WaitGroup
-	lock         *sync.RWMutex
+	//wg           *sync.WaitGroup
+	//lock         *sync.RWMutex
 }
 
 func New(logger *zap.SugaredLogger) *Storage {
 	// ToDo Allow adding options?
 	s := &Storage{}
-	s.wg = &sync.WaitGroup{}
-	s.lock = &sync.RWMutex{}
+	//s.wg = &sync.WaitGroup{}
+	//s.lock = &sync.RWMutex{}
 
 	// Set defaults
 	s.outputPath = "output"
@@ -34,9 +33,9 @@ func New(logger *zap.SugaredLogger) *Storage {
 }
 
 // Wait returns when the Storage jobs are finished
-func (s *Storage) Wait() {
-	s.wg.Wait()
-}
+//func (s *Storage) Wait() {
+//	s.wg.Wait()
+//}
 
 func (s *Storage) StorePageVisit(originalDomain string, url *url.URL, body []byte, pageType page.Type) {
 
@@ -47,12 +46,13 @@ func (s *Storage) StorePageVisit(originalDomain string, url *url.URL, body []byt
 		return
 	}
 
-	s.wg.Add(1)
-	go s.storePageVisit(originalDomain, url, body, pageType)
+	//s.wg.Add(1)
+	//go s.storePageVisit(originalDomain, url, body, pageType)
+	s.storePageVisit(originalDomain, url, body, pageType)
 }
 
 func (s *Storage) storePageVisit(originalDomain string, url *url.URL, body []byte, pageType page.Type) {
-	defer s.wg.Done()
+	//defer s.wg.Done()
 
 	// Create output directory if it does not exist
 	err := os.MkdirAll(s.outputPath, os.ModePerm)
@@ -90,4 +90,13 @@ func (s *Storage) GetNumberOfCrawledDomains() int {
 
 func (s *Storage) GetNumberOfCrawledPages() int {
 	return len(s.metaData.CrawledPages)
+}
+
+func (s *Storage) GetNumberOfCrawledPagesForDomain(domain string) (count int) {
+	for _, s := range s.metaData.CrawledPages {
+		if s.OriginalDomain == domain {
+			count += 1
+		}
+	}
+	return
 }

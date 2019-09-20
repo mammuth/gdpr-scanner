@@ -57,7 +57,7 @@ func (s *Storage) updateCrawlerMetaData(domain string, url *url.URL, pageType pa
 		PageTypeIdentifier: pageType.StringIdentifier(),
 		Url:                url.String(),
 	}
-	s.lock.Lock()
+	//s.lock.Lock()
 	s.metaData.CrawledPages = append(s.metaData.CrawledPages, newPage)
-	s.lock.Unlock()
+	//s.lock.Unlock()
 }

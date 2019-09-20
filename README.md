@@ -17,6 +17,7 @@ The crawler can be built using the `build.sh` script. Binaries for linux, macOS 
 **Examples**:
 - `./crawler -domain www.maxi-muth.de -threads 20 -verbose`
 - `./crawler -list domain-list.txt` (The list should contain line-separated domains, not full URLs).
+- Log to file: `./crawler -list lists/list_test_1k.txt -threads 20 > crawler_1k.log 2>&1 &`
 
 The results will be stored in the directory `output/`. It contains a meta data file `crawler.json` which tracks which domains got crawled with which pages and an estimation of the type of page (eg. privacy policy or contact page).
 

@@ -103,7 +103,7 @@ func (c Crawler) Run() {
 		// Store the result
 		pageUrl, err := url.Parse(r.Request.URL.String())
 		if err != nil {
-			c.logger.Warnw("Error parsing response",
+			c.logger.Debugw("Error parsing response",
 				"url", r.Request.URL,
 				"statusCode", r.StatusCode,
 				"headers", r.Headers,
@@ -125,6 +125,10 @@ func (c Crawler) Run() {
 			linkHref := e.Attr("href")
 			pageType := page.GetEstimatedPageTypeOfLink(linkText, linkHref)
 			if pageType != page.UnknownPage {
+				if c.Storage.GetNumberOfCrawledPagesForDomain(e.Request.Ctx.Get("originalDomain")) >= 30 {
+					c.logger.Debugw("Don't queue next page visit since we reached the page limit for this domain")
+					return
+				}
 				fullUrl, err := utils.LinkToAbsoluteUrl(e)
 				if err != nil {
 					return
@@ -141,7 +145,7 @@ func (c Crawler) Run() {
 	})
 
 	collector.OnError(func(r *colly.Response, e error) {
-		c.logger.Warnw("Error visiting url",
+		c.logger.Debugw("Error visiting url",
 			"url", r.Request.URL,
 			"error", e,
 			"statusCode", r.StatusCode,
@@ -163,7 +167,7 @@ func (c Crawler) Run() {
 	}
 
 	collector.Wait()
-	c.Storage.Wait()
+	//c.Storage.Wait()
 	//c.TearDown()  // ToDo: Doesn't work currently
 
 	elapsedTime := time.Since(startTime)

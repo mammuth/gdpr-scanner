@@ -12,16 +12,15 @@ import (
 func LinkToAbsoluteUrl(link *colly.HTMLElement) (absoluteUrl string, err error) {
 	href := link.Attr("href")
 	hrefUrl, err := url.Parse(href)
-	hrefUrl.RequestURI()
 	if err != nil {
 		fmt.Println(err)
 		return href, error(err)
 	}
 	if hrefUrl.IsAbs() {
-		return hrefUrl.String(), nil
+		return strings.TrimSpace(hrefUrl.String()), nil
 	} else {
 		requestUrl := link.Request.URL
-		return requestUrl.ResolveReference(hrefUrl).String(), nil
+		return strings.TrimSpace(requestUrl.ResolveReference(hrefUrl).String()), nil
 	}
 }
 
@@ -51,7 +50,7 @@ func CleanLinkText(linkText string) string {
 func IsMeaningfulLink(link *colly.HTMLElement) bool {
 	// Validate href target
 	href := link.Attr("href")
-	if href == "#" || strings.HasPrefix(href, "javascript:") {
+	if strings.HasPrefix(href, "#") || strings.HasPrefix(href, "javascript:") {
 		return false
 	}
 
