@@ -125,8 +125,13 @@ func (c Crawler) Run() {
 			linkHref := e.Attr("href")
 			pageType := page.GetEstimatedPageTypeOfLink(linkText, linkHref)
 			if pageType != page.UnknownPage {
-				if c.Storage.GetNumberOfCrawledPagesForDomain(e.Request.Ctx.Get("originalDomain")) >= 30 {
-					c.logger.Debugw("Don't queue next page visit since we reached the page limit for this domain")
+				domain := e.Request.Ctx.Get("originalDomain")
+				if c.Storage.GetNumberOfCrawledPagesForDomain(domain) >= 30 {
+					c.logger.Debugw(
+						"Don't queue next page visit since we reached the page limit for this domain",
+						"domain", domain,
+						"url", linkHref,
+					)
 					return
 				}
 				fullUrl, err := utils.LinkToAbsoluteUrl(e)
@@ -175,7 +180,6 @@ func (c Crawler) Run() {
 		"duration", elapsedTime.String(),
 		"crawledDomains", c.Storage.GetNumberOfCrawledDomains(),
 		"crawledPages", c.Storage.GetNumberOfCrawledPages(),
-		"rawDuration", elapsedTime,
 	)
 }
 
