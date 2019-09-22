@@ -25,8 +25,8 @@ class CheckResult:
     domain: str
     identifier: str
     passed: PassType
-    description: str
     severity: 'Severity'
+    description: str = ""
 
     def __str__(self):
         return f'{self.domain} - {self.identifier}: {self.passed}'

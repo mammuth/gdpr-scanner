@@ -5,6 +5,7 @@ from typing import List
 from analyzer.checks import detectors
 from analyzer.checks.check_result import CheckResult
 from analyzer.checks.metrics import MetricCheck
+from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
 from analyzer.checks.severity import Severity
 
 logger = logging.getLogger(__name__)
@@ -12,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 class BasePrivacyMissingThirdPartyCheck(ABC):
     SEVERITY = Severity.LOW
+    PRECONDITION_CHECK_CLASSES = [PrivacyStatementMissingCheck,]
 
     def check(self) -> CheckResult:
         # first determine whether the html of the index page uses the given third party service
@@ -20,14 +22,6 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
         if not uses_service:
             # Index page does not use the given third party service -> no need to mention it in the privacy statement
             return self._get_check_result(CheckResult.PassType.NOT_APPLICABLE)
-
-        if 'privacy' not in self.page_types:
-            # Index page uses service but there is no privacy statement -> service not mentioned in privacy statement
-            logger.debug(f'{self.domain} {self.IDENTIFIER} is used without having a privacy policy!')
-            return self._get_check_result(
-                CheckResult.PassType.PRECONDITION_FAILED,
-                'The tested third party is used in the index page but there seems to be no privacy statement at all.'
-            )
 
         # It might be that the crawler identified multiple privacy statement pages.
         # We're testing all and return "passed" if one of them passes

@@ -85,10 +85,16 @@ class Analyzer:
             if not isinstance(check, MetricCheck):
                 raise InvalidMetricCheckException(f'{check.__class__} is no valid MetricCheck')
             try:
-                result: CheckResult = check.check()
+                # First check preconditions
+                failed_precondition_check_result = check.failed_precondition(previous_results=self.results)
+                if failed_precondition_check_result is None:
+                    # Second perform real check
+                    result: CheckResult = check.check()
+                else:
+                    result = failed_precondition_check_result
                 self.results.append(result)
-            except Exception as e:
-                logger.error(f'{domain} {check.IDENTIFIER} CHECK FAILED', exc_info=True)
-            else:
+
                 if result.passed is False:
                     logger.debug(f'{domain} {result.identifier} {result.passed}', extra={'domain': domain, 'check': check.IDENTIFIER})
+            except Exception as e:
+                logger.error(f'{domain} {check.IDENTIFIER} CHECK FAILED', exc_info=True)
