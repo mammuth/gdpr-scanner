@@ -70,7 +70,7 @@ class GDPRObjectMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
 class GDPRComplaintMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-complaint'
     SEVERITY = Severity.LOW
-    detector_strings = ['Beschwerde', 'Art. 77', 'Artikel 77', 'Recht auf Beschwerde', 'Beschwerde bei einer Aufsichtsbehörde', 'Beschwerderecht']
+    detector_strings = ['Beschwerde', 'beschweren', 'Art. 77', 'Artikel 77', 'Recht auf Beschwerde', 'Beschwerde bei einer Aufsichtsbehörde', 'Beschwerderecht']
 
 
 class GDPRPortabilityMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
