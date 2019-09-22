@@ -16,7 +16,7 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
     def check(self) -> CheckResult:
         # first determine whether the html of the index page uses the given third party service
         idx_html = self.get_html_strings_of(page_type='index')[0]
-        uses_service = detectors.page_uses_service(idx_html, self.detector_strings)
+        uses_service = detectors.page_uses_service(idx_html, self._detector_strings)
         if not uses_service:
             # Index page does not use the given third party service -> no need to mention it in the privacy statement
             return self._get_check_result(CheckResult.PassType.NOT_APPLICABLE)
@@ -42,7 +42,7 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
     def html_mentions_service(self, html: str) -> bool:
         """Returns True if the given provider is mentioned in `html`.
         """
-        for detector in self.mention_detector_strings:
+        for detector in self._mention_detector_strings:
             match = self.phrase_in_html_body(detector, html)
             if match:
                 return True
@@ -50,43 +50,43 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
 
     @property
     @abstractmethod
-    def detector_strings(self) -> List[str]:
+    def _detector_strings(self) -> List[str]:
         raise NotImplementedError
 
     @property
     @abstractmethod
-    def mention_detector_strings(self) -> str:
+    def _mention_detector_strings(self) -> str:
         raise NotImplementedError
 
 
 class PrivacyMissingGoogleAnalyticsCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-googleanalytics'
-    detector_strings = detectors.GOOGLE_ANALYTICS
-    mention_detector_strings = ['Google Analytics', 'Google Tag Manager']
+    _detector_strings = detectors.GOOGLE_ANALYTICS
+    _mention_detector_strings = ['Google Analytics', 'Google Tag Manager']
 
 
 class PrivacyMissingFacebookPixelCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-facebook-pixel'
-    detector_strings = detectors.FACEBOOK
-    mention_detector_strings = ['Facebook Inc']
+    _detector_strings = detectors.FACEBOOK
+    _mention_detector_strings = ['Facebook Inc']
 
 
 class PrivacyMissingTwitterCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-twitter'
-    detector_strings = detectors.TWITTER
-    mention_detector_strings = ['Twitter Inc']
+    _detector_strings = detectors.TWITTER
+    _mention_detector_strings = ['Twitter Inc']
 
 
 class PrivacyMissingMatomoCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-matomo'
-    detector_strings = detectors.MATOMO
-    mention_detector_strings = ['Piwik', 'Matomo']
+    _detector_strings = detectors.MATOMO
+    _mention_detector_strings = ['Piwik', 'Matomo']
 
 
 class PrivacyMissingHubspotCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-hubspot'
-    detector_strings = detectors.HUBSPOT
-    mention_detector_strings = ['Hubspot Inc']
+    _detector_strings = detectors.HUBSPOT
+    _mention_detector_strings = ['Hubspot Inc']
 
 
 # ToDo: Implement more third party integrations:  Matomo (berufsbekleidung) AdSense, Disqus, Instagram, Interecom, ...
