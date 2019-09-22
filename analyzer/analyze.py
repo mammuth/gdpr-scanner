@@ -66,12 +66,15 @@ class Analyzer:
             logger.info(f'{len(self.checks)} activated checks: {", ".join([check.IDENTIFIER for check in self.checks])}')
             for domain, page_types in self.crawler_meta_data.items():
                 self._checks_for_domain(domain, page_types)
-        logger.info(f'Scan finished after {round(time.time() - start_time, 2)} seconds')
+
+        logger.info(f'\nScan finished after {round(time.time() - start_time, 2)} seconds')
+        logger.info(f'Number of domains: {len(self.crawler_meta_data)}')
+        logger.info(f'{len(self.checks)} activated checks: {", ".join([check.IDENTIFIER for check in self.checks])}')
 
         # Print statistics
         for check in self.checks:
             failed = self.failed_checks(identifier=check.IDENTIFIER)
-            logger.info(f'{check.IDENTIFIER} failed on {len(failed)} pages')
+            logger.info(f'{check.IDENTIFIER} failed on:\t{len(failed)} domains')
 
     def write_results_to_file(self):
         raise ToDo()

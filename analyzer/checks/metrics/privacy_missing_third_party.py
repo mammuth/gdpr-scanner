@@ -23,7 +23,7 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
 
         if 'privacy' not in self.page_types:
             # Index page uses service but there is no privacy statement -> service not mentioned in privacy statement
-            logger.debug(f'{self.domain} uses it without having a privacy policy!')
+            logger.debug(f'{self.domain} {self.IDENTIFIER} is used without having a privacy policy!')
             return self._get_check_result(
                 CheckResult.PassType.PRECONDITION_FAILED,
                 'The tested third party is used in the index page but there seems to be no privacy statement at all.'
@@ -36,7 +36,7 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
             if mention:
                 logger.debug(f'{self.domain} passed!')
                 return self._get_check_result(passed=CheckResult.PassType.PASSED)
-        logger.debug(f'{self.domain} uses it without mentioning!')
+        logger.debug(f'{self.domain} {self.IDENTIFIER} is used without having a privacy policy!')
         return self._get_check_result(passed=CheckResult.PassType.FAILED)
 
     def html_mentions_service(self, html: str) -> bool:

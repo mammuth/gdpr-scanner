@@ -47,6 +47,11 @@ class MetricCheck(ABC):
             return False
         return soup.body.find(text=re.compile(phrase, re.IGNORECASE)) is not None
 
+    def phrase_in_page_title(selfself, phrase: str, html: str) -> bool:
+        soup = BeautifulSoup(html, 'html.parser')
+        # We're compiling a regex here, otherwise bs4 would only return for *exact* matches.
+        return soup.find('title', text=re.compile(phrase, re.IGNORECASE)) is not None
+
     @property
     @abstractmethod
     def SEVERITY(self) -> Severity:

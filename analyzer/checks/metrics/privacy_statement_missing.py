@@ -22,10 +22,8 @@ class PrivacyStatementMissingCheck(MetricCheck):
         # Check whether "Datenschutz" is present in the bodys text
         passed = False
         for html in self.get_html_strings_of(page_type='privacy'):
-            soup = BeautifulSoup(html, 'html.parser')
-            if soup.body is None:
-                continue
-            if 'Datenschutzerklärung' in soup.body.text:
+            res = self.phrase_in_page_title('Datenschutz', html)
+            if res is True:
                 passed = True
                 break
 

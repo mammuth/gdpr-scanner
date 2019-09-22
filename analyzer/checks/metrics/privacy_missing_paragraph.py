@@ -46,11 +46,11 @@ class BasePrivacyMissingParagraphCheck(MetricCheck):
 class GDPRInformationRequestMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-information-request'
     SEVERITY = Severity.LOW
-    detector_strings = ['Recht auf Auskunft', 'Auskunftserteilung', 'Art. 15', 'Artikel 15']
+    detector_strings = ['Auskunft', 'Art. 15', 'Artikel 15', 'Auskunftserteilung',]
 
 
 class GDPRInformationDeletionMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
-    IDENTIFIER = 'privacy-missing-information-request'
+    IDENTIFIER = 'privacy-missing-information-deletion-request'
     SEVERITY = Severity.MEDIUM
     detector_strings = ['Löschung', 'Recht auf Vergessen', 'Art. 17', 'Artikel 17', 'Art. 18', 'Artikel 18']
 
@@ -58,19 +58,19 @@ class GDPRInformationDeletionMissingCheck(BasePrivacyMissingParagraphCheck, Metr
 class GDPRRevocationMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-revocation'
     SEVERITY = Severity.MEDIUM
-    detector_strings = ['Recht auf Widerruf', 'Widerrufsrecht', 'Art. 7', 'Artikel 7']
+    detector_strings = ['Widerruf', 'Art. 7', 'Artikel 7', 'Widerrufsrecht', 'Recht auf Widerruf', ]
 
 
 class GDPRObjectMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-object'
     SEVERITY = Severity.MEDIUM
-    detector_strings = ['Recht auf Widerspruch', 'Widerspruchsrecht', 'Art. 21', 'Artikel 21']
+    detector_strings = ['Widerspruch', 'Recht auf Widerspruch', 'Widerspruchsrecht', 'Art. 21', 'Artikel 21']
 
 
 class GDPRComplaintMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-complaint'
     SEVERITY = Severity.LOW
-    detector_strings = ['Recht auf Beschwerde', 'Beschwerde bei einer Aufsichtsbehörde', 'Art. 77', 'Artikel 77']
+    detector_strings = ['Beschwerde', 'Art. 77', 'Artikel 77', 'Recht auf Beschwerde', 'Beschwerde bei einer Aufsichtsbehörde', 'Beschwerderecht']
 
 
 class GDPRPortabilityMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
@@ -82,7 +82,13 @@ class GDPRPortabilityMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck)
 class GDPRNonEuTransmissionMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-non-eu-transmission'
     SEVERITY = Severity.LOW
-    detector_strings = ['Datenübermittlung in Drittstaaten', 'Datenübertragung in Drittstaaten', 'Art. 44', 'Artikel 44']
+    detector_strings = ['Drittstaat', 'Drittland',  'Mitgliedstaat', 'Datenübermittlung in Drittstaaten', 'Datenübertragung in Drittstaaten', 'Art. 44', 'Artikel 44']
+
+
+class GDPRRectificationMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
+    IDENTIFIER = 'privacy-missing-privacy-missing-rectification'
+    SEVERITY = Severity.LOW
+    detector_strings = ['Richtigstellung', 'Korrektur', 'Berichtigung', 'Art. 16', 'Artikel 16']
 
 
 class ProtectionOfficerMissingContactDetailsCheck(MetricCheck):
@@ -137,5 +143,6 @@ ALL_METRICS = [
     GDPRComplaintMissingCheck,
     GDPRPortabilityMissingCheck,
     GDPRNonEuTransmissionMissingCheck,
+    GDPRRectificationMissingCheck,
     ProtectionOfficerMissingContactDetailsCheck,
 ]
