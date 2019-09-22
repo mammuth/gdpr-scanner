@@ -7,16 +7,18 @@ from bs4 import BeautifulSoup
 
 from analyzer.checks.check_result import CheckResult
 from analyzer.checks.metrics import MetricCheck
-from analyzer.checks.metrics.privacy_statement_missing import PrivacyStatementMissingCheck
 from analyzer.checks.severity import Severity
 
 logger = logging.getLogger(__name__)
 
 
 class BasePrivacyMissingParagraphCheck(MetricCheck):
-    PRECONDITION_CHECK_CLASSES = [PrivacyStatementMissingCheck,]
-
     def check(self) -> CheckResult:
+        if 'privacy' not in self.page_types:
+            return self._get_check_result(
+                CheckResult.PassType.PRECONDITION_FAILED, 'There seems to be no privacy statement at all.'
+            )
+
         # It might be that the crawler identified multiple privacy statement pages.
         # We're testing all and return "passed" if one of them passes
         for html in self.get_html_strings_of(page_type='privacy'):

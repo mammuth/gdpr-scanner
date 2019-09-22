@@ -2,7 +2,7 @@ import logging
 import os
 import re
 from abc import ABC, abstractmethod
-from typing import List, Optional
+from typing import Dict, List
 
 from bs4 import BeautifulSoup
 
@@ -53,12 +53,6 @@ class MetricCheck(ABC):
         return soup.find('title', text=re.compile(phrase, re.IGNORECASE)) is not None
 
     @property
-    def PRECONDITION_CHECK_CLASSES(self) -> List['MetricCheck']:
-        """This check directly fails if one of the preconditions failed previously
-        """
-        return []
-
-    @property
     @abstractmethod
     def SEVERITY(self) -> Severity:
         pass
@@ -71,18 +65,3 @@ class MetricCheck(ABC):
     @abstractmethod
     def check(self) -> CheckResult:
         pass
-
-    def failed_precondition(self, previous_results: List[CheckResult]) -> Optional[CheckResult]:
-        """Returns None in case of no failed preconditions or a CheckResult if a precondition failed.
-        """
-        prevs_failed_for_domain = [
-            res
-            for res in previous_results
-            if res.domain == self.domain and bool(res.passed) is False
-        ]
-        for prev in prevs_failed_for_domain:
-            for cond in self.PRECONDITION_CHECK_CLASSES:
-                if prev.identifier == cond.IDENTIFIER:
-                    return self._get_check_result(CheckResult.PassType.PRECONDITION_FAILED)
-
-        return None
