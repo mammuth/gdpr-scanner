@@ -9,18 +9,36 @@ import (
 	"github.com/microcosm-cc/bluemonday"
 )
 
+// LinkToAbsoluteUrl resolves a href target to an absolute URL
+// Attention: All relative links are simply assumed to be document-root-based relative urls!
+// Thus, href="privacy/" becomes href="/privacy"
 func LinkToAbsoluteUrl(link *colly.HTMLElement) (absoluteUrl string, err error) {
+	// ToDo: Only convert relative URL to document-root-based URI IFF the "correct" relative URL fails to download
 	href := link.Attr("href")
 	hrefUrl, err := url.Parse(href)
 	if err != nil {
 		fmt.Println(err)
 		return href, error(err)
 	}
-	if hrefUrl.IsAbs() {
-		return strings.TrimSpace(hrefUrl.String()), nil
-	} else {
+	if !hrefUrl.IsAbs() {
+		// Attention: Unexpected things ahead
+		// many pages use relative urls wrongly:
+		// (eg. href="privacy" on domain.com/page/ which leads to 404 on domain.com/page/privacy)
+		// This is why we assume href="privacy/" to actually mean href="/privacy". This will raise false negatives, but probably less than the other way around
+		hrefUrlStr := href
+		if !strings.HasPrefix(hrefUrlStr, "/") && !strings.HasPrefix(hrefUrlStr, "#") {
+			hrefUrlStr = "/" + hrefUrlStr
+		}
+		hrefUrl2, err := url.Parse(hrefUrlStr)
+		if err != nil {
+			fmt.Println(err)
+			return hrefUrlStr, error(err)
+		}
 		requestUrl := link.Request.URL
-		return strings.TrimSpace(requestUrl.ResolveReference(hrefUrl).String()), nil
+		resolvedUrl := strings.TrimSpace(requestUrl.ResolveReference(hrefUrl2).String())
+		return resolvedUrl, nil
+	} else {
+		return hrefUrl.String(), nil
 	}
 }
 
