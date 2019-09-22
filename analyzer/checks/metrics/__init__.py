@@ -43,9 +43,7 @@ class MetricCheck(ABC):
         # ToDo: Don't instantiate bs for every call, share it across checks based on the html content / hash
         soup = BeautifulSoup(html, 'html.parser')
         # We're compiling a regex here, otherwise bs4 would only return for *exact* matches.
-        if soup.body is None:
-            return False
-        return soup.body.find(text=re.compile(phrase, re.IGNORECASE)) is not None
+        return soup.find(text=re.compile(phrase, re.IGNORECASE)) is not None
 
     def phrase_in_page_title(selfself, phrase: str, html: str) -> bool:
         soup = BeautifulSoup(html, 'html.parser')
