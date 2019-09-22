@@ -45,7 +45,7 @@ class MetricCheck(ABC):
         # We're compiling a regex here, otherwise bs4 would only return for *exact* matches.
         if soup.body is None:
             return False
-        return soup.body.find(text=re.compile(phrase)) is not None
+        return soup.body.find(text=re.compile(phrase, re.IGNORECASE)) is not None
 
     @property
     @abstractmethod
