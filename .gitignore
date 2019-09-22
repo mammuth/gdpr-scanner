@@ -16,5 +16,5 @@
 dist/
 
 # Crawler storage output
-output/
+output*/
 urlLists/
