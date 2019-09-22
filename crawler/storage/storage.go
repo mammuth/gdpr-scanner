@@ -4,6 +4,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"strconv"
 
 	"go.uber.org/zap"
 
@@ -71,8 +72,14 @@ func (s *Storage) storePageVisit(originalDomain string, url *url.URL, body []byt
 }
 
 // Relative path (as seen from crawler.json meta data file) to the html file of the given page
+// Handles multiple pages of the same type by creating subdirectories for each page
 func (s *Storage) getHtmlFilePathForPage(domain string, pageType page.Type) string {
-	return filepath.Join(domain, pageType.StringIdentifier(), "index.html")
+	num := s.GetNumberOfCrawledPagesForDomainOfType(domain, pageType)
+	prefix := "1"
+	if num > 0 {
+		prefix = strconv.Itoa(num + 1)
+	}
+	return filepath.Join(domain, pageType.StringIdentifier(), prefix, "index.html")
 }
 
 // TearDown can be used to do storage tidy-up tasks after the crawling is done
@@ -95,6 +102,15 @@ func (s *Storage) GetNumberOfCrawledPages() int {
 func (s *Storage) GetNumberOfCrawledPagesForDomain(domain string) (count int) {
 	for _, s := range s.metaData.CrawledPages {
 		if s.OriginalDomain == domain {
+			count += 1
+		}
+	}
+	return
+}
+
+func (s *Storage) GetNumberOfCrawledPagesForDomainOfType(domain string, pageType page.Type) (count int) {
+	for _, s := range s.metaData.CrawledPages {
+		if s.OriginalDomain == domain && s.PageTypeIdentifier == pageType.StringIdentifier() {
 			count += 1
 		}
 	}
