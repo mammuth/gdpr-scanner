@@ -36,7 +36,7 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
             if mention:
                 logger.debug(f'{self.domain} passed!')
                 return self._get_check_result(passed=CheckResult.PassType.PASSED)
-        logger.debug(f'{self.domain} {self.IDENTIFIER} is used without mention!')
+        logger.debug(f'{self.domain} {self.IDENTIFIER} failed')
         return self._get_check_result(passed=CheckResult.PassType.FAILED)
 
     def html_mentions_service(self, html: str) -> bool:

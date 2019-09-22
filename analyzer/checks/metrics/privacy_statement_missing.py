@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 class PrivacyStatementMissingCheck(MetricCheck):
     IDENTIFIER = 'privacy-statement-missing'
     SEVERITY = Severity.CRITICAL
+    _title_detector_strings = ['Datenschutz', 'Privatsphäre', 'Privacy']
 
     def check(self) -> CheckResult:
         # logger.debug(f'{self.domain} crawled page_types: {list(self.page_types.items())}')
@@ -20,11 +21,10 @@ class PrivacyStatementMissingCheck(MetricCheck):
             return self._get_check_result(CheckResult.PassType.FAILED)
 
         # Check whether "Datenschutz" is present in the bodys text
-        passed = False
         for html in self.get_html_strings_of(page_type='privacy'):
-            res = self.phrase_in_page_title('Datenschutz', html)
-            if res is True:
-                passed = True
-                break
+            for phrase in self._title_detector_strings:
+                res = self.phrase_in_page_title(phrase, html)
+                if res is True:
+                    return self._get_check_result(CheckResult.PassType.PASSED)
 
-        return self._get_check_result(CheckResult.PassType.PASSED if passed else CheckResult.PassType.FAILED)
+        return self._get_check_result(CheckResult.PassType.FAILED)
