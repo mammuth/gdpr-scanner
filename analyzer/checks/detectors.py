@@ -10,7 +10,7 @@ def page_uses_service(html: str, detector_strings: List[str]) -> bool:
     return False
 
 
-GOOGLE_ANALYTICS = ["ga('send'", "gtag(", "_gaq.push("]
+GOOGLE_ANALYTICS = ["ga('send'", 'ga("send"', "gtag(", "_gaq.push("]
 MATOMO = ['piwik.php', 'piwik.js']
 HUBSPOT = ["js.hs-scripts.com", "js.hs-analytics.net"]
 
