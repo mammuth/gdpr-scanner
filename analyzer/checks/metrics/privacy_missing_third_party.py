@@ -60,31 +60,31 @@ class BasePrivacyMissingThirdPartyCheck(ABC):
 
 
 class PrivacyMissingGoogleAnalyticsCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
-    IDENTIFIER = 'privacy-missing-googleanalytics'
+    IDENTIFIER = 'privacy-missing-thirdparty-googleanalytics'
     _detector_strings = detectors.GOOGLE_ANALYTICS
     _mention_detector_strings = ['Google Analytics', 'Google Tag Manager']
 
 
 class PrivacyMissingFacebookPixelCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
-    IDENTIFIER = 'privacy-missing-facebook-pixel'
+    IDENTIFIER = 'privacy-missing-thirdparty-facebook-pixel'
     _detector_strings = detectors.FACEBOOK
     _mention_detector_strings = ['Facebook Inc']
 
 
 class PrivacyMissingTwitterCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
-    IDENTIFIER = 'privacy-missing-twitter'
+    IDENTIFIER = 'privacy-missing-thirdparty-twitter'
     _detector_strings = detectors.TWITTER
     _mention_detector_strings = ['Twitter Inc']
 
 
 class PrivacyMissingMatomoCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
-    IDENTIFIER = 'privacy-missing-matomo'
+    IDENTIFIER = 'privacy-missing-thirdparty-matomo'
     _detector_strings = detectors.MATOMO
     _mention_detector_strings = ['Piwik', 'Matomo']
 
 
 class PrivacyMissingHubspotCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck):
-    IDENTIFIER = 'privacy-missing-hubspot'
+    IDENTIFIER = 'privacy-missing-thirdparty-hubspot'
     _detector_strings = detectors.HUBSPOT
     _mention_detector_strings = ['Hubspot Inc']
 
