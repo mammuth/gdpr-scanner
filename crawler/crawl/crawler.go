@@ -94,6 +94,7 @@ func (c Crawler) Run() {
 
 	collector.OnRequest(func(r *colly.Request) {
 		r.Headers.Set("Accept-Language", "de;q=1, en;q=0.9")
+		r.Headers.Set("Header", "Friendly GDPR compliance scanner (https://github.com/mammuth/gdpr-scanner/")
 		c.logger.Debugw("Visiting url",
 			"url", r.URL,
 		)

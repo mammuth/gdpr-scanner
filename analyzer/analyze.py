@@ -44,6 +44,8 @@ class Analyzer:
             return grouped_by_domain
 
     def failed_checks(self, identifier=None) -> List[CheckResult]:
+        """Returns checks with PassType FAILED (excluding PRECONDITION_FAILED)
+        """
         if identifier:
             return [
                 r for r in self.results
@@ -53,6 +55,18 @@ class Analyzer:
             return [
                 r for r in self.results
                 if r.passed is CheckResult.PassType.FAILED
+            ]
+
+    def failed_precondition(self, identifier=None) -> List[CheckResult]:
+        if identifier:
+            return [
+                r for r in self.results
+                if r.identifier == identifier and r.passed is CheckResult.PassType.PRECONDITION_FAILED
+            ]
+        else:
+            return [
+                r for r in self.results
+                if r.passed is CheckResult.PassType.PRECONDITION_FAILED
             ]
 
     def run(self, specific_domain: str = None):
@@ -74,7 +88,8 @@ class Analyzer:
         # Print statistics
         for check in self.checks:
             failed = self.failed_checks(identifier=check.IDENTIFIER)
-            logger.info(f'{check.IDENTIFIER} failed on:\t{len(failed)} domains')
+            precon_failed = self.failed_precondition(identifier=check.IDENTIFIER)
+            logger.info(f'{check.IDENTIFIER} (precon failed, failed):\t{len(precon_failed)/len(self.crawler_meta_data)}\t{len(failed)/len(self.crawler_meta_data)}')
 
     def write_results_to_file(self):
         raise ToDo()
