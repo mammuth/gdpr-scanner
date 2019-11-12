@@ -86,7 +86,7 @@ class GDPRNonEuTransmissionMissingCheck(BasePrivacyMissingParagraphCheck, Metric
 
 
 class GDPRRectificationMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
-    IDENTIFIER = 'privacy-missing-privacy-missing-rectification'
+    IDENTIFIER = 'privacy-missing-rectification'
     SEVERITY = Severity.LOW
     _detector_strings = ['Richtigstellung', 'Korrektur', 'Berichtigung', 'Art. 16', 'Artikel 16']
 
@@ -117,7 +117,7 @@ class ProtectionOfficerMissingContactDetailsCheck(MetricCheck):
 
                 if position_data_protection_officer == -1:
                     # There is no officer stated, so either they don't need to state one or they failed it
-                    return self._get_check_result(CheckResult.PassType.PASSED)
+                    return self._get_check_result(CheckResult.PassType.UNCERTAIN)
                 else:
                     # There is a offier -> Check whether we find an email or phone number within the next lines
                     lookup_text_range = txt[position_data_protection_officer-200:position_data_protection_officer+1000]

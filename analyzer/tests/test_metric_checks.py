@@ -183,7 +183,7 @@ class PrivacyPhrasesMissingTestCase(BaseMetricCheckTestCase, unittest.TestCase):
         domain = 'berufskleidung24.de'
         check = ProtectionOfficerMissingContactDetailsCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+        self.assertEqual(result.passed, CheckResult.PassType.UNCERTAIN)
 
     def test_gdpr_information_request_present(self):
         domain = 'heise.de'

@@ -89,7 +89,7 @@ class PrivacyMissingHubspotCheck(BasePrivacyMissingThirdPartyCheck, MetricCheck)
     _mention_detector_strings = ['Hubspot Inc']
 
 
-# ToDo: Implement more third party integrations:  Matomo (berufsbekleidung) AdSense, Disqus, Instagram, Interecom, ...
+# ToDo: Implement more third party integrations: AdSense, Disqus, Instagram, Interecom, ...
 ALL_METRICS = [
     PrivacyMissingGoogleAnalyticsCheck,
     PrivacyMissingMatomoCheck,
