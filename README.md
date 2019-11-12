@@ -32,3 +32,7 @@ Available options can be printed using `--help` or by just calling `analyzer` wi
 Note that some few dependencies are required; you can install them by running `pipenv install` in the `analyzer` directory.
 
 Tests can be run with `python -m unittest discover`
+
+**Troubleshooting**
+If you get a `ModuleNotFoundError` when running the unpackaged python app, add the directory to your python path (execute at the root of the repository): 
+`export PYTHONPATH="${PYTHONPATH}:$(pwd)"`

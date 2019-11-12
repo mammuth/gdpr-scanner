@@ -1,5 +1,4 @@
 import logging
-import re
 from abc import abstractmethod
 from typing import List
 
@@ -120,6 +119,7 @@ class ProtectionOfficerMissingContactDetailsCheck(MetricCheck):
                 CheckResult.PassType.PRECONDITION_FAILED, 'There seems to be no privacy statement at all.'
             )
 
+        found_officer = False
         for html in self.get_html_strings_of(page_type='privacy'):
             soup = BeautifulSoup(html, 'html.parser')
             if soup.body is None:
@@ -129,25 +129,27 @@ class ProtectionOfficerMissingContactDetailsCheck(MetricCheck):
             txt: str = soup.body.text
             for detector in self._officer__detector_strings:
                 position_data_protection_officer = txt.find(detector)
-
-                if position_data_protection_officer == -1:
-                    # There is no officer stated, so either they don't need to state one or they failed it
-                    return self._get_check_result(CheckResult.PassType.UNCERTAIN)
-                else:
-                    # There is a offier -> Check whether we find an email or phone number within the next lines
-                    lookup_text_range = txt[position_data_protection_officer-200:position_data_protection_officer+1000]
+                if position_data_protection_officer != -1:
+                    # There is an officer -> Check whether we find an email or phone number within the next lines
+                    found_officer = True
+                    lookup_text_range = txt[position_data_protection_officer-200:position_data_protection_officer+1500]
                     for s in self._email__detector_strings + self._phone__detector_strings:
                         found = lookup_text_range.find(s)
                         if found != -1:
                             return self._get_check_result(
-                                CheckResult.PassType.PASSED, 'The stated data protection has contact details'
+                                CheckResult.PassType.PASSED, 'The stated data protection officer has contact details'
                             )
-
-        # If we get here we didn't find an email or an phone declaration
-        logger.debug(f'{self.domain} {self.IDENTIFIER} failed')
-        return self._get_check_result(
-            CheckResult.PassType.FAILED, 'The stated data protection has no contact details'
-        )
+        # If we get here, we didn't find a candidate at all or only candidates without contact details
+        if found_officer is True:
+            # We found an officer without contact details
+            logger.debug(f'{self.domain} {self.IDENTIFIER} failed')
+            return self._get_check_result(
+                CheckResult.PassType.FAILED, 'The stated data protection officer has no contact details'
+            )
+        else:
+            return self._get_check_result(
+                CheckResult.PassType.UNCERTAIN, 'No protection officer was mentioned at all'
+            )
 
 
 ALL_METRICS = [
