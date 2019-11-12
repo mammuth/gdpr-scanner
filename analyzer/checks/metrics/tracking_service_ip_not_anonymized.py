@@ -19,11 +19,21 @@ class BaseTrackingServiceIPNotAnonymizedCheck(ABC):
         with open(idx_html_abspath, 'rb') as f:
             # don't fail on encoding issues, but replace the faulty characters
             html = f.read().decode('utf-8', errors='replace')
-            passed = not self._page_uses_service_without_anonymization(html)
-        return self._get_check_result(CheckResult.PassType.PASSED if passed else CheckResult.PassType.FAILED)
+            result: CheckResult.PassType
+            if self._page_uses_service(html):
+                result = CheckResult.PassType.FAILED if self._service_anonymization_not_implemented(html) \
+                    else CheckResult.PassType.PASSED
+            else:
+                result = CheckResult.PassType.NOT_APPLICABLE
+            passed = self._page_uses_service(html) and self._service_anonymization_not_implemented(html)
+        return self._get_check_result(result)
 
     @abstractmethod
-    def _page_uses_service_without_anonymization(self, html):
+    def _page_uses_service(self, html):
+        raise NotImplementedError()
+
+    @abstractmethod
+    def _service_anonymization_not_implemented(self, html):
         raise NotImplementedError()
 
 
@@ -31,18 +41,17 @@ class GoogleAnalyticsIPNotAnonymizedCheck(BaseTrackingServiceIPNotAnonymizedChec
     IDENTIFIER = 'ip-not-anonymized-googleanalytics'
     SEVERITY = Severity.MEDIUM
 
-    def _page_uses_service_without_anonymization(self, html: str) -> bool:
-        if detectors.page_uses_service(html, detectors.GOOGLE_ANALYTICS):
-            anonymize_detectors = ['anonymize_ip', 'anonymizeIp', ]  # gtag, ga,
-            has_anon = False
-            for detector in anonymize_detectors:
-                if detector in html:
-                    has_anon = True
-                    break
-            return not has_anon
-        else:
-            return False
+    def _page_uses_service(self, html: str) -> bool:
+        return detectors.page_uses_service(html, detectors.GOOGLE_ANALYTICS)
 
+    def _service_anonymization_not_implemented(self, html):
+        anonymize_detectors = ['anonymize_ip', 'anonymizeIp', ]  # gtag, ga,
+        has_anon = False
+        for detector in anonymize_detectors:
+            if detector in html:
+                has_anon = True
+                break
+        return not has_anon
 
 ALL_METRICS = [
     GoogleAnalyticsIPNotAnonymizedCheck,

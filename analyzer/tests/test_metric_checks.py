@@ -68,7 +68,7 @@ class GoogleAnalyticsIPAnonymizationTestCase(BaseMetricCheckTestCase, unittest.T
         domain = 'logbuch-netzpolitik.de'  # has no GA at all
         check = GoogleAnalyticsIPNotAnonymizedCheck(domain, self.metadata.get(domain), self.metadata_filepath)
         result = check.check()
-        self.assertEqual(result.passed, CheckResult.PassType.PASSED)
+        self.assertEqual(result.passed, CheckResult.PassType.NOT_APPLICABLE)
 
 
 class PrivacyMissingGAMentionTestCase(BaseMetricCheckTestCase, unittest.TestCase):
