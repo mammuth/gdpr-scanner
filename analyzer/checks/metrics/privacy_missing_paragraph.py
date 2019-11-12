@@ -84,6 +84,21 @@ class GDPRNonEuTransmissionMissingCheck(BasePrivacyMissingParagraphCheck, Metric
     SEVERITY = Severity.LOW
     _detector_strings = ['Drittstaat', 'Drittland',  'Mitgliedstaat', 'Datenübermittlung in Drittstaaten', 'Datenübertragung in Drittstaaten', 'Art. 44', 'Artikel 44']
 
+    def check(self) -> CheckResult:
+        if 'privacy' not in self.page_types:
+            return self._get_check_result(
+                CheckResult.PassType.PRECONDITION_FAILED, 'There seems to be no privacy statement at all.'
+            )
+
+        # It might be that the crawler identified multiple privacy statement pages.
+        # We're testing all and return "passed" if one of them passes
+        for html in self.get_html_strings_of(page_type='privacy'):
+            mention = self._html_mentions_phrase(html)
+            if mention:
+                return self._get_check_result(passed=CheckResult.PassType.PASSED)
+        logger.debug(f'{self.domain} {self.IDENTIFIER} uncertain')
+        return self._get_check_result(passed=CheckResult.PassType.UNCERTAIN, description='Uncertain because we cannot tell whether transmissions occured')
+
 
 class GDPRRectificationMissingCheck(BasePrivacyMissingParagraphCheck, MetricCheck):
     IDENTIFIER = 'privacy-missing-rectification'
