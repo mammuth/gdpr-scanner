@@ -25,7 +25,6 @@ class BaseTrackingServiceIPNotAnonymizedCheck(ABC):
                     else CheckResult.PassType.PASSED
             else:
                 result = CheckResult.PassType.NOT_APPLICABLE
-            passed = self._page_uses_service(html) and self._service_anonymization_not_implemented(html)
         return self._get_check_result(result)
 
     @abstractmethod
