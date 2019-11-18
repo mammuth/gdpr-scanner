@@ -18,6 +18,7 @@ type Crawler struct {
 	Storage         *storage.Storage
 	unsugaredLogger *zap.Logger
 	logger          *zap.SugaredLogger
+	lastProgressLog time.Time
 }
 
 func New(domains []string, crawlThreads int, verbose bool) *Crawler {
@@ -124,6 +125,18 @@ func (c Crawler) Run() {
 		pageType := page.TypeFromInterface(ctxPageType)
 
 		c.Storage.StorePageVisit(ctxOriginalDomain, pageUrl, r.Body, pageType)
+
+		// Log progress
+		now := time.Now()
+		if now.After(c.lastProgressLog.Add(30 * time.Second)) {
+			c.lastProgressLog = now
+			crawledDomains := c.Storage.GetNumberOfCrawledDomains()
+			c.logger.Infow("Progress Update",
+				"crawledDomains", crawledDomains,
+				//"time", now.String(),
+				"lastDomain", ctxOriginalDomain,
+			)
+		}
 	})
 
 	collector.OnHTML("a[href]", func(e *colly.HTMLElement) {
