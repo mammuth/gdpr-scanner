@@ -43,18 +43,16 @@ func LinkToAbsoluteUrl(link *colly.HTMLElement) (absoluteUrl string, err error) 
 	}
 }
 
-func IsExternalLink(link *colly.HTMLElement) bool {
+func IsExternalLink(link *colly.HTMLElement) (bool, error) {
 	hrefUrl, err := url.Parse(trimUrlStr(link.Attr("href")))
 	if err != nil {
-		fmt.Println("IsExternalLink. Request URL: " + link.Request.URL.String())
-		fmt.Println(err)
-		return true
+		return true, err
 	}
 	// Relative urls are definitely no external urls
 	if !hrefUrl.IsAbs() {
-		return false
+		return false, nil
 	}
-	return hrefUrl.Host != link.Request.URL.Host
+	return hrefUrl.Host != link.Request.URL.Host, nil
 }
 
 // CleanLinkText Strips away html tags (eg. img), removes new lines and strips whitespaces
@@ -89,12 +87,14 @@ func SanitizeUrlToCrawl(inputUrl string) string {
 	return inputUrl
 }
 
-// Trim \r\n, \n and whitespace from the URL
+// Trim \r\n, \n, \t and whitespace from the URL
 func trimUrlStr(s string) string {
 	return strings.ReplaceAll(
 		strings.ReplaceAll(
 			strings.ReplaceAll(
-				s, "\r\n", ""),
-			"\n", ""),
+				strings.ReplaceAll(
+					s, "\r\n", ""),
+				"\n", ""),
+			"\t", ""),
 		" ", "")
 }

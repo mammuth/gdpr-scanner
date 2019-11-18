@@ -127,8 +127,16 @@ func (c Crawler) Run() {
 	})
 
 	collector.OnHTML("a[href]", func(e *colly.HTMLElement) {
+		domain := e.Request.Ctx.Get("originalDomain")
 		// Check whether we should follow the found href
-		if !utils.IsExternalLink(e) && utils.IsTextLink(e) {
+		isExternal, err := utils.IsExternalLink(e)
+		if err != nil {
+			c.logger.Debugw("Cannot specify whether link is external or not.",
+				"originalDomain", domain,
+				"error", err,
+			)
+		}
+		if !isExternal && utils.IsTextLink(e) {
 			linkText := utils.CleanLinkText(e.Text)
 			linkHref := e.Attr("href")
 			pageType := page.GetEstimatedPageTypeOfLink(linkText, linkHref)
