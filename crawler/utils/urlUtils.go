@@ -14,9 +14,10 @@ import (
 // Thus, href="privacy/" becomes href="/privacy"
 func LinkToAbsoluteUrl(link *colly.HTMLElement) (absoluteUrl string, err error) {
 	// ToDo: Only convert relative URL to document-root-based URI IFF the "correct" relative URL fails to download
-	href := link.Attr("href")
+	href := trimUrlStr(link.Attr("href"))
 	hrefUrl, err := url.Parse(href)
 	if err != nil {
+		fmt.Println("LinkToAbsoluteUrl. Request URL: " + link.Request.URL.String())
 		fmt.Println(err)
 		return href, error(err)
 	}
@@ -35,16 +36,17 @@ func LinkToAbsoluteUrl(link *colly.HTMLElement) (absoluteUrl string, err error) 
 			return hrefUrlStr, error(err)
 		}
 		requestUrl := link.Request.URL
-		resolvedUrl := strings.TrimSpace(requestUrl.ResolveReference(hrefUrl2).String())
+		resolvedUrl := trimUrlStr(requestUrl.ResolveReference(hrefUrl2).String())
 		return resolvedUrl, nil
 	} else {
-		return hrefUrl.String(), nil
+		return trimUrlStr(hrefUrl.String()), nil
 	}
 }
 
 func IsExternalLink(link *colly.HTMLElement) bool {
-	hrefUrl, err := url.Parse(link.Attr("href"))
+	hrefUrl, err := url.Parse(trimUrlStr(link.Attr("href")))
 	if err != nil {
+		fmt.Println("IsExternalLink. Request URL: " + link.Request.URL.String())
 		fmt.Println(err)
 		return true
 	}
@@ -63,11 +65,11 @@ func CleanLinkText(linkText string) string {
 	return trimmed
 }
 
-// IsMeaningfulLink returns true if the href is not # or a javascript call.
+// IsTextLink returns true if the href is not # or a javascript call.
 // It also makes sure that the the body of the a element contains text, not only images
-func IsMeaningfulLink(link *colly.HTMLElement) bool {
+func IsTextLink(link *colly.HTMLElement) bool {
 	// Validate href target
-	href := link.Attr("href")
+	href := trimUrlStr(link.Attr("href"))
 	if strings.HasPrefix(href, "#") || strings.HasPrefix(href, "javascript:") {
 		return false
 	}
@@ -85,4 +87,14 @@ func SanitizeUrlToCrawl(inputUrl string) string {
 		return "http://" + inputUrl
 	}
 	return inputUrl
+}
+
+// Trim \r\n, \n and whitespace from the URL
+func trimUrlStr(s string) string {
+	return strings.ReplaceAll(
+		strings.ReplaceAll(
+			strings.ReplaceAll(
+				s, "\r\n", ""),
+			"\n", ""),
+		" ", "")
 }

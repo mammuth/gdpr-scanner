@@ -93,6 +93,13 @@ func (c Crawler) Run() {
 	//})
 
 	collector.OnRequest(func(r *colly.Request) {
+		if c.Storage.AlreadyStored(r.URL) {
+			c.logger.Debugw("Skipping url because it's already visited",
+				"url", r.URL,
+			)
+			return
+		}
+
 		r.Headers.Set("Accept-Language", "de;q=1, en;q=0.9")
 		r.Headers.Set("Header", "Friendly GDPR compliance scanner (https://github.com/mammuth/gdpr-scanner/")
 		c.logger.Debugw("Visiting url",
@@ -121,7 +128,7 @@ func (c Crawler) Run() {
 
 	collector.OnHTML("a[href]", func(e *colly.HTMLElement) {
 		// Check whether we should follow the found href
-		if !utils.IsExternalLink(e) && utils.IsMeaningfulLink(e) {
+		if !utils.IsExternalLink(e) && utils.IsTextLink(e) {
 			linkText := utils.CleanLinkText(e.Text)
 			linkHref := e.Attr("href")
 			pageType := page.GetEstimatedPageTypeOfLink(linkText, linkHref)

@@ -52,6 +52,16 @@ func (s *Storage) StorePageVisit(originalDomain string, url *url.URL, body []byt
 	s.storePageVisit(originalDomain, url, body, pageType)
 }
 
+// AlreadyStored returns a boolean indicating whether the given URL is already stored
+func (s *Storage) AlreadyStored(url *url.URL) bool {
+	for _, v := range s.metaData.CrawledPages {
+		if v.Url == url.String() {
+			return true
+		}
+	}
+	return false
+}
+
 func (s *Storage) storePageVisit(originalDomain string, url *url.URL, body []byte, pageType page.Type) {
 	//defer s.wg.Done()
 
