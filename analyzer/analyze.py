@@ -1,9 +1,12 @@
+import csv
 import json
 import logging
 import os
 import time
 from collections import defaultdict
 from typing import List
+
+from pathlib import Path
 
 from analyzer.checks.check_result import CheckResult
 from analyzer.checks.metrics import MetricCheck, privacy_missing_paragraph, privacy_missing_third_party, \
@@ -91,8 +94,30 @@ class Analyzer:
             precon_failed = self.failed_precondition(identifier=check.IDENTIFIER)
             logger.info(f'{check.IDENTIFIER} (precon failed, failed):\t{len(precon_failed)/len(self.crawler_meta_data)}\t{len(failed)/len(self.crawler_meta_data)}')
 
-    def write_results_to_file(self):
-        raise ToDo()
+    def write_results_to_file(self) -> None:
+        meta_base_path = Path(self.crawler_metadata_filepath).parent
+        results_csv_path: Path = meta_base_path / 'analyzer-results.csv'
+        logger.info(f'Writing results to {str(results_csv_path)}')
+
+        with results_csv_path.open('w+', encoding='utf-8') as results_file:
+            field_names = ['originalDomain', 'testIdentifier', 'passed', 'passType', 'severity', 'description']
+            writer = csv.DictWriter(
+                results_file,
+                delimiter=',',
+                quotechar='"',
+                quoting=csv.QUOTE_MINIMAL,
+                fieldnames=field_names
+            )
+            writer.writeheader()
+            for result in self.results:
+                writer.writerow({
+                    'originalDomain': result.domain,
+                    'testIdentifier': result.identifier,
+                    'passed': result.passed.passed,
+                    'passType': result.passed,
+                    'severity': result.severity,
+                    'description': result.description,
+                })
 
     def _checks_for_domain(self, domain: str, page_types):
         for check_class in self.checks:
