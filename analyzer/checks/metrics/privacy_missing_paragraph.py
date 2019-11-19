@@ -111,7 +111,7 @@ class ProtectionOfficerMissingContactDetailsCheck(MetricCheck):
 
     _email__detector_strings = ['E-Mail', 'Email', 'Mail', '@']
     _phone__detector_strings = ['Telefon', 'Mobil']
-    _officer__detector_strings = ['Datenschutzbeauftragter', 'verantwortliche Datenschutzbeauftragte']
+    _officer__detector_strings = ['Datenschutzbeauftragter', 'verantwortliche Datenschutzbeauftragte', 'Datenschutzbeauftragten']
 
     def check(self) -> CheckResult:
         if 'privacy' not in self.page_types:
