@@ -28,6 +28,8 @@ class Analyzer:
         self.crawler_metadata_filepath = crawler_metadata_filepath
         self.crawler_meta_data = self._import_crawler_meta(path=os.path.abspath(crawler_metadata_filepath))
         self.results: List[CheckResult] = list()
+        self.number_of_processed_domains = 0
+
         if checks:
             self.checks = checks
 
@@ -83,6 +85,10 @@ class Analyzer:
             logger.info(f'{len(self.checks)} activated checks: {", ".join([check.IDENTIFIER for check in self.checks])}')
             for domain, page_types in self.crawler_meta_data.items():
                 self._checks_for_domain(domain, page_types)
+                self.number_of_processed_domains += 1
+                if self.number_of_processed_domains % 50 == 0:
+                    logger.info(f'Number of processed domains: {self.number_of_processed_domains}')
+                    self.write_results_to_file()
 
         logger.info(f'\nScan finished after {round(time.time() - start_time, 2)} seconds')
         logger.info(f'Number of domains: {len(self.crawler_meta_data)}')
@@ -114,7 +120,7 @@ class Analyzer:
                     'originalDomain': result.domain,
                     'testIdentifier': result.identifier,
                     'passed': result.passed.passed,
-                    'passType': result.passed,
+                    'passType': result.passed.value,
                     'severity': result.severity,
                     'description': result.description,
                 })
