@@ -1,6 +1,7 @@
 package storage
 
 import (
+	"io/ioutil"
 	"os"
 	"path/filepath"
 
@@ -16,19 +17,9 @@ func (s *Storage) storePageHtml(domain string, body []byte, pageType page.Type) 
 		panic(err)
 	}
 
-	// Write html file
-	f, err := os.Create(filePath)
+	err = ioutil.WriteFile(filePath, body, 0644)
 	if err != nil {
-		s.logger.Errorw("Unable to create HTML file",
-			"error", err,
-			"domain", domain,
-		)
-	}
-	defer f.Close()
-
-	_, err = f.Write(body)
-	if err != nil {
-		s.logger.Errorw("Unable to write HTML to file",
+		s.logger.Errorw("Unable to write HTML file",
 			"error", err,
 			"domain", domain,
 		)

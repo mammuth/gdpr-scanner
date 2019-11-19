@@ -18,6 +18,7 @@ type Crawler struct {
 	Storage         *storage.Storage
 	unsugaredLogger *zap.Logger
 	logger          *zap.SugaredLogger
+	collector       *colly.Collector
 	lastProgressLog time.Time
 }
 
@@ -55,13 +56,7 @@ func New(domains []string, crawlThreads int, verbose bool) *Crawler {
 
 	c.Storage = storage.New(c.logger)
 
-	return c
-}
-
-func (c Crawler) Run() {
-
-	// Instantiate default collector
-	collector := colly.NewCollector(
+	c.collector = colly.NewCollector(
 		// MaxDepth is 1, so only the links on the scraped page are visited
 		colly.MaxDepth(1),
 		colly.Async(true),
@@ -69,16 +64,20 @@ func (c Crawler) Run() {
 		//colly.AllowedDomains(domains...),
 	)
 
-	collector.SetRequestTimeout(6 * time.Second)
+	return c
+}
+
+func (c *Crawler) Run() {
+	c.collector.SetRequestTimeout(6 * time.Second)
 
 	// Limit the maximum parallelism to eg. 2
 	// This is necessary if the goroutines are dynamically
 	// created to control the limit of simultaneous requests.
-	collector.Limit(
+	c.collector.Limit(
 		&colly.LimitRule{DomainGlob: "*", Parallelism: c.CrawlThreads},
 	)
 
-	//collector.WithTransport(&http.Transport{
+	//c.collector.WithTransport(&http.Transport{
 	//	//Proxy: http.ProxyFromEnvironment,
 	//	//DialContext: (&net.Dialer{
 	//	//	Timeout:   30 * time.Second,
@@ -93,7 +92,7 @@ func (c Crawler) Run() {
 	//	//ExpectContinueTimeout: 1 * time.Second,
 	//})
 
-	collector.OnRequest(func(r *colly.Request) {
+	c.collector.OnRequest(func(r *colly.Request) {
 		if c.Storage.AlreadyStored(r.URL) {
 			c.logger.Debugw("Skipping url because it's already visited",
 				"url", r.URL,
@@ -108,7 +107,7 @@ func (c Crawler) Run() {
 		)
 	})
 
-	collector.OnResponse(func(r *colly.Response) {
+	c.collector.OnResponse(func(r *colly.Response) {
 		// Store the result
 		pageUrl, err := url.Parse(r.Request.URL.String())
 		if err != nil {
@@ -131,15 +130,16 @@ func (c Crawler) Run() {
 		if now.After(c.lastProgressLog.Add(30 * time.Second)) {
 			c.lastProgressLog = now
 			crawledDomains := c.Storage.GetNumberOfCrawledDomains()
+			crawledPages := c.Storage.GetNumberOfCrawledPages()
 			c.logger.Infow("Progress Update",
 				"crawledDomains", crawledDomains,
-				//"time", now.String(),
+				"crawledPages", crawledPages,
 				"lastDomain", ctxOriginalDomain,
 			)
 		}
 	})
 
-	collector.OnHTML("a[href]", func(e *colly.HTMLElement) {
+	c.collector.OnHTML("a[href]", func(e *colly.HTMLElement) {
 		domain := e.Request.Ctx.Get("originalDomain")
 		// Check whether we should follow the found href
 		isExternal, err := utils.IsExternalLink(e)
@@ -173,12 +173,19 @@ func (c Crawler) Run() {
 				ctx := colly.NewContext()
 				ctx.Put("originalDomain", string(origCtx.Get("originalDomain")))
 				ctx.Put("pageType", int(pageType))
-				collector.Request("GET", fullUrl, nil, ctx, nil)
+				err = c.collector.Request("GET", fullUrl, nil, ctx, nil)
+				if err != nil {
+					c.logger.Debugw("Error queuing a request",
+						"domain", domain,
+						"url", fullUrl,
+						"error", err,
+					)
+				}
 			}
 		}
 	})
 
-	collector.OnError(func(r *colly.Response, e error) {
+	c.collector.OnError(func(r *colly.Response, e error) {
 		c.logger.Debugw("Error visiting url",
 			"url", r.Request.URL,
 			"error", e,
@@ -197,10 +204,10 @@ func (c Crawler) Run() {
 		ctx := colly.NewContext()
 		ctx.Put("originalDomain", string(domain))
 		ctx.Put("pageType", int(page.IndexPage))
-		collector.Request("GET", utils.SanitizeUrlToCrawl(domain), nil, ctx, nil)
+		c.collector.Request("GET", utils.SanitizeUrlToCrawl(domain), nil, ctx, nil)
 	}
 
-	collector.Wait()
+	c.collector.Wait()
 	//c.Storage.Wait()
 	//c.TearDown()  // ToDo: Doesn't work currently
 

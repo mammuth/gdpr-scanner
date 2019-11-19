@@ -12,7 +12,7 @@ import (
 )
 
 type Storage struct {
-	metaData     crawlerMetaData
+	metaData     *crawlerMetaData
 	outputPath   string
 	metaDataFile string
 	logger       *zap.SugaredLogger
@@ -22,7 +22,10 @@ type Storage struct {
 
 func New(logger *zap.SugaredLogger) *Storage {
 	// ToDo Allow adding options?
-	s := &Storage{}
+	s := &Storage{
+		metaData: &crawlerMetaData{},
+		logger:   logger,
+	}
 	//s.wg = &sync.WaitGroup{}
 	//s.lock = &sync.RWMutex{}
 
@@ -68,6 +71,9 @@ func (s *Storage) storePageVisit(originalDomain string, url *url.URL, body []byt
 	// Create output directory if it does not exist
 	err := os.MkdirAll(s.outputPath, os.ModePerm)
 	if err != nil {
+		s.logger.Errorw("Error creating the output directory",
+			"outputPath", s.outputPath,
+		)
 		panic(err)
 	}
 
@@ -94,7 +100,7 @@ func (s *Storage) getHtmlFilePathForPage(domain string, pageType page.Type) stri
 
 // TearDown can be used to do storage tidy-up tasks after the crawling is done
 func (s *Storage) TearDown() {
-	s.writeCrawlerMetaDataToFile()
+	//s.writeCrawlerMetaDataToFile()
 }
 
 func (s *Storage) GetNumberOfCrawledDomains() int {
