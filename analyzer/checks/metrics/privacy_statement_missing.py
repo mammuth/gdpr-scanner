@@ -28,4 +28,4 @@ class PrivacyStatementMissingCheck(MetricCheck):
                 if res is True:
                     return self._get_check_result(CheckResult.PassType.PASSED)
 
-        return self._get_check_result(CheckResult.PassType.FAILED)
+        return self._get_check_result(CheckResult.PassType.UNCERTAIN)
