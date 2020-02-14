@@ -1,1 +1,1 @@
-analyzer/tests/test-output/* linguist-vendored=true  # Remove Analyzer test html from GitHub language statistics
+analyzer/tests/* linguist-vendored=true  # Remove Analyzer test html from GitHub language statistics
