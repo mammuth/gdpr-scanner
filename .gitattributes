@@ -1,1 +1,2 @@
 analyzer/tests/* linguist-vendored=true  # Remove Analyzer test html from GitHub language statistics
+analyzer/checks/metrics/privacy_missing_paragraph.py linguist-vendored=true
