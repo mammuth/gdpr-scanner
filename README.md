@@ -1,6 +1,9 @@
 # GDPR Scanner
 
-The gdpr scanner consists of multiple components
+The gdpr scanner is a tool which checks a list of domains for violations against the GDPR. It implements a test-suite with pre-defined test cases and also makes it easy to add your own tests.
+
+
+It consists of two components
 
 1. A web crawler, located at `crawler/`, written in Go
 2. An analyzing service, located at `analyzer/`, written in Python
