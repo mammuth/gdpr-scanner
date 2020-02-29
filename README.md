@@ -8,6 +8,12 @@ It consists of two components
 1. A web crawler, located at `crawler/`, written in Go
 2. An analyzing service, located at `analyzer/`, written in Python
 
+## Example test cases
+- `privacy-statement-missing`: Checks whether the given side has a privacy policy.
+- `ip-not-anonymized-[tracking-provider]`: Checks whether tracking services like Google Analytics have IP anonymization enabled.
+- `privacy-missing-thirdparty-[thirdparty]`: Checks whether third party tools are used in the page and whether they're mentioned in the privacy statement if they're known to handle personal data.
+- `privacy-missing-[paragraph]`: Checks whether the privacy statement misses a mention of something which is needed.
+
 ## Crawler
 
 The crawler can be built using the `build.sh` script. Binaries for linux, macOS and Windows will be stored at `dist/`.
